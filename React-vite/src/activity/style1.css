@@ -1,0 +1,255 @@
+/* 英文
+@font-face {
+  font-family: custom-sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&family=Poppins&display=swap");
+  unicode-range: U+00-024F;
+}
+
+中文
+@font-face {
+  font-family: custom-sans-serif;
+  src: url(./fonts/ChiuKongGothic.ttf);
+  unicode-range: U+4E00-9FFF;
+}
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+/* 主設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+/* 導覽列的設定 */
+.navTitle {
+  font-size: 1.5rem;
+  margin: 0 20px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.navItem {
+  width: 100px;
+}
+
+.hamburgerIcon {
+  display: none;
+}
+
+.memberButton {
+  position: absolute;
+  right: 0;
+  border: 3px solid #f7c242;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 0 20px;
+}
+
+.memberButton > i {
+  margin: 0 0 0 5px;
+}
+
+/* 主內容的設定 */
+.activity_container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  top: 100px;
+  position: relative;
+}
+
+.progressBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  text-align: center;
+  background-color: #dcdcdc;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+}
+
+.progress {
+  font-weight: bold;
+}
+
+.progress:nth-child(1) {
+  width: 33.3%;
+  background-color: #f7c242;
+  line-height: 50px;
+}
+.progress:nth-child(2) {
+  width: 33.3%;
+}
+.progress:nth-child(3) {
+  width: 33.4%;
+}
+
+.activity_main {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 7rem;
+  width: 100%;
+  height: 100%;
+}
+
+.activity_title {
+  font-size: 1.5rem;
+  margin-left: 50px;
+}
+/* 聚會類型的設定 */
+.meetType {
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tagBox {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #f7c242;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  width: 100px;
+  text-align: center;
+}
+/* 上傳圖片的設定 */
+.imageUpload {
+  margin: 50px auto;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fileLabel {
+  border: 1px dashed black;
+  display: block;
+  width: 100%;
+  height: 40vh;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.fileLabel:hover {
+  cursor: pointer;
+}
+
+.fileSpan {
+  line-height: 40vh;
+  font-size: 2rem;
+}
+
+.fileLabel > .fileInput {
+  display: none;
+}
+
+.imageDefault {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.imageBox {
+  text-align: center;
+  width: 100%;
+  margin: auto 0;
+  border-radius: 20px;
+}
+
+.imageBox > img {
+  width: calc(25%);
+  margin: 0 10px;
+  border-radius: 20px;
+}
+
+.imageBox > img:checked {
+  border: 3px solid white;
+}
+
+.arrowButton {
+  font-size: 1.5rem;
+  margin: auto;
+  cursor: pointer;
+}
+
+.arrowButton:first-child {
+  text-align: end;
+}
+
+/*  */
+.activityUpload {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.activity-upload > label {
+  margin-right: 10px;
+}
+
+.activityName {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  padding-left: 10px;
+}
+
+.activityName:focus {
+  transition: 0s;
+}
+
+.activityText {
+  display: block;
+  margin: 30px auto;
+  padding-left: 20px;
+  padding-top: 5px;
+  width: 100%;
+  height: 30vh;
+  resize: none;
+  font-size: 1rem;
+  border-radius: 20px;
+}
+
+.buttonControl-one {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+/* 上下頁 */
+.button {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f7c242;
+  text-decoration: none;
+  color: black;
+}

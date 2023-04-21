@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.home-container {
+  background-color: #F5F5F5;
+}
+
+main {
+  overflow: hidden;
+  height: auto;
+}
+
+
+/* ----------------------------- 輪播圖 ----------------------------- */
+
+.carousel {
+  z-index: -2;
+  margin-top: 5rem;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  position: relative;
+}
+/* React用的  */
+.mySlides.show {
+  opacity: 1;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+.mySlides.show {
+  display: block;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+  height: 100%;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  margin-top: -1.5rem;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* ----------------------------- 熱門地點 ----------------------------- */
+.hottitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.hotbox {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 1rem;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
+
+.hotplace {
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.hotimg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+
+}
+
+
+.hottext {
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+
+/* ----------------------------- Tabs ----------------------------- */
+.tabs_box {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.tabs_label {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 23px;
+  transition: 0.4s;
+}
+
+.tabs_radio {
+  display: none;
+}
+
+.tabs_content {
+  order: 1;
+  width: 100%;
+  border-bottom: 3px solid #dddddd;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+}
+
+.tabs_radio:checked+.tabs_label {
+  font-weight: bold;
+  color: #F7C242;
+  border-bottom: 2px solid #F7C242;
+}
+
+.tabs_radio:checked+.tabs_label+.tabs_content {
+  display: initial;
+}
+
+/* -----------------------------  主內容 ----------------------------- */
+.grid-box {
+  display: flex;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 30px;
+  text-align: center;
+  width: 300px;
+  height: 320px;
+  border: 1px solid #ffffff;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 30px;
+  box-shadow: 3px 5px 3px #D8D8D8;
+  cursor: pointer;
+}
+
+.grid-img {
+  width: 250px;
+  border-radius: 20px;
+}
+
+.grid-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+/* ----------------------------- RWD ----------------------------- */
+@media screen and (max-width: 1300px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 5px;
+  }
+
+}
+
+@media screen and (max-width: 968px) {
+  .hotbox {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 1rem;
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+}
+
+@media screen and (max-width: 484px) {
+  .hotbox {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 1rem;
+    grid-template-columns: auto auto;
+  }
+}

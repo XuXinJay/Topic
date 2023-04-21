@@ -1,0 +1,349 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.member-body {
+  background-color: #f5f5f5;
+  text-align: center;
+  position: relative;
+  /* border: 1px orange solid; */
+  width: fit-content;
+  margin-top: 7rem;
+  min-height: 800px;
+  border-radius: 20px;
+  max-width: 745.81px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding-top: 1rem;
+}
+
+/* --------------------------- 會員大頭貼、姓名及生日（上面區塊）-start --------------------------- */
+
+.member-photo {
+  width: 50%;
+  border-radius: 20%;
+}
+.member-input {
+  outline-style: none;
+  border: 0px;
+  background-color: transparent;
+}
+.member-input:hover {
+  outline-style: none;
+  border-bottom: #f7c1427a solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.member-input:focus {
+  border: 0px;
+  background-color: transparent;
+}
+.member-intro {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+/* --------------------------- 會員大頭貼、姓名及生日（上面區塊）-start --------------------------- */
+/* 
+.member-input>input {
+    border: 0px;
+    background-color: transparent;
+} */
+
+/* --------------------------- 簡介、發起、參加、收藏 tab切換鍵-start --------------------------- */
+.member-tab {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  top: 3rem;
+  position: relative;
+}
+
+.member-tab > input {
+  display: none;
+}
+
+.member-tab .member-label {
+  margin: 0 15px 5px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #000000;
+  opacity: 0.5;
+  border-bottom: #f7c242 solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background-color: transparent;
+}
+
+.member-form-content {
+  order: 1;
+  display: none;
+  width: 100%;
+  line-height: 1.6;
+  font-size: 1.2em;
+  /* padding: 15px; */
+  /* text-align: left; */
+  /* border-radius: 5px; */
+  /* border: 1px solid #ddd; */
+  /* border-bottom: 3px solid #ddd; */
+}
+
+.member-title {
+  padding-top: 0.5rem;
+  text-align: left;
+}
+
+.member-tab input:checked + .member-label,
+.member-tab .member-label:hover {
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+.member-tab input:checked + .member-label + .member-form-content {
+  display: initial;
+}
+
+/* --------------------------- 簡介、發起、參加、收藏 tab切換鍵-end ---------------------------*/
+
+/* ------------------------- 簡介 introduction CSS start ------------------------- */
+
+.introduction-input {
+  /* border-bottom: #66B3FF solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px; */
+  border: 0px;
+  background-color: transparent;
+}
+.introduction-input:hover {
+  outline-style: none;
+  border-bottom: #f7c1427a solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.introduction-input:focus {
+  outline-style: none;
+  border-bottom: #f7c242 solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.introduction-textarea {
+  resize: none;
+  position: relative;
+  min-width: 360px;
+  min-height: 180px;
+  max-height: 280px;
+  border-radius: 10px;
+  outline: none;
+  border: 0px;
+  background-color: #f5f5f5;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.introduction-textarea:focus {
+  border: #f7c242 0.5px solid;
+  /* border:  1px solid rgba(0, 0, 0, 0.2); */
+}
+/* .member-textarea:focus {
+    outline: none;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+} */
+
+.introduction-submit {
+  border: 1px solid #ffb21a;
+  border-radius: 5px;
+  color: #ffb21a;
+}
+.introduction-submit:hover {
+  background-color: #ffb21a;
+  color: black;
+}
+
+/* ------------------------- 簡介 introduction CSS end ------------------------- */
+
+/* ------------------------- 發起活動 organise CSS start ------------------------- */
+
+.organise-content {
+  width: 400px;
+  height: 120px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  font-size: medium;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  justify-content: space-evenly;
+}
+.organise-photo {
+  width: 100px;
+  border-radius: 20%;
+}
+
+.organise-sub {
+  outline-style: none;
+  border: 0px;
+  background-color: transparent;
+}
+.organise-submit {
+  border: 1px solid #ffb21a;
+  border-radius: 10px;
+  color: black;
+  width: 5rem;
+  display: block;
+}
+.organise-submit:hover {
+  background-color: #f7c242;
+  color: black;
+}
+
+/* -------------------------organise CSS end ------------------------- */
+
+/* -------------------------參加活動 campaign CSS start ------------------------- */
+
+.campaign-content {
+  width: 400px;
+  height: 120px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: medium;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.campaign-photo {
+  width: 100px;
+  border-radius: 20%;
+}
+
+.campaign-sub {
+  outline-style: none;
+  border: 0px;
+  background-color: transparent;
+}
+
+/* ---------------- 審核狀態 campaign-state start ---------------- */
+
+/* 審核中狀態 campaign-review */
+.campaign-review {
+  position: absolute;
+  left: 20px;
+  bottom: 25px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+  color: #808080;
+}
+.campaign-review:hover {
+  background-color: #808080;
+  color: white;
+}
+
+/* 已通過狀態 campaign-pass */
+.campaign-pass {
+  position: absolute;
+  left: 20px;
+  bottom: 25px;
+  border-radius: 5px;
+  border: 1px solid #36bf36;
+  color: #36bf36;
+}
+.campaign-pass:hover {
+  background-color: #36bf36;
+  color: white;
+}
+
+/* 未通過狀態 campaign-unpass */
+.campaign-unpass {
+  position: absolute;
+  left: 20px;
+  bottom: 25px;
+  border-radius: 5px;
+  border: 1px solid #ff4d00;
+  color: #ff4d00;
+}
+.campaign-unpass:hover {
+  background-color: #ff4d00;
+  color: white;
+}
+
+/* ---------------- campaign-state end ---------------- */
+
+/* 取消報名 campaign-cancel */
+.campaign-cancel {
+  top: 30px;
+  position: absolute;
+  left: 15px;
+  border-radius: 5px;
+  border: 1px solid #ffb21a;
+  color: #ffb21a;
+}
+.campaign-cancel:hover {
+  background-color: #ffb21a;
+  color: black;
+}
+
+/* -------------------------campaign CSS end ------------------------- */
+
+/* ------------------------- 收藏 collect CSS start ------------------------- */
+
+.collect-content {
+  width: 400px;
+  height: 120px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: medium;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.collect-photo {
+  width: 100px;
+  border-radius: 20%;
+}
+
+.collect-sub {
+  outline-style: none;
+  border: 0px;
+  background-color: transparent;
+}
+.collect-cancel {
+  top: 30px;
+  position: absolute;
+  left: 15px;
+  border: 1px solid #ffb21a;
+  border-radius: 5px;
+  color: #ffb21a;
+}
+.collect-cancel:hover {
+  background-color: #ffb21a;
+  color: black;
+}
+
+/* -------------------------campaign CSS end ------------------------- */
+
+/* tab-style-end */
+
+@media screen and (min-width: 772px) {
+  .member-input {
+    font-size: 1.2rem;
+  }
+
+  .member-input > input {
+    font-size: 1.2rem;
+  }
+}
