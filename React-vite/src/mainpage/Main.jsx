@@ -19,14 +19,6 @@ import img1 from "./image/test/img1.jpg";
 import img2 from "./image/test/img2.jpg";
 import img3 from "./image/test/img3.jpg";
 import img4 from "./image/test/img4.jpg";
-import img5 from "./image/test/img5.jpg";
-import img6 from "./image/test/img6.jpg";
-import img7 from "./image/test/img7.jpg";
-import img8 from "./image/test/img8.jpg";
-import img9 from "./image/test/img9.jpg";
-import img10 from "./image/test/img10.jpg";
-import img11 from "./image/test/img11.jpg";
-import img12 from "./image/test/img12.jpg";
 
 function Main() {
   const [currentSlide, setCurrentSlide] = useState(0);
