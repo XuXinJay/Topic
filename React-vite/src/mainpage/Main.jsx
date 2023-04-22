@@ -143,7 +143,7 @@ function Main() {
                   >
                     <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
-                      <h5>主題:{activity.activity_name}</h5>
+                      <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
                         地點:{activity.activity_place}
                       </span>
@@ -177,9 +177,9 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img2} alt="" />
+                    <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
-                      <h5>主題:{activity.activity_name}</h5>
+                      <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
                         地點:{activity.activity_place}
                       </span>
@@ -187,7 +187,7 @@ function Main() {
                         時間:{activity.activity_partyTime}
                       </span>
                       <span className="grid_text_txt">
-                        會員:{activity.activity_id}
+                        會員:{activity.name}
                       </span>
                     </div>
                   </a>
@@ -213,9 +213,9 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img3} alt="" />
+                    <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
-                      <h5>主題:{activity.activity_name}</h5>
+                      <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
                         地點:{activity.activity_place}
                       </span>
@@ -223,7 +223,7 @@ function Main() {
                         時間:{activity.activity_partyTime}
                       </span>
                       <span className="grid_text_txt">
-                        會員:{activity.activity_id}
+                        會員:{activity.name}
                       </span>
                     </div>
                   </a>
@@ -249,9 +249,9 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img4} alt="" />
+                    <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
-                      <h5>主題:{activity.activity_name}</h5>
+                      <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
                         地點:{activity.activity_place}
                       </span>
@@ -259,7 +259,7 @@ function Main() {
                         時間:{activity.activity_partyTime}
                       </span>
                       <span className="grid_text_txt">
-                        會員:{activity.activity_id}
+                        會員:{activity.name}
                       </span>
                     </div>
                   </a>
