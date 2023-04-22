@@ -177,7 +177,7 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img1} alt="" />
+                    <img className="grid-img" src={img2} alt="" />
                     <div className="grid-text">
                       <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
@@ -213,7 +213,7 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img1} alt="" />
+                    <img className="grid-img" src={img3} alt="" />
                     <div className="grid-text">
                       <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
@@ -249,7 +249,7 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img1} alt="" />
+                    <img className="grid-img" src={img4} alt="" />
                     <div className="grid-text">
                       <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
