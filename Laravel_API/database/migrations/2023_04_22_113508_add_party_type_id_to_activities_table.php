@@ -8,17 +8,17 @@ class AddPartyTypeIdToActivitiesTable extends Migration
 {
     public function up()
     {
-        Schema::table('activities', function (Blueprint $table) {
-            $table->unsignedBigInteger('party_type_id');
-            $table->foreign('party_type_id')->references('party_type_id')->on('party_type')->onDelete('cascade');
+        Schema::table('party_type', function (Blueprint $table) {
+            $table->unsignedBigInteger('activity_id');
+            $table->foreign('activity_id')->references('activity_id')->on('activities')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::table('activities', function (Blueprint $table) {
-            $table->dropForeign(['party_type_id']);
-            $table->dropColumn('party_type_id');
+        Schema::table('party_type', function (Blueprint $table) {
+            $table->dropForeign(['activity_id']);
+            $table->dropColumn('activity_id');
         });
     }
 }
