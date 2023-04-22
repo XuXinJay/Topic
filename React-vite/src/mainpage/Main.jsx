@@ -39,17 +39,16 @@ function Main() {
     }
   };
 
-  async function getActivity() {
-    try {
-      const response = await axios.get("api/OrganizeActivity");
-      console.log(response.data);
-      setActivities(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
+    async function getActivity() {
+      try {
+        const response = await axios.get("api/OrganizeActivity");
+        console.log(response.data);
+        setActivities(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
     getActivity();
   }, []);
 
