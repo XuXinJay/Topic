@@ -143,7 +143,7 @@ function Main() {
                   >
                     <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
-                      <h5>主題:{activity.activity_name}</h5>
+                      <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
                         地點:{activity.activity_place}
                       </span>
