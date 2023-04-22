@@ -41,7 +41,7 @@ function Main() {
 
   async function getActivity() {
     try {
-      const response = await axios.get("/activities");
+      const response = await axios.get("api/OrganizeActivity");
       console.log(response.data);
       setActivities(response.data);
     } catch (error) {
@@ -151,7 +151,7 @@ function Main() {
                         時間:{activity.activity_partyTime}
                       </span>
                       <span className="grid_text_txt">
-                        會員:{activity.activity_id}
+                        會員:{activity.name}
                       </span>
                     </div>
                   </a>

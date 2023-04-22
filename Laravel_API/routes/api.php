@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrganizeActivityController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 Route::get('/eventdata',[EventController::class,'index']);
+
+Route::get('/OrganizeActivity',[OrganizeActivityController::class,'index']);
