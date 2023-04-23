@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrganizeActivityController;
+use App\Http\Controllers\MemberController;
 
 
 /*
@@ -25,3 +26,5 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::get('/eventdata',[EventController::class,'index']);
 
 Route::get('/OrganizeActivity',[OrganizeActivityController::class,'index']);
+
+Route::put('/members/update', [MemberController::class,'update']);

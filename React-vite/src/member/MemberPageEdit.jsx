@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../api/axios";
 import "./member.css";
+import { Navigate } from "react-router-dom";
+import useAuthContext from "../context/AuthContext";
 import memberPhoto from "./img/member-photo.gif";
 import design from "./img/design.jpg";
+import loaDing from "../loading.gif";
+
 
 function MemberPageEdit() {
-  return (
+
+  const { user, loading } = useAuthContext();
+  const [memberInfo, setMemberInfo] = useState(user);
+
+  useEffect(() => {
+    setMemberInfo(user);
+  }, [user]);
+
+  async function handleUpdateMemberInfo() {
+    try {
+      const res = await axios.put("/api/members/update", memberInfo, {
+        headers: {
+          'content-Type': 'application/json',
+        },
+      });
+      console.log(res.data);
+      window.location.href = '/member';
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+  if (loading) {
+    return <div className="center"><img src={loaDing} alt="" /></div>;
+  }
+  console.log(memberInfo);
+
+
+  return user ? (
     <div className="member-body">
       <h1>會員頁面</h1>
       <form>
@@ -12,28 +44,26 @@ function MemberPageEdit() {
           <div>
             <img src={memberPhoto} className="member-photo" />
           </div>
-          <div>
+          <div style={{ textAlign: "left" }}>
             <span>姓名：</span>
-            <input
-              type="text"
+            <span
               name="memberName"
-              defaultValue="AAA"
               className="member-input"
               size={10}
-              readOnly
-            />
+            >
+              {memberInfo?.name}
+            </span>
             <br />
             <br />
             <br />
             <span style={{ marginTop: 20 }}>生日：</span>
-            <input
-              type="text"
+            <span
               name="memberName"
               className="member-input"
               size={10}
-              defaultValue="2023/2/28"
-              readOnly
-            />
+            >
+              {memberInfo?.member_birth}
+            </span>
           </div>
         </div>
       </form>
@@ -50,17 +80,28 @@ function MemberPageEdit() {
               <input
                 type="text"
                 name="memberPhone"
-                defaultValue="AAA"
+                defaultValue={memberInfo?.name}
                 className="introduction-input"
+                onChange={(e) =>
+                  setMemberInfo({
+                    ...memberInfo,
+                    name: e.target.value,
+                  })}
               />
             </p>
             <p className="member-title">
               電話號碼：
               <input
-                type="text"
+                type="tel"
                 name="memberPhone"
-                defaultValue="0995-852651"
+                defaultValue={memberInfo?.member_phone}
                 className="introduction-input"
+                placeholder="ex:0912-345678"
+                onChange={(e) =>
+                  setMemberInfo({
+                    ...memberInfo,
+                    member_phone: e.target.value,
+                  })}
               />
             </p>
             <p className="member-title">
@@ -69,8 +110,13 @@ function MemberPageEdit() {
               <input
                 type="email"
                 name="memberEmail"
-                defaultValue="test123@gmail.com"
+                defaultValue={memberInfo?.email}
                 className="introduction-input"
+                onChange={(e) =>
+                  setMemberInfo({
+                    ...memberInfo,
+                    email: e.target.value,
+                  })}
               />
             </p>
             <p className="member-title">
@@ -78,8 +124,13 @@ function MemberPageEdit() {
               <input
                 type="text"
                 name="memberCountry"
-                defaultValue="台中市西區"
+                defaultValue={memberInfo?.member_county}
                 className="introduction-input"
+                onChange={(e) =>
+                  setMemberInfo({
+                    ...memberInfo,
+                    member_county: e.target.value,
+                  })}
               />
             </p>
             <p className="member-title">
@@ -87,43 +138,27 @@ function MemberPageEdit() {
               <input
                 type="date"
                 name="memberBirth"
-                defaultValue="2023-02-28"
+                defaultValue={memberInfo?.member_birth}
                 style={{ width: 170 }}
                 className="introduction-input"
+                onChange={(e) =>
+                  setMemberInfo({
+                    ...memberInfo,
+                    member_birth: e.target.value,
+                  })}
               />
             </p>
             <div className="member-title" style={{ width: "365.8px" }}>
-              <label style={{ position: "relative" }}>興　　趣：</label>
+              <label style={{ position: "relative" }}>性　　別：</label>
               <div style={{ display: "inline" }}>
-                
-                <input
-                  type="checkbox"
-                  className="introduction-input"
-                  id="movie"
-                  readOnly=""
-                />
-                <label htmlFor="movie">電影</label>
-                <input
-                  type="checkbox"
-                  className="introduction-input"
-                  id="food"
-                  readOnly=""
-                />
-                <label htmlFor="food">吃飯</label>
-                <input
-                  type="checkbox"
-                  className="introduction-input"
-                  id="sport"
-                  readOnly=""
-                />
-                <label htmlFor="sport">運動</label>
-                <input
-                  type="checkbox"
-                  className="introduction-input"
-                  id="game"
-                  readOnly=""
-                />
-                <label htmlFor="game">桌遊</label>
+
+                <input type="radio" id="man" name="sex" value="男" />
+                <label htmlFor="man">男　</label>
+                <input type="radio" id="female" name="sex" value="女" />
+                <label htmlFor="female">女　</label>
+                <input type="radio" id="other" name="sex" value="其他" />
+                <label htmlFor="other">其他</label>
+
               </div>
             </div>
             <p></p>
@@ -131,7 +166,12 @@ function MemberPageEdit() {
             <textarea
               name="memberName"
               className="introduction-textarea"
-              defaultValue={"大家好！歡迎跟我交朋友！"}
+              defaultValue={memberInfo?.member_introduction}
+              onChange={(e) =>
+                setMemberInfo({
+                  ...memberInfo,
+                  member_introduction: e.target.value,
+                })}
             />
             <p />
             <a href="/member">
@@ -142,19 +182,22 @@ function MemberPageEdit() {
                 className="introduction-submit"
               />
             </a>
-            <a href="http://127.0.0.1:5500/introduction.html">
-              <input
-                type="button"
-                name="introductionSubmit"
-                defaultValue="確認修改"
-                className="introduction-submit"
-              />
-            </a>
+
+            <input
+              type="button"
+              name="introductionSubmit"
+              defaultValue="確認修改"
+              className="introduction-submit"
+              onClick={handleUpdateMemberInfo}
+            />
+
           </div>
         </form>
 
       </div>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 }
 

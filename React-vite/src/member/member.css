@@ -160,6 +160,8 @@ body {
   border: 1px solid #ffb21a;
   border-radius: 5px;
   color: #ffb21a;
+  margin-left: 10px;
+  padding: 2px 5px;
 }
 .introduction-submit:hover {
   background-color: #ffb21a;
