@@ -79,7 +79,7 @@ function MemberPageEdit() {
               姓　　名：
               <input
                 type="text"
-                name="memberPhone"
+                name="memberName"
                 defaultValue={memberInfo?.name}
                 className="introduction-input"
                 onChange={(e) =>
@@ -105,7 +105,6 @@ function MemberPageEdit() {
               />
             </p>
             <p className="member-title">
-              {" "}
               電子郵件：
               <input
                 type="email"
@@ -152,12 +151,18 @@ function MemberPageEdit() {
               <label style={{ position: "relative" }}>性　　別：</label>
               <div style={{ display: "inline" }}>
 
-                <input type="radio" id="man" name="sex" value="男" />
-                <label htmlFor="man">男　</label>
-                <input type="radio" id="female" name="sex" value="女" />
-                <label htmlFor="female">女　</label>
-                <input type="radio" id="other" name="sex" value="其他" />
-                <label htmlFor="other">其他</label>
+                <select name="member_sex" 
+                      
+                  onChange={(e) => 
+                  setMemberInfo({ 
+                    ...memberInfo, 
+                    member_sex: e.target.value 
+                    })}>
+                  <option value="男">男</option>
+                  <option value="女">女</option>
+                  <option value="其他">其他</option>
+                </select>
+
 
               </div>
             </div>

@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./member.css";
+import useAuthContext from "../context/AuthContext";
 import memberPhoto from "./img/member-photo.gif";
 import design from "./img/design.jpg";
+import loaDing from "../loading.gif";
 
 function MemberPage() {
-  return (
+
+  const { user, loading } = useAuthContext();
+  const [memberInfo, setMemberInfo] = useState(user);
+
+  useEffect(() => {
+    setMemberInfo(user);
+  }, [user]);
+
+  if (loading) {
+    return <div className="center"><img src={loaDing} alt="" /></div>;
+  }
+
+  return user ? (
     <div className="member-body">
       <h1>會員頁面</h1>
       <form>
@@ -13,27 +27,25 @@ function MemberPage() {
             <img src={memberPhoto} className="member-photo" />
           </div>
           <div>
-            <sapn>姓名：</sapn>
-            <input
-              type="text"
+            <span>姓名：</span>
+            <span
               name="memberName"
-              defaultValue="AAA"
               className="member-input"
               size={10}
-              readOnly
-            />
+            >
+              {memberInfo?.name}
+            </span>
             <br />
             <br />
             <br />
             <span style={{ marginTop: 20 }}>生日：</span>
-            <input
-              type="text"
+            <span
               name="memberName"
               className="member-input"
               size={10}
-              defaultValue="2023/2/28"
-              readOnly
-            />
+            >
+              {memberInfo?.member_birth}
+            </span>
           </div>
         </div>
       </form>
@@ -48,9 +60,7 @@ function MemberPage() {
             <p className="member-title">
               姓　　名：
               <input
-                type="text"
-                name="memberPhone"
-                defaultValue="AAA"
+                defaultValue={memberInfo?.name}
                 className="introduction-input"
                 readOnly
               />
@@ -58,20 +68,15 @@ function MemberPage() {
             <p className="member-title">
               電話號碼：
               <input
-                type="text"
-                name="memberPhone"
-                defaultValue="0995-852651"
+                defaultValue={memberInfo?.member_phone}
                 className="introduction-input"
                 readOnly
               />
             </p>
             <p className="member-title">
-              {" "}
               電子信箱：
               <input
-                type="email"
-                name="memberEmail"
-                defaultValue="test123@gmail.com"
+                defaultValue={memberInfo?.email}
                 className="introduction-input"
                 readOnly
               />
@@ -79,9 +84,7 @@ function MemberPage() {
             <p className="member-title">
               居住城市：
               <input
-                type="text"
-                name="memberCountry"
-                defaultValue="台中市西區"
+                defaultValue={memberInfo?.member_county}
                 className="introduction-input"
                 readOnly
               />
@@ -89,68 +92,27 @@ function MemberPage() {
             <p className="member-title">
               出生日期：
               <input
-                type="date"
-                name="memberBirth"
-                defaultValue="2023-02-28"
-                style={{ width: 170 }}
+                style={{ width: 170 }} 
                 className="introduction-input"
+                defaultValue={memberInfo?.member_birth}
                 readOnly
               />
             </p>
             <div className="member-title" style={{ width: "365.8px" }}>
-              <label style={{ position: "relative" }}>興　　趣：</label>
-              <div style={{ display: "inline" }}>
-                
-                <span>
-                  #
-                  <input
-                    type="text"
-                    className="introduction-input"
-                    style={{ width: 30 }}
-                    defaultValue="電影"
-                    readOnly
-                  />
-                </span>
-                <span>
-                  #
-                  <input
-                    type="text"
-                    className="introduction-input"
-                    style={{ width: 30 }}
-                    defaultValue="吃飯"
-                    readOnly
-                  />
-                </span>
-                <span>
-                  #
-                  <input
-                    type="text"
-                    className="introduction-input"
-                    style={{ width: 30 }}
-                    defaultValue="運動"
-                    readOnly
-                  />
-                </span>
-                <span>
-                  #
-                  <input
-                    type="text"
-                    className="introduction-input"
-                    style={{ width: 30 }}
-                    defaultValue="桌遊"
-                    readOnly
-                  />
-                </span>
-              </div>
+              <label style={{ position: "relative" }}>性　　別：</label>
+              <input  
+                className="introduction-input"
+                defaultValue={memberInfo?.member_sex}
+                readOnly
+              />
             </div>
             <p></p>
             <p className="member-title">自我介紹：</p>
             <textarea
               readOnly
               name="memberName"
-              value="大家好"
               className="introduction-textarea"
-              defaultValue={"大家好！歡迎跟我交朋友！"}
+              defaultValue={memberInfo?.member_introduction}
             />
             <p />
             <a href="/memberEdit">
@@ -164,6 +126,33 @@ function MemberPage() {
           </div>
         </form>
         {/* introduction tab end */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* organise_event tab start */}
         <input id="tab2" type="radio" name="tab" />
         <label className="member-label" htmlFor="tab2">
@@ -196,8 +185,7 @@ function MemberPage() {
               />
               <br />
               <span style={{ position: "relative", left: 7 }}>
-                {" "}
-                活動日期：{" "}
+                活動日期：
               </span>
               <input
                 type="date"
@@ -210,12 +198,41 @@ function MemberPage() {
             </div>
             <div style={{ position: "relative" }}>
               <a className="organise-submit" href="/review">
-                人員<br/>審核
+                人員<br />審核
               </a>
             </div>
           </div>
         </form>
         {/* organise_event tab end */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* campaign tab start */}
         <input id="tab3" type="radio" name="tab" />
         <label className="member-label" htmlFor="tab3">
@@ -265,7 +282,7 @@ function MemberPage() {
                 className="campaign-review"
               />
               <input
-                type="submit"
+                type="button"
                 Value="取消報名"
                 className="campaign-cancel"
               />
@@ -314,7 +331,7 @@ function MemberPage() {
                 className="campaign-pass"
               />
               <input
-                type="submit"
+                type="button"
                 Value="取消報名"
                 className="campaign-cancel"
               />
@@ -363,7 +380,7 @@ function MemberPage() {
                 className="campaign-unpass"
               />
               <input
-                type="submit"
+                type="button"
                 Value="取消報名"
                 className="campaign-cancel"
               />
@@ -371,6 +388,64 @@ function MemberPage() {
           </div>
         </form>
         {/* campaign tab end */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* collect tab start */}
         <input id="tab4" type="radio" name="tab" />
         <label className="member-label" htmlFor="tab4">
@@ -414,8 +489,8 @@ function MemberPage() {
             </div>
             <div style={{ position: "relative" }}>
               <input
-                type="submit"
-                Value="取消收藏"
+                type="button"
+                defaultValue="取消收藏"
                 className="collect-cancel"
               />
             </div>
@@ -424,6 +499,8 @@ function MemberPage() {
         {/* collect tab end */}
       </div>
     </div>
+  ) : (
+    <Navidate to="/" />
   );
 }
 

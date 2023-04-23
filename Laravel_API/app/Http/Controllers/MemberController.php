@@ -15,6 +15,7 @@ class MemberController extends Controller
         $user->email = $request->input("email");
         $user->member_county = $request->input("member_county");
         $user->member_birth = $request->input("member_birth");
+        $user->member_sex = $request->input("member_sex");
         $user->member_introduction = $request->input("member_introduction");
         $user->save();
 
