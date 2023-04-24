@@ -125,11 +125,11 @@ function Main() {
             type="radio"
             className="tabs_radio"
             name="tabs-example"
-            id="tab1"
+            id="tab0"
             defaultChecked="true"
           />
-          <label htmlFor="tab1" className="tabs_label">
-            電影
+          <label htmlFor="tab0" className="tabs_label">
+            全部
           </label>
           <div className="tabs_content">
             <div className="grid-box">
@@ -140,7 +140,7 @@ function Main() {
                     href="/event"
                     key={activity.activity_id}
                   >
-                    <img className="grid-img" src={img1} alt="" />
+                    <img className="grid-img" src={img4} alt="" />
                     <div className="grid-text">
                       <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
@@ -155,6 +155,50 @@ function Main() {
                     </div>
                   </a>
                 ))}
+              </div>
+            </div>
+          </div>
+          <input
+            type="radio"
+            className="tabs_radio"
+            name="tabs-example"
+            id="tab1"
+            defaultChecked="true"
+          />
+          <label htmlFor="tab1" className="tabs_label">
+            電影
+          </label>
+          <div className="tabs_content">
+            <div className="grid-box">
+              <div className="grid-container">
+                {activities.map((activity) => {
+                  if (activity.activity_name === '電影') {
+                    return (
+                      <a
+                        className="grid-item"
+                        href="/event"
+                        key={activity.activity_id}
+                      >
+                        <img className="grid-img" src={img4} alt="" />
+                        <div className="grid-text">
+                          <h6>主題:{activity.activity_name}</h6>
+                          <span className="grid_text_txt">
+                            地點:{activity.activity_place}
+                          </span>
+                          <span className="grid_text_txt">
+                            時間:{activity.activity_partyTime}
+                          </span>
+                          <span className="grid_text_txt">
+                            會員:{activity.name}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  } else {
+                    // 不是電影主題的活動不顯示
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -237,7 +281,7 @@ function Main() {
             id="tab4"
           />
           <label htmlFor="tab4" className="tabs_label">
-            吃飯
+            聚餐
           </label>
           <div className="tabs_content">
             <div className="grid-box">
@@ -249,6 +293,42 @@ function Main() {
                     key={activity.activity_id}
                   >
                     <img className="grid-img" src={img4} alt="" />
+                    <div className="grid-text">
+                      <h6>主題:{activity.activity_name}</h6>
+                      <span className="grid_text_txt">
+                        地點:{activity.activity_place}
+                      </span>
+                      <span className="grid_text_txt">
+                        時間:{activity.activity_partyTime}
+                      </span>
+                      <span className="grid_text_txt">
+                        會員:{activity.name}
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <input
+            type="radio"
+            className="tabs_radio"
+            name="tabs-example"
+            id="tab5"
+          />
+          <label htmlFor="tab5" className="tabs_label">
+            其他
+          </label>
+          <div className="tabs_content">
+            <div className="grid-box">
+              <div className="grid-container">
+                {activities.map((activity) => (
+                  <a
+                    className="grid-item"
+                    href="/event"
+                    key={activity.activity_id}
+                  >
+                    <img className="grid-img" src={img1} alt="" />
                     <div className="grid-text">
                       <h6>主題:{activity.activity_name}</h6>
                       <span className="grid_text_txt">
