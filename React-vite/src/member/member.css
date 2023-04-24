@@ -141,13 +141,15 @@ body {
   background-color: transparent;
   font-size: 1.2rem;
 }
-/* .introduction-input:hover {
-  outline-style: none;
-  border-bottom: #f7c1427a solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-} */
+.introduction-edit {
+  background-color: #f5f5f5;
+  border: none;
+}
+.introduction-edit:focus {
+  outline: none;
+  background-color: white;
+  /* border-bottom: #f7c1427a solid; */
+}
 .introduction-input:focus {
   display: none;
 }

@@ -103,7 +103,7 @@ function MemberPageEdit() {
                 type="text"
                 name="memberName"
                 defaultValue={memberInfo?.name}
-                className="introduction-input"
+                className="introduction-edit"
                 placeholder="請輸入您的姓名"
                 onChange={(e) =>
                   setMemberInfo({
@@ -118,7 +118,7 @@ function MemberPageEdit() {
                 type="tel"
                 name="memberPhone"
                 defaultValue={memberInfo?.member_phone}
-                className="introduction-input"
+                className="introduction-edit"
                 placeholder="ex:0912-345678"
                 onChange={(e) =>
                   setMemberInfo({
@@ -133,7 +133,7 @@ function MemberPageEdit() {
                 type="email"
                 name="memberEmail"
                 defaultValue={memberInfo?.email}
-                className="introduction-input"
+                className="introduction-edit"
                 onChange={(e) =>
                   setMemberInfo({
                     ...memberInfo,
@@ -147,7 +147,7 @@ function MemberPageEdit() {
                 type="text"
                 name="memberCountry"
                 defaultValue={memberInfo?.member_county}
-                className="introduction-input"
+                className="introduction-edit"
                 onChange={(e) =>
                   setMemberInfo({
                     ...memberInfo,
@@ -162,7 +162,7 @@ function MemberPageEdit() {
                 name="memberBirth"
                 defaultValue={memberInfo?.member_birth}
                 style={{ width: 170 }}
-                className="introduction-input"
+                className="introduction-edit"
                 onChange={(e) =>
                   setMemberInfo({
                     ...memberInfo,
