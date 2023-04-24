@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style4.css";
 import useAuthContext from "../context/AuthContext";
 import axios from "../api/axios";
-import loaDing from "/src/loading.gif"
+import loaDing from "/src/loading.gif";
 function Event() {
   const { user, loading } = useAuthContext();
   const [eventData, setEventData] = useState(null);
@@ -91,7 +91,7 @@ function Event() {
             cols={30}
             rows={10}
             placeholder={123231231231231231231231231231}
-            readOnly=""
+            readOnly
             defaultValue={""}
           />
         </div>
