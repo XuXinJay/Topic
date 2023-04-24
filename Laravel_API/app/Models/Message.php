@@ -31,12 +31,12 @@ class Message extends Model
         return $json;
     }
     //新增
-    public static function createMessage($memberId, $activityId, $message)
+    public static function createMessage($memberId, $activityId, $content)
     {
         $newMessage = new Message([
             'member_id' => $memberId,
             'activity_id' => $activityId,
-            'content' => $message
+            'content' => $content
         ]);
         $newMessage->save();
         return $newMessage;
@@ -47,8 +47,8 @@ class Message extends Model
         $content = $request->input('content');
         // 建立新的 Message 實例並設定值
         $msg = new Message;
-        $msg->member_id = 1; // 這裡示範直接設定數值，你可以根據需求修改
-        $msg->activily_id = 1; // 這裡示範直接設定數值，你可以根據需求修改
+        $msg->member_id = $request->input('member_id');; // 這裡示範直接設定數值，你可以根據需求修改
+        $msg->activily_id = $request->input('activily_id');; // 這裡示範直接設定數值，你可以根據需求修改
         $msg->content = $content;
         
         $msg->save();
@@ -56,9 +56,9 @@ class Message extends Model
     //刪除
     public static function deleteMessage($id)
     {
-        $message = Message::find($id);
-        if ($message) {
-            $message->delete();
+        $content = Message::find($id);
+        if ($content) {
+            $content->delete();
         }
     }
 

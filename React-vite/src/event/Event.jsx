@@ -5,12 +5,12 @@ import axios from "../api/axios";
 import loaDing from "/src/loading.gif"
 function Event() {
   const { user, loading } = useAuthContext();
+  const [eventData, setEventData] = useState(null);
   const [message, setMessage] = useState(
     {
       content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
-  const [eventData, setEventData] = useState(null);
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
     axios.get("api/activities")
@@ -22,12 +22,10 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
-  }, []);
+    }, []);
+    
 
-  const handleChange = (e) => {
-    // 监听文本框的输入变化，并更新 message 状态的值
-    setMessage({ message: e.target.value });
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,8 +51,9 @@ function Event() {
   };
 
   if (loading) {
-    return <div className="center"><img  src={loaDing} alt="" /></div>;
+    return <div className="center"><img src={loaDing} alt="" /></div>;
   }
+
 
 
   return (
@@ -192,7 +191,11 @@ function Event() {
                 rows={3}
                 defaultValue={""}
                 value={message?.content} // 将状态中的值绑定到文本框的 value 属性
-                onChange={(event) => setMessage({ content: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
+                onChange={(event) => setMessage({
+                  member_id: user?.id,
+                  activily_id: eventData[0].activity_id,
+                  content: event.target.value
+                })} // 处理表单输入变化 // 监听文本框的输入变化
               />
               <div className="event_page-bbb-message">
                 <button className="event_page-button-message" type="submit">發送</button>

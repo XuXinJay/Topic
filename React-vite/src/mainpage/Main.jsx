@@ -23,6 +23,7 @@ import img4 from "./image/test/img4.jpg";
 function Main() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activities, setActivities] = useState([]);
+  const [filterByLocation, setFilterByLocation] = useState('');
 
   const nextSlide = () => {
     if (currentSlide === 2) {
@@ -31,6 +32,7 @@ function Main() {
       setCurrentSlide(currentSlide + 1);
     }
   };
+
   const prevSlide = () => {
     if (currentSlide === 0) {
       setCurrentSlide(2);
@@ -51,6 +53,14 @@ function Main() {
     }
     getActivity();
   }, []);
+
+  const handleFilterClick = (location) => {
+    setFilterByLocation(location);
+  };
+
+  const filteredActivities = activities.filter((activity) => {
+    return filterByLocation === '' || activity.activity_place === filterByLocation;
+  });
 
   return (
     <main>
@@ -93,30 +103,30 @@ function Main() {
 
       <h1 className="hottitle">熱門地點</h1>
       <section className="hotbox">
-        <a href="#" className="hotplace">
+        <button className="hotplace" onClick={() => handleFilterClick('台北')}>
           <img className="hotimg" src={taipei101} alt="" />
           <div className="hottext">台北</div>
-        </a>
-        <a href="#" className="hotplace">
+        </button>
+        <button className="hotplace" onClick={() => handleFilterClick('新北')}>
           <img className="hotimg" src={newTaipei} alt="" />
           <div className="hottext">新北</div>
-        </a>
-        <a href="#" className="hotplace">
+        </button>
+        <button className="hotplace" onClick={() => handleFilterClick('桃園')}>
           <img className="hotimg" src={taoyuan} alt="" />
           <div className="hottext">桃園</div>
-        </a>
-        <a href="#" className="hotplace">
+        </button>
+        <button className="hotplace" onClick={() => handleFilterClick('台中')}>
           <img className="hotimg" src={taichung} alt="" />
           <div className="hottext">台中</div>
-        </a>
-        <a href="#" className="hotplace">
+        </button>
+        <button className="hotplace" onClick={() => handleFilterClick('台南')}>
           <img className="hotimg" src={tainan} alt="" />
           <div className="hottext">台南</div>
-        </a>
-        <a href="#" className="hotplace">
+        </button>
+        <button className="hotplace" onClick={() => handleFilterClick('高雄')}>
           <img className="hotimg" src={kaohsiung} alt="" />
           <div className="hottext">高雄</div>
-        </a>
+        </button>
       </section>
 
       <section className="tabs_box">
@@ -134,27 +144,30 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => (
-                  <a
-                    className="grid-item"
-                    href="/event"
-                    key={activity.activity_id}
-                  >
-                    <img className="grid-img" src={img4} alt="" />
-                    <div className="grid-text">
-                      <h6>主題:{activity.activity_name}</h6>
-                      <span className="grid_text_txt">
-                        地點:{activity.activity_place}
-                      </span>
-                      <span className="grid_text_txt">
-                        時間:{activity.activity_partyTime}
-                      </span>
-                      <span className="grid_text_txt">
-                        會員:{activity.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
+                {filteredActivities.map((activity) => {
+
+                  return (
+                    <a
+                      className="grid-item"
+                      href="/event"
+                      key={activity.activity_id}
+                    >
+                      <img className="grid-img" src={img4} alt="" />
+                      <div className="grid-text">
+                        <h6>主題:{activity.activity_name}</h6>
+                        <span className="grid_text_txt">
+                          地點:{activity.activity_place}
+                        </span>
+                        <span className="grid_text_txt">
+                          時間:{activity.activity_partyTime}
+                        </span>
+                        <span className="grid_text_txt">
+                          會員:{activity.name}
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -163,7 +176,6 @@ function Main() {
             className="tabs_radio"
             name="tabs-example"
             id="tab1"
-            defaultChecked="true"
           />
           <label htmlFor="tab1" className="tabs_label">
             電影
@@ -171,7 +183,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => {
+                {filteredActivities.map((activity) => {
                   if (activity.movie === 1) {
                     return (
                       <a
@@ -214,7 +226,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-              {activities.map((activity) => {
+                {filteredActivities.map((activity) => {
                   if (activity.sports === 1) {
                     return (
                       <a
@@ -257,7 +269,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-              {activities.map((activity) => {
+                {filteredActivities.map((activity) => {
                   if (activity.board_game === 1) {
                     return (
                       <a
@@ -300,7 +312,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-              {activities.map((activity) => {
+                {filteredActivities.map((activity) => {
                   if (activity.dine_together === 1) {
                     return (
                       <a
@@ -343,8 +355,8 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-              {activities.map((activity) => {
-                  if (activity.movie === 0 && activity.sports === 0 && activity.board_game === 0 && activity.dine_together === 0 ) {
+                {activities.map((activity) => {
+                  if (activity.movie === 0 && activity.sports === 0 && activity.board_game === 0 && activity.dine_together === 0) {
                     return (
                       <a
                         className="grid-item"

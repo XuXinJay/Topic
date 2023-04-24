@@ -10,6 +10,7 @@ class MemberController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
+        $user->member_avatar = $request->input("member_avatar");
         $user->name = $request->input("name");
         $user->member_phone = $request->input("member_phone");
         $user->email = $request->input("email");
