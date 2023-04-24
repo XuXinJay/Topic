@@ -123,9 +123,13 @@ main {
 }
 
 .hotplace {
-  text-decoration: none;
+  border: none;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.hotplace:hover {
+  cursor: pointer;
 }
 
 .hotimg {
