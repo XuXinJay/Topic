@@ -3,14 +3,68 @@ import { Navigate } from "react-router-dom";
 import "./style1.css";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif"
+import { useState} from "react"
 
 function Activity1() {
-  const { user ,loading } = useAuthContext();
+  const { user, loading } = useAuthContext();
 
   if (loading) {
-    return <div className="center"><img  src={loaDing} alt="" /></div>;
+    return <div className="center"><img src={loaDing} alt="" /></div>;
   }
-  
+  // 聚會類型
+  const [isActive, setIsActive] = useState(Array(14).fill(false));
+  const activities = [
+    { id: 1, icon: '🍿', label: '電影' },
+    { id: 2, icon: '🎲', label: '桌游' },
+    { id: 3, icon: '🍴', label: '聚餐' },
+    { id: 4, icon: '📖', label: '閱讀' },
+    { id: 5, icon: '🚶', label: '運動' },
+    { id: 6, icon: '🛍', label: '購物' },
+    { id: 7, icon: '🎨', label: '彩繪' },
+    { id: 8, icon: '🏋️‍♀️', label: '健身' },
+    { id: 9, icon: '🎬', label: '影集' },
+    { id: 10, icon: '🚗', label: '旅遊' },
+    { id: 11, icon: '🍺', label: '酒吧' },
+    { id: 12, icon: '🎵', label: '音樂' },
+    { id: 13, icon: '🏸', label: '羽球' },
+    { id: 14, icon: '🍻', label: '聚會' }
+  ];
+
+  function handleClick(event) {
+    setIsActive(prevState => {
+      const newState = [...prevState];
+      newState[event] = !newState[event];
+      return newState;
+    });
+
+    if (!isActive[event]) {
+      sessionStorage.setItem('活動類型', activities[event].label);
+      console.log(sessionStorage.getItem('活動類型'))
+    }
+  }
+
+  //限制文字輸入字數
+  const MAX_LENGTH = 300;
+  const [activityText, setactivityText] = useState(sessionStorage.getItem('活動簡述') || '')
+
+  function handleInputChange(event) {
+    let newText = event.target.value;
+    if (newText.length <= MAX_LENGTH) {
+      setactivityText(newText);
+      sessionStorage.setItem('活動簡述', event.target.value)
+      console.log(sessionStorage.getItem('活動簡述'))
+    }
+  }
+
+  //取得活動名稱的值
+  const [activityName, setActivityName] = useState(sessionStorage.getItem('活動名稱') || '');
+
+  function handleActivityNameChange(event) {
+    setActivityName(event.target.value);
+    sessionStorage.setItem('活動名稱', event.target.value)
+    console.log(sessionStorage.getItem('活動名稱'))
+  }
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -22,50 +76,15 @@ function Activity1() {
         <div className="meetType">
           <div className="activity_title">聚會類型 : </div>
           <div className="tagBox">
-            <div className="tag">
-              🍿<span>電影</span>
-            </div>
-            <div className="tag">
-              🎲<span>桌游</span>
-            </div>
-            <div className="tag">
-              🍴<span>聚餐</span>
-            </div>
-            <div className="tag">
-              📖<span>閱讀</span>
-            </div>
-            <div className="tag">
-              🚶<span>運動</span>
-            </div>
-            <div className="tag">
-              🛍<span>購物</span>
-            </div>
-            <div className="tag">
-              🎨<span>彩繪</span>
-            </div>
-          </div>
-          <div className="tagBox">
-            <div className="tag">
-              🎂<span>烘焙</span>
-            </div>
-            <div className="tag">
-              🍳<span>烹飪</span>
-            </div>
-            <div className="tag">
-              🎸<span>音樂</span>
-            </div>
-            <div className="tag">
-              🧺<span>野餐</span>
-            </div>
-            <div className="tag">
-              🧘<span>瑜珈</span>
-            </div>
-            <div className="tag">
-              💐<span>花藝</span>
-            </div>
-            <div className="tag">
-              🐶<span>寵物</span>
-            </div>
+            {activities.map((activity, index) => (
+              <div
+                key={activity.id}
+                className={`test ${isActive[index] ? "tagAfter" : "tag"}`}
+                onClick={() => handleClick(index)}
+              >
+                {activity.icon} {activity.label}
+              </div>
+            ))}
           </div>
         </div>
         <div className="imageUpload">
@@ -84,15 +103,15 @@ function Activity1() {
             <span className="arrowButton">◀</span>
             <div className="imageBox">
               <img
-                src="https://tw.cyberlink.com/prog/learning-center/html/10104/PHDApp_CHT_profile_picture/img/cartoon-sticker-cutout.jpg"
+                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
                 alt={1}
               />
               <img
-                src="https://tw.cyberlink.com/prog/learning-center/html/10104/PHDApp_CHT_profile_picture/img/cartoon-sticker-cutout.jpg"
+                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
                 alt={2}
               />
               <img
-                src="https://tw.cyberlink.com/prog/learning-center/html/10104/PHDApp_CHT_profile_picture/img/cartoon-sticker-cutout.jpg"
+                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
                 alt={3}
               />
             </div>
@@ -103,18 +122,27 @@ function Activity1() {
           <div className="activity_title">
             <label htmlFor="">
               活動名稱 :
-              <input type="text" className="activityName" required="" />
+              <input 
+                type="text" 
+                className="activityName" 
+                required=""
+                onChange={handleActivityNameChange}
+                value={activityName}
+
+              />
             </label>
           </div>
           <textarea
             name=""
             id="activityText"
-            cols={30}
-            rows={10}
+            // cols={15}
+            // rows={20}
             placeholder="請簡述活動內容，300字以內"
             className="activityText"
             required=""
+            value={activityText}
             defaultValue={""}
+            onChange={handleInputChange}
           />
         </div>
         <div className="buttonControl-one">
@@ -125,8 +153,8 @@ function Activity1() {
         </div>
       </main>
     </div>
-    ) : (
-      <Navigate to="/" />
+  ) : (
+    <Navigate to="/" />
   );
 }
 

@@ -11,6 +11,10 @@ function Activity2() {
     return <div className="center"><img  src={loaDing} alt="" /></div>;
   }
   
+  //取得活動名稱、活動簡述
+  const activityName = sessionStorage.getItem("活動名稱");
+  const activityText = sessionStorage.getItem("活動簡述");
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -20,7 +24,7 @@ function Activity2() {
       </div>
       <main className="activity_main_2">
         <div className="activity_title">
-          {"{"}活動標題{"}"}
+          {activityName}
         </div>
         <div className="allActivity">
           <div className="hostName">
@@ -42,9 +46,9 @@ function Activity2() {
               className="activityName_2"
               cols={30}
               rows={10}
-              placeholder={123231231231231231231231231231}
-              readOnly=""
+              readOnly="true"
               defaultValue={""}
+              value={activityText}
             />
           </div>
         </div>
