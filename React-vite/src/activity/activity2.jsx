@@ -12,8 +12,8 @@ function Activity2() {
   }
   
   //取得活動名稱、活動簡述
-  const activityName = localStorage.getItem("活動名稱");
-  const activityText = localStorage.getItem("活動簡述")
+  const activityName = sessionStorage.getItem("活動名稱");
+  const activityText = sessionStorage.getItem("活動簡述");
 
   return user ? (
     <div className="activity_container">

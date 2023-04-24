@@ -10,7 +10,11 @@ function Activity3() {
   if (loading) {
     return <div className="center"><img  src={loaDing} alt="" /></div>;
   }
-  
+
+  //取得活動名稱、活動簡述
+  const activityName = sessionStorage.getItem("活動名稱");
+  const activityText = sessionStorage.getItem("活動簡述");
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -21,21 +25,24 @@ function Activity3() {
       <main className="activity_main_3">
         <div className="allActivity">
           <div className="activity_title" style={{ textAlign: "center" }}>
-            {"{"}活動標題{"}"}
+            {activityName}
           </div>
-          <div className="box_3">
+          <div className="box_4">
             <div className="hostName_3">
-              <img src="" />
+              <img src="" alt="" />
               <p>主辦人名字</p>
             </div>
             <div className="place">
-              <i className="bi bi-geo-alt-fill" />
-              <span className="">
-                聚會地點 :{" "}
-                <a href="" style={{ textDecoration: "none", color: "black" }}>
-                  地點
+            <i className="bi bi-geo-alt-fill" />
+              <div className="">
+                聚會地點 :
+                <a href="">
+                  {}
                 </a>
-              </span>
+              </div>
+            </div>
+            <div className="count">
+              聚會總人數 : <span>{}</span>
             </div>
           </div>
           <div className="uploadImage">
@@ -51,38 +58,31 @@ function Activity3() {
               className="activityName_3"
               cols={30}
               rows={10}
-              placeholder={123231231231231231231231231231}
+              // placeholder={}
               readOnly=""
               defaultValue={""}
+              value={activityText}
             />
           </div>
           <hr className="gap" />
-          <div className="box_3">
-            <div className="iconBox">
-              <div style={{ width: 100 }}>
-                <i class="uil uil-usd-circle"></i>
-                <div className="">現金</div>
-              </div>
+          <div class="box_3">
+            <div class="iconBox">
+              <i class="uil uil-usd-circle"></i>
+              <div className="">現金</div>
             </div>
-            <div className="iconBox">
-              <div style={{ width: 100 }}>
-                <i class="uil uil-wallet"></i>
-                <div className="">預算</div>
-              </div>
+            <div class="iconBox">
+              <i class="uil uil-wallet"></i>
+              <div className="">預算</div>
             </div>
           </div>
-          <div className="box_3" style={{ marginTop: 20 }}>
-            <div className="iconBox">
-              <div style={{ width: 100 }}>
-                <i class="uil uil-calendar-alt"></i>
-                <div>2023/04/05</div>
-              </div>
+          <div class="box_3">
+            <div class="iconBox">
+              <i class="uil uil-calendar-alt"></i>
+              <div>2023/04/05</div>
             </div>
-            <div className="iconBox">
-              <div style={{ width: 100 }}>
-                <i class="uil uil-hourglass"></i>
-                <div style={{ color: "red" }}>4:40</div>
-              </div>
+            <div class="iconBox">
+              <i class="uil uil-hourglass"></i>
+              <div style={{ color: "red" }}>4:40</div>
             </div>
           </div>
         </div>

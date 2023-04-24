@@ -38,28 +38,31 @@ function Activity1() {
     });
 
     if (!isActive[event]) {
-      localStorage.setItem('活動類型', activities[event].label);
+      sessionStorage.setItem('活動類型', activities[event].label);
+      console.log(sessionStorage.getItem('活動類型'))
     }
   }
 
   //限制文字輸入字數
   const MAX_LENGTH = 300;
-  const [activityText, setactivityText] = useState(localStorage.getItem('活動簡述') || '')
+  const [activityText, setactivityText] = useState(sessionStorage.getItem('活動簡述') || '')
 
   function handleInputChange(event) {
     let newText = event.target.value;
     if (newText.length <= MAX_LENGTH) {
       setactivityText(newText);
-      localStorage.setItem('活動簡述', event.target.value)
+      sessionStorage.setItem('活動簡述', event.target.value)
+      console.log(sessionStorage.getItem('活動簡述'))
     }
   }
 
   //取得活動名稱的值
-  const [activityName, setActivityName] = useState(localStorage.getItem('活動名稱') || '');
+  const [activityName, setActivityName] = useState(sessionStorage.getItem('活動名稱') || '');
 
   function handleActivityNameChange(event) {
     setActivityName(event.target.value);
-    localStorage.setItem('活動名稱', event.target.value)
+    sessionStorage.setItem('活動名稱', event.target.value)
+    console.log(sessionStorage.getItem('活動名稱'))
   }
 
   return user ? (
@@ -125,6 +128,7 @@ function Activity1() {
                 required=""
                 onChange={handleActivityNameChange}
                 value={activityName}
+
               />
             </label>
           </div>
