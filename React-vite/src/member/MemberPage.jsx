@@ -24,9 +24,9 @@ function MemberPage() {
       <form>
         <div className="member-intro">
           <div>
-            <img src={memberPhoto} className="member-photo" />
+            <img src={memberInfo?.member_avatar} className="member-photo" />
           </div>
-          <div>
+          <div style={{ textAlign: "left" }}>
             <span>姓名：</span>
             <span
               name="memberName"
@@ -198,7 +198,7 @@ function MemberPage() {
             </div>
             <div style={{ position: "relative" }}>
               <a className="organise-submit" href="/review">
-                人員<br />審核
+                審核
               </a>
             </div>
           </div>
@@ -283,7 +283,7 @@ function MemberPage() {
               />
               <input
                 type="button"
-                Value="取消報名"
+                value="取消報名"
                 className="campaign-cancel"
               />
             </div>
@@ -332,7 +332,7 @@ function MemberPage() {
               />
               <input
                 type="button"
-                Value="取消報名"
+                value="取消報名"
                 className="campaign-cancel"
               />
             </div>
@@ -381,7 +381,7 @@ function MemberPage() {
               />
               <input
                 type="button"
-                Value="取消報名"
+                value="取消報名"
                 className="campaign-cancel"
               />
             </div>
