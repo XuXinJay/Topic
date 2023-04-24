@@ -18,10 +18,31 @@ function MemberPageEdit() {
   }, [user]);
 
   async function handleUpdateMemberInfo() {
+    const memberInfo_required = {
+      姓名: memberInfo?.name || '',
+      電子郵件: memberInfo?.email || '',
+      birth:memberInfo?.member_birth,
+    }
+    for(let key in memberInfo_required){
+      if(memberInfo_required[key].trim() === ''){
+        alert(`${key}的內容不得為空值`);
+        return;
+      }
+    }
+    if(memberInfo_required.birth){
+      const birthDate = new Date(memberInfo_required.birth);
+      const today = new Date();
+      if(birthDate >= today){
+        alert("出生日期不得大於目前時間");
+        return;
+      }
+    }
+
+
     try {
       const res = await axios.put("/api/members/update", memberInfo, {
         headers: {
-          'content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       console.log(res.data);
@@ -41,9 +62,10 @@ function MemberPageEdit() {
       <h1>會員頁面</h1>
       <form>
         <div className="member-intro">
-          <div>
-            <img src={memberPhoto} className="member-photo" />
-          </div>
+          <label className=" member-photo clickable">
+          <input type="file" className="photo-none" />
+            <p>＋</p>
+          </label>
           <div style={{ textAlign: "left" }}>
             <span>姓名：</span>
             <span
@@ -82,6 +104,7 @@ function MemberPageEdit() {
                 name="memberName"
                 defaultValue={memberInfo?.name}
                 className="introduction-input"
+                placeholder="請輸入您的姓名"
                 onChange={(e) =>
                   setMemberInfo({
                     ...memberInfo,

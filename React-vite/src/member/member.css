@@ -18,22 +18,34 @@ body {
 
 /* --------------------------- 會員大頭貼、姓名及生日（上面區塊）-start --------------------------- */
 
+.clickable {
+  cursor: pointer;
+}
+.photo-none{
+  display: none;
+}
+.member-photo > p {
+  display: flex;
+  font-weight: bold;
+  font-size: xx-large;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+}
 .member-photo {
-  width: 50%;
+  width: 100px;
+  height: 100px;
   border-radius: 20%;
+  margin-right: 20px;
+  border: #000000 1px solid;
 }
 .member-input {
   outline-style: none;
   border: 0px;
   background-color: transparent;
 }
-.member-input:hover {
-  outline-style: none;
-  border-bottom: #f7c1427a solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-}
+
 .member-input:focus {
   border: 0px;
   background-color: transparent;
@@ -119,19 +131,25 @@ body {
   border: 0px;
   background-color: transparent;
 }
-.introduction-input:hover {
+
+.introduction-input {
+  /* border-bottom: #66B3FF solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px; */
+  border: 0px;
+  background-color: transparent;
+  font-size: 1.2rem;
+}
+/* .introduction-input:hover {
   outline-style: none;
   border-bottom: #f7c1427a solid;
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-}
+} */
 .introduction-input:focus {
-  outline-style: none;
-  border-bottom: #f7c242 solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
+  display: none;
 }
 
 .introduction-textarea {
@@ -200,8 +218,8 @@ body {
   border: 1px solid #ffb21a;
   border-radius: 10px;
   color: black;
-  width: 5rem;
-  display: block;
+  padding: .3rem;
+  display: block; 
 }
 .organise-submit:hover {
   background-color: #f7c242;
