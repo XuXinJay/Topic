@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\EventController;
 
 /*
@@ -18,10 +17,7 @@ use App\Http\Controllers\EventController;
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
-Route::get('/activities', 'App\Http\Controllers\ActivityController@index');
-// Route::get('/activities', function () {
-//     return ['Laravel' => app()->version()];
-// });
+
 require __DIR__.'/auth.php';
 Route::get('/eventdata',[EventController::class,'index']);
 
