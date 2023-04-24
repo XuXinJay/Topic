@@ -172,7 +172,7 @@ function Main() {
             <div className="grid-box">
               <div className="grid-container">
                 {activities.map((activity) => {
-                  if (activity.activity_name === '電影') {
+                  if (activity.movie === 1) {
                     return (
                       <a
                         className="grid-item"
@@ -214,27 +214,34 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => (
-                  <a
-                    className="grid-item"
-                    href="/event"
-                    key={activity.activity_id}
-                  >
-                    <img className="grid-img" src={img2} alt="" />
-                    <div className="grid-text">
-                      <h6>主題:{activity.activity_name}</h6>
-                      <span className="grid_text_txt">
-                        地點:{activity.activity_place}
-                      </span>
-                      <span className="grid_text_txt">
-                        時間:{activity.activity_partyTime}
-                      </span>
-                      <span className="grid_text_txt">
-                        會員:{activity.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
+              {activities.map((activity) => {
+                  if (activity.sports === 1) {
+                    return (
+                      <a
+                        className="grid-item"
+                        href="/event"
+                        key={activity.activity_id}
+                      >
+                        <img className="grid-img" src={img4} alt="" />
+                        <div className="grid-text">
+                          <h6>主題:{activity.activity_name}</h6>
+                          <span className="grid_text_txt">
+                            地點:{activity.activity_place}
+                          </span>
+                          <span className="grid_text_txt">
+                            時間:{activity.activity_partyTime}
+                          </span>
+                          <span className="grid_text_txt">
+                            會員:{activity.name}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  } else {
+                    // 不是電影主題的活動不顯示
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -250,27 +257,34 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => (
-                  <a
-                    className="grid-item"
-                    href="/event"
-                    key={activity.activity_id}
-                  >
-                    <img className="grid-img" src={img3} alt="" />
-                    <div className="grid-text">
-                      <h6>主題:{activity.activity_name}</h6>
-                      <span className="grid_text_txt">
-                        地點:{activity.activity_place}
-                      </span>
-                      <span className="grid_text_txt">
-                        時間:{activity.activity_partyTime}
-                      </span>
-                      <span className="grid_text_txt">
-                        會員:{activity.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
+              {activities.map((activity) => {
+                  if (activity.board_game === 1) {
+                    return (
+                      <a
+                        className="grid-item"
+                        href="/event"
+                        key={activity.activity_id}
+                      >
+                        <img className="grid-img" src={img4} alt="" />
+                        <div className="grid-text">
+                          <h6>主題:{activity.activity_name}</h6>
+                          <span className="grid_text_txt">
+                            地點:{activity.activity_place}
+                          </span>
+                          <span className="grid_text_txt">
+                            時間:{activity.activity_partyTime}
+                          </span>
+                          <span className="grid_text_txt">
+                            會員:{activity.name}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  } else {
+                    // 不是電影主題的活動不顯示
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -286,27 +300,34 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => (
-                  <a
-                    className="grid-item"
-                    href="/event"
-                    key={activity.activity_id}
-                  >
-                    <img className="grid-img" src={img4} alt="" />
-                    <div className="grid-text">
-                      <h6>主題:{activity.activity_name}</h6>
-                      <span className="grid_text_txt">
-                        地點:{activity.activity_place}
-                      </span>
-                      <span className="grid_text_txt">
-                        時間:{activity.activity_partyTime}
-                      </span>
-                      <span className="grid_text_txt">
-                        會員:{activity.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
+              {activities.map((activity) => {
+                  if (activity.dine_together === 1) {
+                    return (
+                      <a
+                        className="grid-item"
+                        href="/event"
+                        key={activity.activity_id}
+                      >
+                        <img className="grid-img" src={img4} alt="" />
+                        <div className="grid-text">
+                          <h6>主題:{activity.activity_name}</h6>
+                          <span className="grid_text_txt">
+                            地點:{activity.activity_place}
+                          </span>
+                          <span className="grid_text_txt">
+                            時間:{activity.activity_partyTime}
+                          </span>
+                          <span className="grid_text_txt">
+                            會員:{activity.name}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  } else {
+                    // 不是電影主題的活動不顯示
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>
@@ -322,27 +343,34 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {activities.map((activity) => (
-                  <a
-                    className="grid-item"
-                    href="/event"
-                    key={activity.activity_id}
-                  >
-                    <img className="grid-img" src={img1} alt="" />
-                    <div className="grid-text">
-                      <h6>主題:{activity.activity_name}</h6>
-                      <span className="grid_text_txt">
-                        地點:{activity.activity_place}
-                      </span>
-                      <span className="grid_text_txt">
-                        時間:{activity.activity_partyTime}
-                      </span>
-                      <span className="grid_text_txt">
-                        會員:{activity.name}
-                      </span>
-                    </div>
-                  </a>
-                ))}
+              {activities.map((activity) => {
+                  if (activity.movie === 0 && activity.sports === 0 && activity.board_game === 0 && activity.dine_together === 0 ) {
+                    return (
+                      <a
+                        className="grid-item"
+                        href="/event"
+                        key={activity.activity_id}
+                      >
+                        <img className="grid-img" src={img4} alt="" />
+                        <div className="grid-text">
+                          <h6>主題:{activity.activity_name}</h6>
+                          <span className="grid_text_txt">
+                            地點:{activity.activity_place}
+                          </span>
+                          <span className="grid_text_txt">
+                            時間:{activity.activity_partyTime}
+                          </span>
+                          <span className="grid_text_txt">
+                            會員:{activity.name}
+                          </span>
+                        </div>
+                      </a>
+                    );
+                  } else {
+                    // 不是電影主題的活動不顯示
+                    return null;
+                  }
+                })}
               </div>
             </div>
           </div>
