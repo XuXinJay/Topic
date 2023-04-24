@@ -262,7 +262,8 @@ body {
 .campaign-review {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #808080;
   color: #808080;
@@ -276,7 +277,8 @@ body {
 .campaign-pass {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #36bf36;
   color: #36bf36;
@@ -290,7 +292,8 @@ body {
 .campaign-unpass {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #ff4d00;
   color: #ff4d00;
@@ -304,12 +307,13 @@ body {
 
 /* 取消報名 campaign-cancel */
 .campaign-cancel {
-  top: 30px;
+  top: 20px;
   position: absolute;
-  left: 15px;
+  left: 10px;
   border-radius: 5px;
   border: 1px solid #ffb21a;
   color: #ffb21a;
+  padding: .2rem;
 }
 .campaign-cancel:hover {
   background-color: #ffb21a;
@@ -344,12 +348,13 @@ body {
   background-color: transparent;
 }
 .collect-cancel {
-  top: 30px;
-  position: absolute;
-  left: 15px;
-  border: 1px solid #ffb21a;
-  border-radius: 5px;
-  color: #ffb21a;
+    top: 20px;
+    position: absolute;
+    left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffb21a;
+    color: #ffb21a;
+    padding: 0.2rem;
 }
 .collect-cancel:hover {
   background-color: #ffb21a;
