@@ -5,22 +5,23 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif"
 
 function Activity3() {
-  const { user ,loading } = useAuthContext();
+  const { user, loading } = useAuthContext();
 
   if (loading) {
-    return <div className="center"><img  src={loaDing} alt="" /></div>;
+    return <div className="center"><img src={loaDing} alt="" /></div>;
   }
 
   //取得活動名稱、活動簡述
   const activityName = sessionStorage.getItem("活動名稱");
   const activityText = sessionStorage.getItem("活動簡述");
+  const activityPlace = sessionStorage.getItem("活動地點");
 
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress_3">活動畫面</div>
-        <div className="progress_3">細項資料</div>
-        <div className="progress_3">預覽</div>
+        <div className="progress">1. 活動畫面</div>
+        <div className="progress">2. 細項資料</div>
+        <div className="progress">3. 預覽</div>
       </div>
       <main className="activity_main_3">
         <div className="allActivity">
@@ -33,11 +34,11 @@ function Activity3() {
               <p>主辦人名字</p>
             </div>
             <div className="place">
-            <i className="bi bi-geo-alt-fill" />
+              <i className="bi bi-geo-alt-fill" />
               <div className="">
                 聚會地點 :
                 <a href="">
-                  {}
+                  {activityPlace}
                 </a>
               </div>
             </div>
@@ -94,8 +95,8 @@ function Activity3() {
         </div>
       </main>
     </div>
-    ) : (
-      <Navigate to="/" />
+  ) : (
+    <Navigate to="/" />
   );
 }
 
