@@ -24,3 +24,5 @@ Route::get('/activities', 'App\Http\Controllers\ActivityController@index');
 // });
 require __DIR__.'/auth.php';
 Route::get('/eventdata',[EventController::class,'index']);
+
+Route::post('/messages',[MessageController::class,'store']);

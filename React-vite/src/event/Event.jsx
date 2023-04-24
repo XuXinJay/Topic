@@ -5,6 +5,11 @@ import axios from "../api/axios";
 import loaDing from "/src/loading.gif"
 function Event() {
   const { user, loading } = useAuthContext();
+  const [message, setMessage] = useState(
+    {
+      message: ''
+    }
+  ); // 添加 message 状态来保存文本框的输入值
   const [eventData, setEventData] = useState(null);
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
@@ -18,6 +23,34 @@ function Event() {
         console.error("Error fetching event data:", error);
       });
   }, []);
+
+  const handleChange = (e) => {
+    // 监听文本框的输入变化，并更新 message 状态的值
+    setMessage({ message: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // 在提交表单时执行的处理逻辑，可以使用 axios 发送 POST 请求等
+    console.log("Form submitted. Message:", message);
+
+    // 发送 POST 请求到 http://127.0.0.1:8000/messages
+    axios
+      .post("http://127.0.0.1:8000/messages", message)
+      .then((response) => {
+        // 请求成功时的处理逻辑
+        console.log("Message sent successfully:", response.data);
+        // 清空文本框的输入值
+        // 清空表单输入
+        setMessage({ message: '' });
+
+
+      })
+      .catch((error) => {
+        // 请求失败时的处理逻辑
+        console.error("Error sending message:", error);
+      });
+  };
 
   if (loading) {
     return <div className="center"><img  src={loaDing} alt="" /></div>;
@@ -151,16 +184,18 @@ function Event() {
             </div>
           </div>
           <h2 className="event_page-title">留言</h2>
-          <form>
+          <form action="/messages" method="post" onSubmit={handleSubmit}>
             <div className="form-group">
               <textarea
                 className="event_page-textarea"
                 id=""
                 rows={3}
                 defaultValue={""}
+                value={message.message} // 将状态中的值绑定到文本框的 value 属性
+                onChange={(event) => setMessage({ message: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
               />
               <div className="event_page-bbb-message">
-                <button className="event_page-button-message">發送</button>
+                <button className="event_page-button-message" type="submit">發送</button>
               </div>
             </div>
           </form>
@@ -223,16 +258,18 @@ function Event() {
             </div>
           </div>
           <h2 className="event_page-title">留言</h2>
-          <form>
+          <form action="/messages" method="post" onSubmit={handleSubmit}>
             <div className="form-group">
               <textarea
                 className="event_page-textarea"
                 id=""
                 rows={3}
                 defaultValue={""}
+                value={message.message} // 将状态中的值绑定到文本框的 value 属性
+                onChange={(event) => setMessage({ message: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
               />
               <div className="event_page-bbb-message">
-                <button className="event_page-button-message">發送</button>
+                <button className="event_page-button-message" type="submit">發送</button>
               </div>
             </div>
           </form>
