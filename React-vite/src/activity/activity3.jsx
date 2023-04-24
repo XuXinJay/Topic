@@ -15,7 +15,7 @@ function Activity3() {
   const activityName = sessionStorage.getItem("活動名稱");
   const activityText = sessionStorage.getItem("活動簡述");
   const activityPlace = sessionStorage.getItem("活動地點");
-
+  const activityDate = sessionStorage.getItem("活動日期");
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -79,7 +79,9 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>2023/04/05</div>
+              <div>
+                {activityDate}
+              </div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
