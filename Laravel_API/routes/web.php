@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +18,5 @@ Route::get('/', function () {
 });
 
 require __DIR__.'/auth.php';
-Route::get('/eventdata',[EventController::class,'index']);
 
 Route::post('/messages',[MessageController::class,'store']);

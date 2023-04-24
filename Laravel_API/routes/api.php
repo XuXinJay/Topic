@@ -28,4 +28,4 @@ Route::get('/OrganizeActivity',[OrganizeActivityController::class,'index']);
 
 Route::put('/members/update', [MemberController::class,'update']);
 
-Route::get('/activities', [ActivityController::class],'index');
+Route::get('/activities', [ActivityController::class,'index']);

@@ -13,7 +13,7 @@ function Event() {
   const [eventData, setEventData] = useState(null);
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
-    axios.get("/eventdata")
+    axios.get("api/activities")
       .then(response => {
         // 请求成功时更新组件的数据状态
         setEventData(response.data);
