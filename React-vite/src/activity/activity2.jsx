@@ -3,24 +3,51 @@ import { Navigate } from "react-router-dom";
 import "./style2.css";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif"
+import { useState} from "react"
 
 function Activity2() {
-  const { user ,loading } = useAuthContext();
+  const { user, loading } = useAuthContext();
 
   if (loading) {
-    return <div className="center"><img  src={loaDing} alt="" /></div>;
+    return <div className="center"><img src={loaDing} alt="" /></div>;
   }
-  
+
   //取得活動名稱、活動簡述
   const activityName = sessionStorage.getItem("活動名稱");
   const activityText = sessionStorage.getItem("活動簡述");
 
+  //活動地點
+  const [activityPlace, setActivityPlace] = useState(sessionStorage.getItem('活動地點') || '');
+  function handleActivityPlace(event) {
+    setActivityPlace(event.target.value);
+    sessionStorage.setItem('活動地點', event.target.value);
+    console.log(sessionStorage.getItem('活動地點'));
+  }
+
+  //活動總人數
+  const [activityCount, setactivityCount] = useState(sessionStorage.getItem('活動總人數') || '')
+  function handleActivityCount(event) {
+    setactivityCount(event.target.value);
+    sessionStorage.setItem('活動總人數', event.target.value);
+    console.log(sessionStorage.getItem('活動總人數'));
+  }
+  
+  //活動時間
+  const [activityDate, setActivityDate] = useState(sessionStorage.getItem('活動日期'))
+  function handleActivityDate(event) {
+    setActivityDate(event.target.value);
+    sessionStorage.setItem('活動日期', event.target.value);
+    console.log(sessionStorage.getItem('活動日期'));
+  }
+
+  //報名截止日期
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress_2">活動畫面</div>
-        <div className="progress_2">細項資料</div>
-        <div className="progress_2">預覽</div>
+        <div className="progress">1. 活動畫面</div>
+        <div className="progress">2. 細項資料</div>
+        <div className="progress">3. 預覽</div>
       </div>
       <main className="activity_main_2">
         <div className="activity_title">
@@ -47,28 +74,49 @@ function Activity2() {
               cols={30}
               rows={10}
               readOnly="true"
-              defaultValue={""}
-              value={activityText}
+              defaultValue={activityText}
             />
           </div>
         </div>
         <div className="meetForm">
           <div className="meetBox">
             <div className="box">
-              <label htmlFor="">聚會地點 :</label>
-              <input type="text" className="formType" name="place" />
+              <label htmlFor="">活動地點 :</label>
+              <input 
+                type="text" 
+                className="formType" 
+                name="place"
+                defaultValue={activityPlace}
+                onChange={handleActivityPlace}
+              />
             </div>
             <div className="box">
-              <label htmlFor="">聚會總人數 :</label>
-              <input type="text" className="formType" name="count" />
+              <label htmlFor="">活動總人數 :</label>
+              <input 
+                type="number" 
+                className="formType" 
+                name="count"
+                defaultValue={activityCount}
+                onChange={handleActivityCount}
+              />
             </div>
             <div className="box">
-              <label htmlFor="">聚會時間 :</label>
-              <input type="date" className="formType" name="time" />
+              <label htmlFor="">活動日期 :</label>
+              <input 
+                type="date" 
+                className="formType" 
+                name="time"
+                defaultValue={activityDate}
+                onChange={handleActivityDate}
+              />
             </div>
             <div className="box">
               <label htmlFor="">報名截止日期 :</label>
-              <input type="text" className="formType" name="endTime" />
+              <input 
+                type="date" 
+                className="formType" 
+                name="endDate" 
+                />
             </div>
             <div className="box">
               <label htmlFor="">付款方式 :</label>
@@ -90,8 +138,8 @@ function Activity2() {
         </div>
       </main>
     </div>
-    ) : (
-      <Navigate to="/" />
+  ) : (
+    <Navigate to="/" />
   );
 }
 

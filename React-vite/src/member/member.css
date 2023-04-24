@@ -18,22 +18,34 @@ body {
 
 /* --------------------------- 會員大頭貼、姓名及生日（上面區塊）-start --------------------------- */
 
+.clickable {
+  cursor: pointer;
+}
+.photo-none{
+  display: none;
+}
+.member-photo > p {
+  display: flex;
+  font-weight: bold;
+  font-size: xx-large;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+}
 .member-photo {
-  width: 50%;
+  width: 100px;
+  height: 100px;
   border-radius: 20%;
+  margin-right: 20px;
+  border: #000000 1px solid;
 }
 .member-input {
   outline-style: none;
   border: 0px;
   background-color: transparent;
 }
-.member-input:hover {
-  outline-style: none;
-  border-bottom: #f7c1427a solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-}
+
 .member-input:focus {
   border: 0px;
   background-color: transparent;
@@ -119,19 +131,27 @@ body {
   border: 0px;
   background-color: transparent;
 }
-.introduction-input:hover {
-  outline-style: none;
-  border-bottom: #f7c1427a solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
+
+.introduction-input {
+  /* border-bottom: #66B3FF solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px; */
+  border: 0px;
+  background-color: transparent;
+  font-size: 1.2rem;
+}
+.introduction-edit {
+  background-color: #f5f5f5;
+  border: none;
+}
+.introduction-edit:focus {
+  outline: none;
+  background-color: white;
+  /* border-bottom: #f7c1427a solid; */
 }
 .introduction-input:focus {
-  outline-style: none;
-  border-bottom: #f7c242 solid;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
+  display: none;
 }
 
 .introduction-textarea {
@@ -200,8 +220,8 @@ body {
   border: 1px solid #ffb21a;
   border-radius: 10px;
   color: black;
-  width: 5rem;
-  display: block;
+  padding: .3rem;
+  display: block; 
 }
 .organise-submit:hover {
   background-color: #f7c242;
@@ -242,7 +262,8 @@ body {
 .campaign-review {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #808080;
   color: #808080;
@@ -256,7 +277,8 @@ body {
 .campaign-pass {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #36bf36;
   color: #36bf36;
@@ -270,7 +292,8 @@ body {
 .campaign-unpass {
   position: absolute;
   left: 20px;
-  bottom: 25px;
+  bottom: 20px;
+  padding: 0.2rem;
   border-radius: 5px;
   border: 1px solid #ff4d00;
   color: #ff4d00;
@@ -284,12 +307,13 @@ body {
 
 /* 取消報名 campaign-cancel */
 .campaign-cancel {
-  top: 30px;
+  top: 20px;
   position: absolute;
-  left: 15px;
+  left: 10px;
   border-radius: 5px;
   border: 1px solid #ffb21a;
   color: #ffb21a;
+  padding: .2rem;
 }
 .campaign-cancel:hover {
   background-color: #ffb21a;
@@ -324,12 +348,13 @@ body {
   background-color: transparent;
 }
 .collect-cancel {
-  top: 30px;
-  position: absolute;
-  left: 15px;
-  border: 1px solid #ffb21a;
-  border-radius: 5px;
-  color: #ffb21a;
+    top: 20px;
+    position: absolute;
+    left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffb21a;
+    color: #ffb21a;
+    padding: 0.2rem;
 }
 .collect-cancel:hover {
   background-color: #ffb21a;

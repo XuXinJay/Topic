@@ -68,9 +68,9 @@ function Activity1() {
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress">活動畫面</div>
-        <div className="progress">細項資料</div>
-        <div className="progress">預覽</div>
+        <div className="progress">1. 活動畫面</div>
+        <div className="progress">2. 細項資料</div>
+        <div className="progress">3. 預覽</div>
       </div>
       <main className="activity_main">
         <div className="meetType">
@@ -128,7 +128,6 @@ function Activity1() {
                 required=""
                 onChange={handleActivityNameChange}
                 value={activityName}
-
               />
             </label>
           </div>
@@ -140,8 +139,7 @@ function Activity1() {
             placeholder="請簡述活動內容，300字以內"
             className="activityText"
             required=""
-            value={activityText}
-            defaultValue={""}
+            defaultValue={activityText}
             onChange={handleInputChange}
           />
         </div>
