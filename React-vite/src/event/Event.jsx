@@ -7,13 +7,13 @@ function Event() {
   const { user, loading } = useAuthContext();
   const [message, setMessage] = useState(
     {
-      message: ''
+      content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
   const [eventData, setEventData] = useState(null);
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
-    axios.get("/eventdata")
+    axios.get("api/activities")
       .then(response => {
         // 请求成功时更新组件的数据状态
         setEventData(response.data);
@@ -36,13 +36,13 @@ function Event() {
 
     // 发送 POST 请求到 http://127.0.0.1:8000/messages
     axios
-      .post("http://127.0.0.1:8000/messages", message)
+      .post("/api/messages", message)
       .then((response) => {
         // 请求成功时的处理逻辑
         console.log("Message sent successfully:", response.data);
         // 清空文本框的输入值
         // 清空表单输入
-        setMessage({ message: '' });
+        setMessage({ content: '' });
 
 
       })
@@ -191,8 +191,8 @@ function Event() {
                 id=""
                 rows={3}
                 defaultValue={""}
-                value={message.message} // 将状态中的值绑定到文本框的 value 属性
-                onChange={(event) => setMessage({ message: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
+                value={message?.content} // 将状态中的值绑定到文本框的 value 属性
+                onChange={(event) => setMessage({ content: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
               />
               <div className="event_page-bbb-message">
                 <button className="event_page-button-message" type="submit">發送</button>

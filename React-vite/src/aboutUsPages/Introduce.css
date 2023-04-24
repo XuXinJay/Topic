@@ -1,6 +1,6 @@
 .introduce{
-    height: 1100px;
-    width: 700px;
+    height: 2000px;
+    width: 800px;
 }
 
 .footer{
@@ -9,9 +9,6 @@
 
 .introduce .container_123 {
     align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 968px;
     width: 100%;
     padding: 15px;
     background-color: #F5F5F5;
@@ -31,13 +28,19 @@
 }
 
 .introduce img {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: 5px solid #ccc;
-    width: 150px;
+    width: auto;
 }
 
 .introduce_des {
     border-radius: 20px;
-    flex: 2;
     border: gray 1px solid;
+    margin-top: 3rem;
+    height: 1000px;
+}
+
+.introduce_1 {
+    border-radius: 20px;   
+    margin: 1rem;
 }

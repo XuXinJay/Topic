@@ -36,7 +36,7 @@ class Message extends Model
         $newMessage = new Message([
             'member_id' => $memberId,
             'activity_id' => $activityId,
-            'message' => $message
+            'content' => $message
         ]);
         $newMessage->save();
         return $newMessage;
@@ -49,7 +49,7 @@ class Message extends Model
         $msg = new Message;
         $msg->member_id = 1; // 這裡示範直接設定數值，你可以根據需求修改
         $msg->activily_id = 1; // 這裡示範直接設定數值，你可以根據需求修改
-        $msg->content = $request->content;
+        $msg->content = $content;
         
         $msg->save();
     }
