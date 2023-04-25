@@ -53,11 +53,6 @@ function Notify() {
                   );
                 })}
               </ul>
-              <div className="bulletin_btn">
-                <button className="next_btn">
-                  <i className="uil uil-step-forward" />
-                </button>
-              </div>
             </div>
             <div className="user text bulletin">
               <div className="title">帳號通知</div>
@@ -70,11 +65,7 @@ function Notify() {
                   );
                 })}
               </ul>
-              <div className="bulletin_btn">
-                <button className="next_btn">
-                  <i className="uil uil-step-forward" />
-                </button>
-              </div>
+
             </div>
             <div className="info text bulletin">
               <div className="title">系統通知</div>
@@ -87,11 +78,6 @@ function Notify() {
                   );
                 })}
               </ul>
-              <div className="bulletin_btn">
-                <button className="next_btn">
-                  <i className="uil uil-step-forward" />
-                </button>
-              </div>
             </div>
           </div>
         </div>

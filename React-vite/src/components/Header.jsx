@@ -30,7 +30,7 @@ function Header() {
         <nav>
           <span className="home_title">
             <i className="uil uil-glass-martini" />
-            桌游派對
+            同樂樂
           </span>
           <ul className="allUl">
             <li>
