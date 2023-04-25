@@ -239,6 +239,7 @@ function MemberPage() {
           參加活動
         </label>
         <form className="member-form-content">
+
           {/* 審核中 */}
           <div className="campaign-content">
             <div>
@@ -288,6 +289,7 @@ function MemberPage() {
               />
             </div>
           </div>
+
           {/* 已通過 */}
           <div className="campaign-content">
             <div>
@@ -329,6 +331,56 @@ function MemberPage() {
                 type="button"
                 defaultValue="已通過"
                 className="campaign-pass"
+              />
+              <input
+                type="button"
+                value="取消報名"
+                className="campaign-cancel"
+              />
+            </div>
+          </div>
+
+          {/* 未通過 */}
+          <div className="campaign-content">
+            <div>
+              <img src={design} className="campaign-photo" />
+            </div>
+            <div>
+              <span>活動名稱：</span>
+              <input
+                type="text"
+                name="campaignName"
+                defaultValue="參加活動"
+                className="campaign-sub"
+                size={10}
+                readOnly
+              />
+              <br />
+              <span>活動地點：</span>
+              <input
+                type="text"
+                name="campaignName"
+                defaultValue="資策會"
+                className="campaign-sub"
+                size={10}
+                readOnly
+              />
+              <br />
+              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
+              <input
+                type="date"
+                name="campaignName"
+                defaultValue="2023-02-28"
+                className="campaign-sub"
+                size={10}
+                readOnly
+              />
+            </div>
+            <div style={{ position: "relative" }}>
+              <input
+                type="button"
+                defaultValue="未通過"
+                className="campaign-unpass"
               />
               <input
                 type="button"
