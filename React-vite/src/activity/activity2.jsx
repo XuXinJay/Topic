@@ -21,7 +21,6 @@ function Activity2() {
   function handleActivityPlace(event) {
     setActivityPlace(event.target.value);
     sessionStorage.setItem('活動地點', event.target.value);
-    console.log(sessionStorage.getItem('活動地點'));
   }
 
   //活動總人數
@@ -29,7 +28,6 @@ function Activity2() {
   function handleActivityCount(event) {
     setactivityCount(event.target.value);
     sessionStorage.setItem('活動總人數', event.target.value);
-    console.log(sessionStorage.getItem('活動總人數'));
   }
   
   //活動時間
@@ -37,10 +35,24 @@ function Activity2() {
   function handleActivityDate(event) {
     setActivityDate(event.target.value);
     sessionStorage.setItem('活動日期', event.target.value);
-    console.log(sessionStorage.getItem('活動日期'));
   }
 
   //報名截止日期
+
+
+  //付款方式
+  const [activityPayment, setActivityPayment] = useState(sessionStorage.getItem('付款方式'));
+  function handleActivityPayment(event) {
+    setActivityPayment(event.target.option);
+    sessionStorage.setItem('付款方式',event.target.option);
+  }
+
+  //活動預算
+  const [activityBudget, setActivityBudget] = useState(sessionStorage.getItem('活動預算'));
+  function handleActivityBudget(event) {
+    setActivityPayment(event.target.value);
+    sessionStorage.setItem('活動預算',event.target.value);
+  }
 
   return user ? (
     <div className="activity_container">
@@ -122,12 +134,18 @@ function Activity2() {
               <label htmlFor="">付款方式 :</label>
               <input type="select" 
                 className="formType" 
-                name="payment" 
+                name="payment"
+                onChange={handleActivityPayment}
               />
             </div>
             <div className="box">
               <label htmlFor="">活動預算 :</label>
-              <input type="text" className="formType" name="budget" />
+              <input 
+                type="number" 
+                className="formType" 
+                name="budget" 
+                onChange={handleActivityBudget}
+              />
             </div>
           </div>
         </div>
