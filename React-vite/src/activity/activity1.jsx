@@ -42,6 +42,12 @@ function Activity1() {
       console.log(sessionStorage.getItem('活動類型'))
     }
   }
+  //點擊預設圖片
+  function handleClickImg() {
+    const [defaultImg, setdefaultImg] = useState(sessionStorage.getItem('活動預設圖片') || '');
+    
+  }
+
 
   //限制文字輸入字數
   const MAX_LENGTH = 300;
@@ -105,6 +111,7 @@ function Activity1() {
               <img
                 src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
                 alt={1}
+                onClick={handleClickImg}
               />
               <img
                 src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
@@ -141,6 +148,7 @@ function Activity1() {
             required=""
             defaultValue={activityText}
             onChange={handleInputChange}
+            maxLength={MAX_LENGTH}
           />
         </div>
         <div className="buttonControl-one">

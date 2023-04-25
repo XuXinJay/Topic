@@ -16,6 +16,7 @@ function Activity3() {
   const activityText = sessionStorage.getItem("活動簡述");
   const activityPlace = sessionStorage.getItem("活動地點");
   const activityDate = sessionStorage.getItem("活動日期");
+  const activityCount = sessionStorage.getItem("活動總人數")
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -43,7 +44,7 @@ function Activity3() {
               </div>
             </div>
             <div className="count">
-              聚會總人數 : <span>{}</span>
+              聚會總人數 : <span>{activityCount}人</span>
             </div>
           </div>
           <div className="uploadImage">

@@ -11,6 +11,8 @@ function Event() {
       content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
+
+
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
     axios.get("api/activities")
@@ -22,8 +24,18 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
-    }, []);
-    
+    axios.get("/messages")
+      .then(response => {
+        // 请求成功时处理 /messages 返回的数据
+        console.log(response.data);
+        // 更新状态或其他操作
+      })
+      .catch(error => {
+        // 请求失败时处理错误
+        console.error("Error fetching messages:", error);
+      });
+  }, []);
+
 
 
 
@@ -142,17 +154,18 @@ function Event() {
               </div>
             </div>
             <div className="event_page-grid-grid-item">
-              <img src="picture/test1.png" style={{ width: 70 }} />
+              <img src="" style={{ width: 70 }} />
               <div>鄭明哲</div>
             </div>
             <div className="event_page-grid-grid-item">
-              <img src="picture/$.png" style={{ width: 70 }} />
+              <img src="" style={{ width: 70 }} />
               <div>吳士顯</div>
             </div>
           </div>
           {/* 相關留言 */}
           <h2 className="event_page-title">相關留言</h2>
           <div className="event_page-grid-container-message">
+
             <div className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
@@ -167,20 +180,7 @@ function Event() {
               </div>
               <div className="event_page-time">2 days ago</div>
             </div>
-            <div className="event_page-grid-item-message">
-              <div className="user d-flex flex-row align-items-center">
-                <img
-                  src="picture/test1.png"
-                  width={30}
-                  className="user-img rounded-circle mr-2"
-                />
-                <span>
-                  <small className="font-weight-bold text-primary">鄭明哲</small>
-                  <small className="font-weight-bold">我好帥</small>
-                </span>
-              </div>
-              <div className="event_page-time">2 days ago</div>
-            </div>
+
           </div>
           <h2 className="event_page-title">留言</h2>
           <form action="/messages" method="post" onSubmit={handleSubmit}>
@@ -189,7 +189,7 @@ function Event() {
                 className="event_page-textarea"
                 id=""
                 rows={3}
-                defaultValue={""}
+
                 value={message?.content} // 将状态中的值绑定到文本框的 value 属性
                 onChange={(event) => setMessage({
                   member_id: user?.id,
@@ -220,11 +220,11 @@ function Event() {
               </div>
             </div>
             <div className="event_page-grid-grid-item">
-              <img src="picture/test1.png" style={{ width: 70 }} />
+              <img src="" style={{ width: 70 }} />
               <div>鄭明哲</div>
             </div>
             <div className="event_page-grid-grid-item">
-              <img src="picture/$.png" style={{ width: 70 }} />
+              <img src="" style={{ width: 70 }} />
               <div>吳士顯</div>
             </div>
           </div>
@@ -234,7 +234,7 @@ function Event() {
             <div className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
-                  src="picture/test1.png"
+                  src=""
                   width={30}
                   className="user-img rounded-circle mr-2"
                 />
@@ -245,31 +245,17 @@ function Event() {
               </div>
               <div className="event_page-time">2 days ago</div>
             </div>
-            <div className="event_page-grid-item-message">
-              <div className="user d-flex flex-row align-items-center">
-                <img
-                  src="picture/test1.png"
-                  width={30}
-                  className="user-img rounded-circle mr-2"
-                />
-                <span>
-                  <small className="font-weight-bold text-primary">鄭明哲</small>
-                  <small className="font-weight-bold">我好帥</small>
-                </span>
-              </div>
-              <div className="event_page-time">2 days ago</div>
-            </div>
+
           </div>
           <h2 className="event_page-title">留言</h2>
-          <form action="/messages" method="post" onSubmit={handleSubmit}>
+          <form>
             <div className="form-group">
               <textarea
                 className="event_page-textarea"
                 id=""
                 rows={3}
                 defaultValue={""}
-                value={message.message} // 将状态中的值绑定到文本框的 value 属性
-                onChange={(event) => setMessage({ message: event.target.value })} // 处理表单输入变化 // 监听文本框的输入变化
+
               />
               <div className="event_page-bbb-message">
                 <button className="event_page-button-message" type="submit">發送</button>
