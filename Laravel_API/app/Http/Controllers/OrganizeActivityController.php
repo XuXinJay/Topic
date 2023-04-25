@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrganizeActivity;
+use Illuminate\Support\Facades\DB;
 
 
 class OrganizeActivityController extends Controller
@@ -17,4 +18,16 @@ class OrganizeActivityController extends Controller
         
         return response()->json($activities,200,[],JSON_UNESCAPED_UNICODE);
     }
+
+    public function notify()
+    {
+        $activities = DB::table('notifications')
+                ->join('users', 'users.id', '=', 'notifications.member_id')
+                ->join('notification_contents', 'notification_contents.notify_id', '=', 'notifications.notify_id')
+                ->select('notification_contents.*', 'users.id')
+                ->get();
+        
+        return response()->json($activities,200,[],JSON_UNESCAPED_UNICODE);
+    }
+
 }
