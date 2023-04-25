@@ -4,15 +4,75 @@ import useAuthContext from "../context/AuthContext";
 import memberPhoto from "./img/member-photo.gif";
 import design from "./img/design.jpg";
 import loaDing from "../loading.gif";
+import axios from "../api/axios";
+
 
 function MemberPage() {
 
   const { user, loading } = useAuthContext();
+  const [organize_activities, setorganizeActivities] = useState([]);
+  const [join_activities, setjoinActivities] = useState([]);
+  const [favorite_activities, setfavoriteActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
 
   useEffect(() => {
     setMemberInfo(user);
   }, [user]);
+
+  // ------------------------------------------------------------舉辦活動
+  useEffect(() => {
+    async function getActivity() {
+      try {
+        const response = await axios.get("api/organizeActivities");
+        console.log(response.data);
+        setorganizeActivities(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getActivity();
+  }, []);
+
+  // ------------------------------------------------------------參與活動
+  useEffect(() => {
+    async function getActivity() {
+      try {
+        const response = await axios.get("api/joinActivities");
+        console.log(response.data);
+        setjoinActivities(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getActivity();
+  }, []);
+
+  // ------------------------------------------------------------收藏活動
+  useEffect(() => {
+    async function getActivity() {
+      try {
+        const response = await axios.get("api/favoriteActivities");
+        console.log(response.data);
+        setfavoriteActivities(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getActivity();
+  }, []);
+
+
+
+  // ------------------------------------------------------------時間格式
+  function formatDate(dateString) {
+    var date = new Date(dateString);
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var day = ('0' + date.getDate()).slice(-2);
+    return year + '-' + month + '-' + day;
+  }
+
+
 
   if (loading) {
     return <div className="center"><img src={loaDing} alt="" /></div>;
@@ -92,7 +152,7 @@ function MemberPage() {
             <p className="member-title">
               出生日期：
               <input
-                style={{ width: 170 }} 
+                style={{ width: 170 }}
                 className="introduction-input"
                 defaultValue={memberInfo?.member_birth}
                 readOnly
@@ -100,7 +160,7 @@ function MemberPage() {
             </p>
             <div className="member-title" style={{ width: "365.8px" }}>
               <label style={{ position: "relative" }}>性　　別：</label>
-              <input  
+              <input
                 className="introduction-input"
                 defaultValue={memberInfo?.member_sex}
                 readOnly
@@ -159,49 +219,59 @@ function MemberPage() {
           發起活動
         </label>
         <form className="member-form-content">
-          <div className="organise-content">
-            <div>
-              <img src={design} className="organise-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="organiseName"
-                defaultValue="發起活動"
-                className="organise-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="organiseName"
-                defaultValue="資策會"
-                className="organise-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>
-                活動日期：
-              </span>
-              <input
-                type="date"
-                name="organiseName"
-                defaultValue="2023-02-28"
-                className="organise-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <a className="organise-submit" href="/review">
-                審核
-              </a>
-            </div>
-          </div>
+
+
+
+          {organize_activities.map((activity) => {
+
+            return (
+              <div className="organise-content">
+                <div>
+                  <img src={design} className="organise-photo" />
+                </div>
+                <div>
+                  <span>活動名稱：</span>
+                  <input
+                    type="text"
+                    name="organiseName"
+                    defaultValue={activity.activity_name}
+                    className="organise-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span>活動地點：</span>
+                  <input
+                    type="text"
+                    name="organiseName"
+                    defaultValue={activity.activity_place}
+                    className="organise-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span style={{ position: "relative" }}>
+                    活動日期：
+                  </span>
+                  <input
+                    type="datetime"
+                    name="organiseName"
+                    defaultValue={formatDate(activity.activity_partyTime)}
+                    className="organise-sub"
+                    size={10}
+                    readOnly
+                  />
+                </div>
+                <div style={{ position: "relative" }}>
+                  <a className="organise-submit" href="/review">
+                    審核
+                  </a>
+                </div>
+
+              </div>
+
+            );
+          })}
         </form>
         {/* organise_event tab end */}
 
@@ -238,206 +308,71 @@ function MemberPage() {
         <label className="member-label" htmlFor="tab3">
           參加活動
         </label>
+
+
+
+
+
+
+
+
+
         <form className="member-form-content">
+          {join_activities.map((activity) => {
 
-          {/* 審核中 */}
-          <div className="campaign-content">
-            <div>
-              <img src={design} className="campaign-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="參加活動"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="資策會"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
-              <input
-                type="date"
-                name="campaignName"
-                defaultValue="2023-02-28"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <input
-                type="button"
-                defaultValue="審核中"
-                className="campaign-review"
-              />
-              <input
-                type="button"
-                value="取消報名"
-                className="campaign-cancel"
-              />
-            </div>
-          </div>
-
-          {/* 已通過 */}
-          <div className="campaign-content">
-            <div>
-              <img src={design} className="campaign-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="參加活動"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="資策會"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
-              <input
-                type="date"
-                name="campaignName"
-                defaultValue="2023-02-28"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <input
-                type="button"
-                defaultValue="已通過"
-                className="campaign-pass"
-              />
-              <input
-                type="button"
-                value="取消報名"
-                className="campaign-cancel"
-              />
-            </div>
-          </div>
-
-          {/* 未通過 */}
-          <div className="campaign-content">
-            <div>
-              <img src={design} className="campaign-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="參加活動"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="資策會"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
-              <input
-                type="date"
-                name="campaignName"
-                defaultValue="2023-02-28"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <input
-                type="button"
-                defaultValue="未通過"
-                className="campaign-unpass"
-              />
-              <input
-                type="button"
-                value="取消報名"
-                className="campaign-cancel"
-              />
-            </div>
-          </div>
-          {/* 未通過 */}
-          <div className="campaign-content">
-            <div>
-              <img src={design} className="campaign-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="參加活動"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="campaignName"
-                defaultValue="資策會"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
-              <input
-                type="date"
-                name="campaignName"
-                defaultValue="2023-02-28"
-                className="campaign-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <input
-                type="button"
-                defaultValue="未通過"
-                className="campaign-unpass"
-              />
-              <input
-                type="button"
-                value="取消報名"
-                className="campaign-cancel"
-              />
-            </div>
-          </div>
+            return (
+              <div className="campaign-content" >
+                <div>
+                  <img src={design} className="campaign-photo" />
+                </div>
+                <div>
+                  <span>活動名稱：</span>
+                  <input
+                    type="text"
+                    name="campaignName"
+                    defaultValue={activity.activity_name}
+                    className="campaign-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span>活動地點：</span>
+                  <input
+                    type="text"
+                    defaultValue={activity.activity_place}
+                    className="campaign-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span style={{ position: "relative" }}>活動日期： </span>
+                  <input
+                    type="date"
+                    defaultValue={formatDate(activity.activity_partyTime)}
+                    className="campaign-sub"
+                    size={10}
+                    readOnly
+                  />
+                </div>
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="button"
+                    // defaultValue="審核中"
+                    defaultValue={activity.join_state}
+                    className={activity.join_state === "未通過"? "campaign-unpass"
+                             : activity.join_state === "已通過"? "campaign-pass"
+                                                               : "campaign-review"}
+                  // className="campaign-review"
+                  />
+                  <input
+                    type="button"
+                    value="取消報名"
+                    className="campaign-cancel"
+                  />
+                </div>
+              </div>
+            );
+          })}
         </form>
         {/* campaign tab end */}
 
@@ -504,53 +439,63 @@ function MemberPage() {
           收藏
         </label>
         <form className="member-form-content">
-          <div className="collect-content">
-            <div>
-              <img src={design} className="collect-photo" />
-            </div>
-            <div>
-              <span>活動名稱：</span>
-              <input
-                type="text"
-                name="collectName"
-                defaultValue="收藏"
-                className="collect-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span>活動地點：</span>
-              <input
-                type="text"
-                name="collectName"
-                defaultValue="資策會"
-                className="collect-sub"
-                size={10}
-                readOnly
-              />
-              <br />
-              <span style={{ position: "relative", left: 7 }}>活動日期： </span>
-              <input
-                type="date"
-                name="collectName"
-                defaultValue="2023-02-28"
-                className="collect-sub"
-                size={10}
-                readOnly
-              />
-            </div>
-            <div style={{ position: "relative" }}>
-              <input
-                type="button"
-                defaultValue="取消收藏"
-                className="collect-cancel"
-              />
-            </div>
-          </div>
+
+
+          {favorite_activities.map((activity) => {
+
+            return (
+              <div className="collect-content">
+                <div>
+                  <img src={design} className="collect-photo" />
+                </div>
+                <div>
+                  <span>活動名稱：</span>
+                  <input
+                    type="text"
+                    name="collectName"
+                    defaultValue={activity.activity_name}
+                    className="collect-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span>活動地點：</span>
+                  <input
+                    type="text"
+                    name="collectName"
+                    defaultValue={activity.activity_place}
+                    className="collect-sub"
+                    size={10}
+                    readOnly
+                  />
+                  <br />
+                  <span style={{ position: "relative", left: 7 }}>活動日期： </span>
+                  <input
+                    type="date"
+                    name="collectName"
+                    defaultValue={formatDate(activity.activity_partyTime)}
+                    className="collect-sub"
+                    size={10}
+                    readOnly
+                  />
+                </div>
+                <div style={{ position: "relative" }}>
+                  <input
+                    type="button"
+                    defaultValue="取消收藏"
+                    className="collect-cancel"
+                  />
+                </div>
+              </div>
+
+            );
+          })}
+
+
         </form>
         {/* collect tab end */}
-      </div>
-    </div>
+      </div >
+    </div >
   ) : (
     <Navidate to="/" />
   );

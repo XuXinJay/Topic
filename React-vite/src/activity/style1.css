@@ -196,10 +196,7 @@
   width: 30%;
   margin: 0 10px;
   border-radius: 20px;
-}
-
-.imageBox > img:checked {
-  border: 3px solid white;
+  cursor: pointer;
 }
 
 .arrowButton {
