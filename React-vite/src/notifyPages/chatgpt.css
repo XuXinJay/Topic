@@ -109,10 +109,12 @@
 
 #user:checked ~ .color_box {
   transform: translateX(90px);
+  transition: 0.4s;
 }
 
 #info:checked ~ .color_box {
   transform: translateX(180px);
+  transition: 0.4s;
 }
 
 .content .text-content {
