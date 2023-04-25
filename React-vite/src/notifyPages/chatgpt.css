@@ -61,7 +61,6 @@
 
 .container .content {
   display: flex;
-  align-items: center;
   width: 100%;
   flex-direction: column;
 }
@@ -86,7 +85,7 @@
 
 .content .list label {
   height: 40px;
-  width: 130px;
+  width: 82px;
   font-size: 1rem;
   line-height: 40px;
   cursor: pointer;
@@ -97,6 +96,23 @@
   transition: 0.3s;
   margin-right: 0.25rem;
   margin-left: 0.25rem;
+}
+
+.color_box {
+  border: 2px solid #f7c242;
+  width: 90px;
+  height: 40px;
+  top:40px;
+  position: relative;
+  border-radius: 10px;
+}
+
+#user:checked ~ .color_box {
+  transform: translateX(90px);
+}
+
+#info:checked ~ .color_box {
+  transform: translateX(180px);
 }
 
 .content .text-content {
@@ -132,10 +148,6 @@
 .home-btn:hover {
   transform: scale(1.1);
   transition: 0.5s;
-}
-
-.notify-btn:focus {
-  border: 2px solid #f7c242;
 }
 
 #home:checked ~ .text-content .home,
