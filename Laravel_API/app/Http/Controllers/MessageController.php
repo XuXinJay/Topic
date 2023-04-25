@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -21,6 +22,13 @@ class MessageController extends Controller
 
         // 返回回應或其他操作
         return ($request);
+    }
+
+    public function index(Request $request)
+    {
+        $allnews = DB::table('message')->get();
+        $json = $allnews->toJson();
+        return $json;
     }
 
     
