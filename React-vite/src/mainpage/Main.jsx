@@ -244,7 +244,7 @@ function Main() {
                             時間:{activity.activity_partyTime}
                           </span>
                           <span className="grid_text_txt">
-                            會員:{activity.name}
+                            創建人:{activity.name}
                           </span>
                         </div>
                       </a>

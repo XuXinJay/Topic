@@ -95,7 +95,7 @@ function MemberPageEdit() {
         <label className="member-label" htmlFor="tab1">
           編輯基本資料
         </label>
-        <form className="member-form-content">
+        <form className="member-form-conetent-edit">
           <div style={{ width: "max-content", margin: "0 auto" }}>
             <p className="member-title">
               姓　　名：
