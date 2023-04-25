@@ -1,0 +1,262 @@
+/* Create by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.home-container {
+  background-color: #f5f5f5;
+}
+
+.change {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* ------------------------ 導覽列補充 ---------------------- */
+
+.home_header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+/*--------------------- 主內容 ----------------------*/
+
+.main {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  max-width: 700px;
+  min-width: 380px;
+  border-radius: 20px;
+}
+.container {
+  max-width: 968px;
+  width: 100%;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 6rem;
+}
+
+.container .heading {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container .content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.radio {
+  display: none;
+}
+
+.content .list {
+  display: flex;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.space {
+  width: 130px;
+}
+
+.maintitle {
+  font-weight: bolder;
+}
+
+.content .list label {
+  height: 40px;
+  width: 130px;
+  font-size: 1rem;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 12;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 15px;
+  transition: 0.3s;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.content .text-content {
+  width: 100%;
+  height: 700px;
+}
+
+.content .text-content .title {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.content .text-content p {
+  text-align: justify;
+}
+
+.content .text-content .text {
+  display: none;
+}
+
+.content .text-content .text.home {
+  display: block;
+}
+
+.home-btn {
+  background-color: #f7c242;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.home-btn:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.notify-btn:focus {
+  border: 2px solid #f7c242;
+}
+
+#home:checked ~ .text-content .home,
+#chat:checked ~ .text-content .chat,
+#user:checked ~ .text-content .user,
+#info:checked ~ .text-content .info {
+  display: block;
+}
+
+#chat:checked ~ .text-content .home,
+#user:checked ~ .text-content .home,
+#info:checked ~ .text-content .home {
+  display: none;
+}
+
+.chatgpt {
+  height: 700px;
+  border: 1px solid #b4b4b4;
+  padding: 0.8rem;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.chatgpt .title {
+  border-bottom: #b4b4b4 1px solid;
+}
+
+.message {
+  width: 100%;
+  height: 95%;
+  padding: 1rem;
+}
+
+.inputmsg {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sendinput {
+  width: 90%;
+  height: 25px;
+  border: 1px solid #b4b4b4;
+  border-radius: 10px;
+  padding-left: 0.7rem;
+}
+
+.msgfooter {
+  width: 100%;
+}
+
+.sendbtn {
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.sendbtn:hover {
+  color: #f7c242;
+  transition: 0.3s;
+}
+
+.bulletin {
+  height: 700px;
+  border: 1px solid #b4b4b4;
+  padding: 0.8rem;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.bulletin_ul {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  list-style: none;
+}
+
+.bulletin_li {
+  padding: 0.5rem;
+  border-bottom: #333 1px solid;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bulletin_btn {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  bottom: 5px;
+}
+
+.next_btn {
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.next_btn:hover {
+  color: #f7c242;
+  transition: 0.3s;
+}
+
+/**/
+
+@media screen and (max-width: 768px) {
+  .home_header nav .allUl {
+    display: none;
+  }
+
+  .home_user {
+    display: none;
+  }
+
+  .hamburger-icon {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

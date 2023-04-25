@@ -116,7 +116,7 @@ function ChatGpt() {
     <main className="main">
       <div className="container">
         <div className="content">
-          <input
+          {/* <input
             className="radio"
             type="radio"
             defaultChecked=""
@@ -126,23 +126,12 @@ function ChatGpt() {
           <input className="radio" type="radio" id="chat" name="slider" />
           <input className="radio" type="radio" id="user" name="slider" />
           <input className="radio" type="radio" id="info" name="slider" />
-          <input className="radio" type="radio" id="settings" name="slider" />
-          <div className="list">
+          <input className="radio" type="radio" id="settings" name="slider" /> */}
+          {/* <div className="list">
             <label htmlFor="home" className="home-btn">
               <span className="title maintitle">ChatGPT客服</span>
             </label>
-            <div className="space" />
-            <label htmlFor="chat" className="chat-btn notify-btn" tabindex="1">
-              <span className="title">活動通知</span>
-            </label>
-            <label htmlFor="user" className="user-btn notify-btn" tabindex="1">
-              <span className="title">帳號通知</span>
-            </label>
-            <label htmlFor="info" className="info-btn notify-btn" tabindex="1">
-              <span className="title">系統通知</span>
-            </label>
-            <div className="slider" />
-          </div>
+          </div> */}
           <div className="text-content">
             <div className="home text chatgpt">
               <div className="title">ChatGPT客服</div>
@@ -169,49 +158,6 @@ function ChatGpt() {
                   </ChatContainer>
                 </MainContainer>
               </div>
-            </div>
-            <div className="chat text bulletin">
-              <div className="title">活動通知</div>
-              <ul className="bulletin_ul">
-              {notifys.map((notify) => {
-                  return (
-                    <li className="bulletin_li">
-                      {notify.notify_state}
-                    </li>
-                  );
-                })}
-              </ul>
-              <div className="bulletin_btn">
-                <button className="next_btn">
-                  <i className="uil uil-step-forward" />
-                </button>
-              </div>
-            </div>
-            <div className="user text bulletin">
-              <div className="title">帳號通知</div>
-              <ul className="bulletin_ul">
-                <li className="bulletin_li">
-                  我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥
-                </li>
-                <div className="bulletin_btn">
-                  <button className="next_btn">
-                    <i className="uil uil-step-forward" />
-                  </button>
-                </div>
-              </ul>
-            </div>
-            <div className="info text bulletin">
-              <div className="title">系統通知</div>
-              <ul className="bulletin_ul">
-                <li className="bulletin_li">
-                  我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥
-                </li>
-                <div className="bulletin_btn">
-                  <button className="next_btn">
-                    <i className="uil uil-step-forward" />
-                  </button>
-                </div>
-              </ul>
             </div>
           </div>
         </div>
