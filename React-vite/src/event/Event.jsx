@@ -166,7 +166,7 @@ function Event() {
           <h2 className="event_page-title">相關留言</h2>
           <div className="event_page-grid-container-message">
           {messages.map((message) => (
-            <div key={message.id} className="event_page-grid-item-message">
+            <div key={message.comment_id} className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
                   src="picture/test1.png"
@@ -175,7 +175,7 @@ function Event() {
                 />
                 <span>
                   <small className="font-weight-bold text-primary">{message.member_id}</small>
-                  <small className="font-weight-bold">{message.content}</small>
+                  <small className="font-weight-bold">{message.comment_content}</small>
                 </span>
               </div>
               <div className="event_page-time">{message.created_at}</div>
@@ -190,11 +190,11 @@ function Event() {
                 id=""
                 rows={3}
 
-                value={message?.content} // 将状态中的值绑定到文本框的 value 属性
+                value={message?.comment_content} // 将状态中的值绑定到文本框的 value 属性
                 onChange={(event) => setMessage({
                   member_id: user?.id,
-                  activily_id: eventData[0].activity_id,
-                  content: event.target.value
+                  activity_id: eventData[0].activity_id,
+                  comment_content: event.target.value
                 })} // 处理表单输入变化 // 监听文本框的输入变化
               />
               <div className="event_page-bbb-message">
