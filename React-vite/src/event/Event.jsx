@@ -11,7 +11,8 @@ function Event() {
       content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
-
+  
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
@@ -24,10 +25,11 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
-    axios.get("/messages")
+    axios.get("api/messages")
       .then(response => {
         // 请求成功时处理 /messages 返回的数据
         console.log(response.data);
+        setMessages(response.data)
         // 更新状态或其他操作
       })
       .catch(error => {
@@ -39,28 +41,26 @@ function Event() {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // 在提交表单时执行的处理逻辑，可以使用 axios 发送 POST 请求等
     console.log("Form submitted. Message:", message);
-
-    // 发送 POST 请求到 http://127.0.0.1:8000/messages
-    axios
-      .post("/api/messages", message)
-      .then((response) => {
-        // 请求成功时的处理逻辑
-        console.log("Message sent successfully:", response.data);
-        // 清空文本框的输入值
-        // 清空表单输入
-        setMessage({ content: '' });
-
-
-      })
-      .catch((error) => {
-        // 请求失败时的处理逻辑
-        console.error("Error sending message:", error);
-      });
+  
+    try {
+      // 发送 POST 请求到 http://127.0.0.1:8000/messages，并等待请求完成
+      const response = await axios.post("/api/messages", message);
+      // 请求成功时的处理逻辑
+      console.log("Message sent successfully:", response.data);
+      // 清空文本框的输入值
+      setMessage({ content: '' });
+    } catch (error) {
+      // 请求失败时的处理逻辑
+      console.error("Error sending message:", error);
+    }
+  
+    window.location.reload()
   };
+  
 
   if (loading) {
     return <div className="center"><img src={loaDing} alt="" /></div>;
@@ -165,8 +165,8 @@ function Event() {
           {/* 相關留言 */}
           <h2 className="event_page-title">相關留言</h2>
           <div className="event_page-grid-container-message">
-
-            <div className="event_page-grid-item-message">
+          {messages.map((message) => (
+            <div key={message.id} className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
                   src="picture/test1.png"
@@ -174,13 +174,13 @@ function Event() {
                   className="user-img rounded-circle mr-2"
                 />
                 <span>
-                  <small className="font-weight-bold text-primary">鄭明哲</small>
-                  <small className="font-weight-bold">我好帥</small>
+                  <small className="font-weight-bold text-primary">{message.member_id}</small>
+                  <small className="font-weight-bold">{message.content}</small>
                 </span>
               </div>
-              <div className="event_page-time">2 days ago</div>
+              <div className="event_page-time">{message.created_at}</div>
             </div>
-
+          ))}
           </div>
           <h2 className="event_page-title">留言</h2>
           <form action="/messages" method="post" onSubmit={handleSubmit}>
