@@ -102,7 +102,7 @@
   border: 2px solid #f7c242;
   width: 90px;
   height: 40px;
-  top:40px;
+  top: 40px;
   position: relative;
   border-radius: 10px;
 }
@@ -165,98 +165,6 @@
   display: none;
 }
 
-.chatgpt {
-  height: 700px;
-  border: 1px solid #b4b4b4;
-  padding: 0.8rem;
-  border-radius: 15px;
-  width: 100%;
-}
-
-.chatgpt .title {
-  border-bottom: #b4b4b4 1px solid;
-}
-
-.message {
-  width: 100%;
-  height: 95%;
-  padding: 1rem;
-}
-
-.inputmsg {
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  align-items: center;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.sendinput {
-  width: 90%;
-  height: 25px;
-  border: 1px solid #b4b4b4;
-  border-radius: 10px;
-  padding-left: 0.7rem;
-}
-
-.msgfooter {
-  width: 100%;
-}
-
-.sendbtn {
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.sendbtn:hover {
-  color: #f7c242;
-  transition: 0.3s;
-}
-
-.bulletin {
-  height: 700px;
-  border: 1px solid #b4b4b4;
-  padding: 0.8rem;
-  border-radius: 15px;
-  width: 100%;
-}
-
-.bulletin_ul {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  list-style: none;
-}
-
-.bulletin_li {
-  padding: 0.5rem;
-  border-bottom: #333 1px solid;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.bulletin_btn {
-  margin-top: 0.5rem;
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.next_btn {
-  font-size: 25px;
-  border: none;
-  cursor: pointer;
-  background-color: #f5f5f5;
-}
-
-.next_btn:hover {
-  color: #f7c242;
-  transition: 0.3s;
-}
-
 /**/
 
 @media screen and (max-width: 768px) {
@@ -272,4 +180,58 @@
     display: flex;
     justify-content: flex-end;
   }
+}
+
+/* -------------------------------------- 公告欄測試 --------------------------------------------- */
+
+.notify_box {
+  height: 88%;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.notify_change_page {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notify_change_page_li {
+  list-style: none;
+}
+
+.rc-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.notify_table_divbox {
+  width: 100%;
+}
+
+.notify_table {
+  width: 100%;
+  border-collapse: collapse; /* 合併邊框 */
+  border-spacing: 0; /* 設置元素間距為 0，以防止邊框重疊 */
+  border: 1px solid #ccc;
+}
+
+.notify_table_thead {
+  background-color: #f7c242;
+}
+
+.notify_tbody_border {
+  border: 1px solid #ccc;
+  padding: 5.5px; /* 添加內邊距 */
+}
+
+.rc-pagination-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 1rem;
+  text-align: center;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
 }
