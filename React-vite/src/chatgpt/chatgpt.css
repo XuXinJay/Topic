@@ -133,13 +133,8 @@
   transform: scale(1.1);
   transition: 0.5s;
 }
-.chat-btn:hover {
-  border: 2px solid #f7c242;
-}
-.user-btn:hover {
-  border: 2px solid #f7c242;
-}
-.info-btn:hover {
+
+.notify-btn:focus {
   border: 2px solid #f7c242;
 }
 
@@ -234,6 +229,7 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  bottom: 5px;
 }
 
 .next_btn {

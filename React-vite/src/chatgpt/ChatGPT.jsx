@@ -132,13 +132,13 @@ function ChatGpt() {
               <span className="title maintitle">ChatGPT客服</span>
             </label>
             <div className="space" />
-            <label htmlFor="chat" className="chat-btn">
+            <label htmlFor="chat" className="chat-btn notify-btn" tabindex="1">
               <span className="title">活動通知</span>
             </label>
-            <label htmlFor="user" className="user-btn">
+            <label htmlFor="user" className="user-btn notify-btn" tabindex="1">
               <span className="title">帳號通知</span>
             </label>
-            <label htmlFor="info" className="info-btn">
+            <label htmlFor="info" className="info-btn notify-btn" tabindex="1">
               <span className="title">系統通知</span>
             </label>
             <div className="slider" />
