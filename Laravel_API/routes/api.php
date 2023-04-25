@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrganizeActivityController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\JoinActivityController;
 use App\Http\Controllers\MessageController;
 
 
@@ -26,6 +27,12 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::get('/OrganizeActivity',[OrganizeActivityController::class,'index']);
 
 Route::put('/members/update', [MemberController::class,'update']);
+
+Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivities']);
+
+Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
+
+Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
 
 Route::get('/activities', [ActivityController::class,'index']);
 
