@@ -73,7 +73,7 @@ function Activity2() {
               className="activityName_2"
               cols={30}
               rows={10}
-              readOnly="true"
+              readOnly
               defaultValue={activityText}
             />
           </div>
@@ -120,7 +120,10 @@ function Activity2() {
             </div>
             <div className="box">
               <label htmlFor="">付款方式 :</label>
-              <input type="text" className="formType" name="payment" />
+              <input type="select" 
+                className="formType" 
+                name="payment" 
+              />
             </div>
             <div className="box">
               <label htmlFor="">活動預算 :</label>
