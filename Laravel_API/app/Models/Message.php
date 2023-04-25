@@ -11,14 +11,14 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $table = 'message';
-    protected $primaryKey = 'id';
-    protected $keytype = 'int';
+    protected $table = 'comments';
+    protected $primaryKey = 'comment_id';
+    protected $keytype = 'bigint';
     public $timestamp = false;
     protected $fillable = [
         'member_id',
-        'activily_id',
-        'content',
+        'activity_id',
+        'comment_content',
         'created_at',
         'updated_at',
 
@@ -26,30 +26,20 @@ class Message extends Model
 
     public function getNews(Request $request)
     {
-        $allnews = DB::table('message')->get();
+        $allnews = DB::table('comments')->get();
         $json = $allnews->toJson();
         return $json;
     }
-    //新增
-    public static function createMessage($memberId, $activityId, $content)
-    {
-        $newMessage = new Message([
-            'member_id' => $memberId,
-            'activity_id' => $activityId,
-            'content' => $content
-        ]);
-        $newMessage->save();
-        return $newMessage;
-    }
+    
     public function store(Request $request)
     {
         // 從 Request 物件中獲取使用者輸入的 content 資料
-        $content = $request->input('content');
+        $comment_content = $request->input('comment_content');
         // 建立新的 Message 實例並設定值
         $msg = new Message;
         $msg->member_id = $request->input('member_id');; // 這裡示範直接設定數值，你可以根據需求修改
-        $msg->activily_id = $request->input('activily_id');; // 這裡示範直接設定數值，你可以根據需求修改
-        $msg->content = $content;
+        $msg->activity_id = $request->input('activity_id');; // 這裡示範直接設定數值，你可以根據需求修改
+        $msg->comment_content = $comment_content;
         
         $msg->save();
     }
