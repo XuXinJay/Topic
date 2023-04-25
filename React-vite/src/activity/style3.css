@@ -13,231 +13,234 @@
 }
  */
 
- @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
- /* 主設定 */
- * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   font-family: "Poppins", sans-serif;
-   transition: 0.3s;
- }
- 
- /* 導覽列的設定 */
- 
- .navTitle {
-   font-size: 1.5rem;
-   margin: 0 20px;
- }
- 
- .navList {
-   display: flex;
-   align-items: center;
-   text-align: center;
- }
- 
- .navItem {
-   width: 100px;
- }
- 
- .hamburgerIcon {
-   display: none;
- }
- 
- .memberButton {
-   position: absolute;
-   right: 0;
-   border: 3px solid #f7c242;
-   border-radius: 20px;
-   padding: 10px 20px;
-   margin: 0 20px;
- }
- 
- .memberButton > i {
-   margin: 0 0 0 5px;
- }
- 
- /* 主內容的設定 */
- .activity_container {
-   max-width: 1200px;
-   margin: auto;
-   display: flex;
-   flex-wrap: wrap;
-   position: relative;
-   top: 100px;
- }
- 
- .progressBar {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   height: 50px;
-   text-align: center;
-   background-color: #dcdcdc;
-   position: sticky;
-   top: 80px;
-   z-index: 10;
- }
- 
- .progress_3 {
-   font-weight: bold;
- }
- 
- .progress_3:nth-child(1) {
-   width: 33.3%;
- }
- 
- .progress_3:nth-child(2) {
-   width: 33.3%;
- }
- .progress_3:nth-child(3) {
-   width: 33.4%;
-   background-color: #f7c242;
-   line-height: 50px;
- }
- 
- .activity_main_3 {
-   margin-top: 20px;
-   margin-left: 20px;
-   margin-right: 20px;
-   margin-bottom: 7rem;
-   width: 100%;
- }
- 
- .activity_main_3 > * {
-   margin: 0 auto;
- }
- 
- .allActivity {
-   margin: 20px auto;
-   width: 80%;
-   border-radius: 20px;
-   padding: 20px;
-   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
- }
- 
- .gap {
-   width: 60%;
-   margin: 20px auto;
- }
- 
- .box_3 {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin: 10px auto;
- }
- 
- .box_4 {
-   width: 100%;
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
-   margin-bottom: 20px;
- }
- 
- .iconBox {
-   width: 150px;
-   text-align: center;
-   font-size: 1.5rem;
- }
- 
- .iconBox:nth-child(2) {
-   margin-left:100px;
- }
- 
- .bi {
-   font-size: 1.5rem;
- }
- 
- .activity_title {
-   font-size: 24px;
-   width: 100%;
-   margin-top: 10px;
-   text-align: center;
- }
- 
- .hostName_3 {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border: 1px solid black;
- }
- 
- .hostName_3 > img {
-   border: 1px solid black;
-   width: 50px;
-   height: 50px;
-   border-radius: 9999px;
-   margin-right: 10px;
- }
- 
- .place {
+/* 主設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+/* 導覽列的設定 */
+
+.navTitle {
+  font-size: 1.5rem;
+  margin: 0 20px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.navItem {
+  width: 100px;
+}
+
+.hamburgerIcon {
+  display: none;
+}
+
+.memberButton {
+  position: absolute;
+  right: 0;
+  border: 3px solid #f7c242;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 0 20px;
+}
+
+.memberButton>i {
+  margin: 0 0 0 5px;
+}
+
+/* 主內容的設定 */
+.activity_container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 100px;
+}
+
+.progressBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  text-align: center;
+  background-color: #dcdcdc;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+}
+
+.progress_3 {
+  font-weight: bold;
+}
+
+.progress_3:nth-child(1) {
+  width: 33.3%;
+}
+
+.progress_3:nth-child(2) {
+  width: 33.3%;
+}
+
+.progress_3:nth-child(3) {
+  width: 33.4%;
+  background-color: #f7c242;
+  line-height: 50px;
+}
+
+.activity_main_3 {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 7rem;
+  width: 100%;
+}
+
+.activity_main_3>* {
+  margin: 0 auto;
+}
+
+.allActivity {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gap {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.box_3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.box_4 {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.iconBox {
+  width: 150px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.iconBox:nth-child(2) {
+  margin-left: 100px;
+}
+
+.bi {
+  font-size: 1.5rem;
+}
+
+.activity_title {
+  font-size: 24px;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.hostName_3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.hostName_3>img {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+  margin-right: 10px;
+}
+
+.place {
   display: flex;
   align-items: center;
   border: 1px solid black;
- }
- 
- .place>span>a {
-   text-decoration: none;
-   color: black;
- }
- 
- .count {
-   border: 1px solid black;
- }
- 
- .uploadImage {
-   margin: 20px auto;
-   text-align: center;
-   padding: 20px auto;
- }
- 
- .uploadImage > img {
-   width: 80%;
-   height: 40vh;
-   border-radius: 20px;
- 
- }
- 
- .activityName_3 {
-   resize: none;
- }
- 
- .activityText_3 {
-   width: 80%;
-   text-align: center;
-   margin: 10px auto;
- }
- 
- .activityText_3 > textarea {
-   display: block;
-   margin: 30px auto;
-   padding-left: 20px;
-   padding-top: 5px;
-   width: 100%;
-   height: 30vh;
-   resize: none;
-   font-size: 1rem;
-   border-radius: 20px;
-   background-color: lightgray;
- }
- 
- .buttonControl {
-   margin-top: 50px;
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
- }
- 
- .button {
-   text-align: center;
-   width: 100px;
-   height: 40px;
-   line-height: 40px;
-   border-radius: 20px;
-   cursor: pointer;
-   background-color: #f7c242;
- }
- 
+}
+
+.place>span>a {
+  text-decoration: none;
+  color: black;
+}
+
+.count {
+  border: 1px solid black;
+}
+
+.uploadImage {
+  text-align: center;
+  width: 80%;
+  height: 40vh;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.uploadImage>img {
+  text-align: center;
+  width: 80%;
+  height: 40vh;
+  border-radius: 20px;
+}
+
+.activityName_3 {
+  resize: none;
+}
+
+.activityText_3 {
+  width: 80%;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.activityText_3>textarea {
+  display: block;
+  margin: 30px auto;
+  padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 10px;
+  width: 80%;
+  height: 40vh;
+  resize: none;
+  font-size: 1rem;
+  border-radius: 20px;
+  background-color: lightgray;
+}
+
+.buttonControl {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #f7c242;
+}

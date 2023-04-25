@@ -39,3 +39,4 @@ Route::get('/activities', [ActivityController::class,'index']);
 Route::get('/notify', [OrganizeActivityController::class,'notify']);
 
 Route::post('/messages',[MessageController::class,'store']);
+Route::get('/messages',[MessageController::class,'index']);

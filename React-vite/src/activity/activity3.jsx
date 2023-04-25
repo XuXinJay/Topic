@@ -16,6 +16,10 @@ function Activity3() {
   const activityText = sessionStorage.getItem("活動簡述");
   const activityPlace = sessionStorage.getItem("活動地點");
   const activityDate = sessionStorage.getItem("活動日期");
+  const activityCount = sessionStorage.getItem("活動總人數");
+  const activityPayment = sessionStorage.getItem("付款方式");
+  const activityBudget = sessionStorage.getItem("活動預算");
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -43,7 +47,7 @@ function Activity3() {
               </div>
             </div>
             <div className="count">
-              聚會總人數 : <span>{}</span>
+              聚會總人數 : <span>{activityCount}人</span>
             </div>
           </div>
           <div className="uploadImage">
@@ -69,11 +73,16 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-usd-circle"></i>
-              <div className="">現金</div>
+              <div className="">
+                {activityPayment}
+              </div>
             </div>
             <div class="iconBox">
               <i class="uil uil-wallet"></i>
-              <div className="">預算</div>
+              <div 
+                className="">
+                  {activityBudget}
+              </div>
             </div>
           </div>
           <div class="box_3">

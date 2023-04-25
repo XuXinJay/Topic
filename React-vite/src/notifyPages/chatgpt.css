@@ -85,7 +85,7 @@
 
 .content .list label {
   height: 40px;
-  width: 130px;
+  width: 82px;
   font-size: 1rem;
   line-height: 40px;
   cursor: pointer;
@@ -96,6 +96,25 @@
   transition: 0.3s;
   margin-right: 0.25rem;
   margin-left: 0.25rem;
+}
+
+.color_box {
+  border: 2px solid #f7c242;
+  width: 90px;
+  height: 40px;
+  top:40px;
+  position: relative;
+  border-radius: 10px;
+}
+
+#user:checked ~ .color_box {
+  transform: translateX(90px);
+  transition: 0.4s;
+}
+
+#info:checked ~ .color_box {
+  transform: translateX(180px);
+  transition: 0.4s;
 }
 
 .content .text-content {

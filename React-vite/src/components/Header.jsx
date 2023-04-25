@@ -21,7 +21,7 @@ function Header() {
   }
 
   if (loading) {
-    return <div className="center"><img  src={loaDing} alt="" /></div>;
+    return <div className="center"><img src={loaDing} alt="" /></div>;
   }
 
   return (
@@ -37,8 +37,13 @@ function Header() {
               <a href="/">聚會活動</a>
             </li>
             <li>
+              <a href="/notify">
+                通知
+              </a>
+            </li>
+            <li>
               <a href="/gpt">
-                <span>通知/AI客服</span>
+                AI客服
               </a>
             </li>
             <li>
@@ -68,8 +73,13 @@ function Header() {
                 </a>
               </li>
               <li className="mobile-li">
+                <a className="underline" href="/notify">
+                  通知
+                </a>
+              </li>
+              <li className="mobile-li">
                 <a className="underline" href="/gpt">
-                  通知/AI客服
+                  AI客服
                 </a>
               </li>
               <li className="mobile-li">
@@ -125,8 +135,13 @@ function Header() {
               <a href="/">所有活動</a>
             </li>
             <li>
+              <a href="/notify">
+                通知
+              </a>
+            </li>
+            <li>
               <a href="/gpt">
-                <span>通知/AI客服</span>
+                AI客服
               </a>
             </li>
             <li>
@@ -150,8 +165,13 @@ function Header() {
                 </a>
               </li>
               <li className="mobile-li">
+                <a className="underline" href="/notify">
+                  通知
+                </a>
+              </li>
+              <li className="mobile-li">
                 <a className="underline" href="/gpt">
-                  通知/AI客服
+                  AI客服
                 </a>
               </li>
               <li className="mobile-li">

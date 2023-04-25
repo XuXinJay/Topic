@@ -39,9 +39,16 @@ function Activity1() {
 
     if (!isActive[event]) {
       sessionStorage.setItem('活動類型', activities[event].label);
-      console.log(sessionStorage.getItem('活動類型'))
     }
   }
+  //點擊預設圖片
+  const [defaultImg, setdefaultImg] = useState(sessionStorage.getItem('預設圖片') || '');
+
+  function handleImgClick(event) {
+    setdefaultImg(event.target.src);
+    sessionStorage.setItem('預設圖片',event.target.src)
+  }
+
 
   //限制文字輸入字數
   const MAX_LENGTH = 300;
@@ -52,7 +59,6 @@ function Activity1() {
     if (newText.length <= MAX_LENGTH) {
       setactivityText(newText);
       sessionStorage.setItem('活動簡述', event.target.value)
-      console.log(sessionStorage.getItem('活動簡述'))
     }
   }
 
@@ -62,7 +68,6 @@ function Activity1() {
   function handleActivityNameChange(event) {
     setActivityName(event.target.value);
     sessionStorage.setItem('活動名稱', event.target.value)
-    console.log(sessionStorage.getItem('活動名稱'))
   }
 
   return user ? (
@@ -97,22 +102,26 @@ function Activity1() {
               accept="image/*"
               className="fileInput"
               required=""
+              Value={defaultImg}
             />
           </label>
           <div className="imageDefault">
             <span className="arrowButton">◀</span>
             <div className="imageBox">
-              <img
-                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
-                alt={1}
+              <img 
+                src="1.jpg" 
+                alt="1" 
+                onClick={handleImgClick}
               />
-              <img
-                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
-                alt={2}
+              <img 
+                src="2.jpg" 
+                alt="2" 
+                onClick={handleImgClick}
               />
-              <img
-                src="https://pic.616pic.com/bg_w1180/00/02/34/3FcxRGTova.jpg"
-                alt={3}
+              <img 
+                src="3.jpg" 
+                alt="3" 
+                onClick={handleImgClick}
               />
             </div>
             <span className="arrowButton">▶</span>
@@ -141,6 +150,7 @@ function Activity1() {
             required=""
             defaultValue={activityText}
             onChange={handleInputChange}
+            maxLength={MAX_LENGTH}
           />
         </div>
         <div className="buttonControl-one">
