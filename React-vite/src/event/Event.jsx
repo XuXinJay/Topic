@@ -12,7 +12,7 @@ function Event() {
     }
   ); // 添加 message 状态来保存文本框的输入值
 
-  
+
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
     axios.get("api/activities")
@@ -24,8 +24,18 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
-    }, []);
-    
+    axios.get("/messages")
+      .then(response => {
+        // 请求成功时处理 /messages 返回的数据
+        console.log(response.data);
+        // 更新状态或其他操作
+      })
+      .catch(error => {
+        // 请求失败时处理错误
+        console.error("Error fetching messages:", error);
+      });
+  }, []);
+
 
 
 
@@ -155,7 +165,7 @@ function Event() {
           {/* 相關留言 */}
           <h2 className="event_page-title">相關留言</h2>
           <div className="event_page-grid-container-message">
-            
+
             <div className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
@@ -170,7 +180,7 @@ function Event() {
               </div>
               <div className="event_page-time">2 days ago</div>
             </div>
-            
+
           </div>
           <h2 className="event_page-title">留言</h2>
           <form action="/messages" method="post" onSubmit={handleSubmit}>
@@ -179,7 +189,7 @@ function Event() {
                 className="event_page-textarea"
                 id=""
                 rows={3}
-                
+
                 value={message?.content} // 将状态中的值绑定到文本框的 value 属性
                 onChange={(event) => setMessage({
                   member_id: user?.id,
@@ -235,7 +245,7 @@ function Event() {
               </div>
               <div className="event_page-time">2 days ago</div>
             </div>
-            
+
           </div>
           <h2 className="event_page-title">留言</h2>
           <form>
@@ -245,7 +255,7 @@ function Event() {
                 id=""
                 rows={3}
                 defaultValue={""}
-                
+
               />
               <div className="event_page-bbb-message">
                 <button className="event_page-button-message" type="submit">發送</button>
