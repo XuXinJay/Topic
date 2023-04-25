@@ -157,7 +157,7 @@
 .fileLabel {
   border: 1px dashed black;
   display: block;
-  width: 100%;
+  width: 80%;
   height: 40vh;
   text-align: center;
   margin: 20px auto;
@@ -181,7 +181,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -193,7 +193,7 @@
 }
 
 .imageBox > img {
-  width: calc(25%);
+  width: 30%;
   margin: 0 10px;
   border-radius: 20px;
 }
@@ -241,13 +241,15 @@
 .activityText {
   display: block;
   margin: 30px auto;
-  padding-left: 20px;
-  padding-top: 5px;
-  width: 100%;
+  padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 10px;
+  width: 80%;
   height: 30vh;
   resize: none;
   font-size: 1rem;
   border-radius: 20px;
+  letter-spacing: 1px;
 }
 
 .buttonControl-one {

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../api/axios";
 import "./chatgpt.css";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.css";
 import {
@@ -19,6 +20,8 @@ const systemMessage = {
 };
 
 function ChatGpt() {
+  const [notifys, setNotifys] = useState([]);
+
   const [messages, setMessages] = useState([
     {
       message: "你好，我是智能客服，請問需要什麼幫助嗎?",
@@ -96,11 +99,24 @@ function ChatGpt() {
       });
   }
 
+  useEffect(() => {
+    async function getNotify() {
+      try {
+        const response = await axios.get("api/notify");
+        console.log(response.data);
+        setNotifys(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getNotify();
+  }, []);
+
   return (
     <main className="main">
       <div className="container">
         <div className="content">
-          <input
+          {/* <input
             className="radio"
             type="radio"
             defaultChecked=""
@@ -110,23 +126,12 @@ function ChatGpt() {
           <input className="radio" type="radio" id="chat" name="slider" />
           <input className="radio" type="radio" id="user" name="slider" />
           <input className="radio" type="radio" id="info" name="slider" />
-          <input className="radio" type="radio" id="settings" name="slider" />
-          <div className="list">
+          <input className="radio" type="radio" id="settings" name="slider" /> */}
+          {/* <div className="list">
             <label htmlFor="home" className="home-btn">
               <span className="title maintitle">ChatGPT客服</span>
             </label>
-            <div className="space" />
-            <label htmlFor="chat" className="chat-btn">
-              <span className="title">活動通知</span>
-            </label>
-            <label htmlFor="user" className="user-btn">
-              <span className="title">帳號通知</span>
-            </label>
-            <label htmlFor="info" className="info-btn">
-              <span className="title">系統通知</span>
-            </label>
-            <div className="slider" />
-          </div>
+          </div> */}
           <div className="text-content">
             <div className="home text chatgpt">
               <div className="title">ChatGPT客服</div>
@@ -153,84 +158,6 @@ function ChatGpt() {
                   </ChatContainer>
                 </MainContainer>
               </div>
-            </div>
-            <div className="chat text bulletin">
-              <div className="title">活動通知</div>
-              <ul className="bulletin_ul">
-                <li className="bulletin_li">
-                  我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥
-                </li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">123</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <div className="bulletin_btn">
-                  <button className="next_btn">
-                    <i className="uil uil-step-forward" />
-                  </button>
-                </div>
-              </ul>
-            </div>
-            <div className="user text bulletin">
-              <div className="title">帳號通知</div>
-              <ul className="bulletin_ul">
-                <li className="bulletin_li">
-                  我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥
-                </li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">123</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <div className="bulletin_btn">
-                  <button className="next_btn">
-                    <i className="uil uil-step-forward" />
-                  </button>
-                </div>
-              </ul>
-            </div>
-            <div className="info text bulletin">
-              <div className="title">系統通知</div>
-              <ul className="bulletin_ul">
-                <li className="bulletin_li">
-                  我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥我好帥
-                </li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">123</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <li className="bulletin_li">321</li>
-                <li className="bulletin_li">1234567</li>
-                <li className="bulletin_li">78654321</li>
-                <li className="bulletin_li">8741125</li>
-                <div className="bulletin_btn">
-                  <button className="next_btn">
-                    <i className="uil uil-step-forward" />
-                  </button>
-                </div>
-              </ul>
             </div>
           </div>
         </div>

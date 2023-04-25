@@ -15,6 +15,7 @@ import ForgotPassword from "./Loginpages/ResetPassword.jsx";
 import Home from "./pages/Home.jsx"
 import EventPages from "./pages/EventPages";
 import EventReviewPages from "./pages/EventReviewPages";
+import Notifys from "./pages/Notifys.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         {/* 信杰 */}
         <Route exact path="/" element={<Home />} />
         <Route path="/gpt" element={<Gpt />} />
+        <Route path="/notify" element={<Notifys />} />
 
 
         {/* 偉婷 */}
