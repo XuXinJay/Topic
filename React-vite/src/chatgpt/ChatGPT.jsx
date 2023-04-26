@@ -116,22 +116,6 @@ function ChatGpt() {
     <main className="main">
       <div className="container">
         <div className="content">
-          {/* <input
-            className="radio"
-            type="radio"
-            defaultChecked=""
-            id="home"
-            name="slider"
-          />
-          <input className="radio" type="radio" id="chat" name="slider" />
-          <input className="radio" type="radio" id="user" name="slider" />
-          <input className="radio" type="radio" id="info" name="slider" />
-          <input className="radio" type="radio" id="settings" name="slider" /> */}
-          {/* <div className="list">
-            <label htmlFor="home" className="home-btn">
-              <span className="title maintitle">ChatGPT客服</span>
-            </label>
-          </div> */}
           <div className="text-content">
             <div className="home text chatgpt">
               <div className="title">ChatGPT客服</div>
