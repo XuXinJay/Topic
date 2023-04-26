@@ -241,3 +241,7 @@
   margin-right: 2.5px;
   margin-left: 2.5px;
 }
+
+.rc-pagination-item:hover {
+  cursor: pointer;
+}
