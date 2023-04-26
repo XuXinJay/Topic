@@ -24,7 +24,7 @@ function MemberPageEdit() {
       birth: memberInfo?.member_birth,
     }
     for (let key in memberInfo_required) {
-      if (memberInfo_required[key].trim() === '') {
+      if (memberInfo_required[key] && memberInfo_required[key].trim() === '') {
         alert(`${key}的內容不得為空值`);
         return;
       }
@@ -66,6 +66,26 @@ function MemberPageEdit() {
         ...memberInfo,
         member_avatar: imageData,
       })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
   };
 
@@ -75,11 +95,12 @@ function MemberPageEdit() {
       <form>
         <div className="member-intro">
           <label className=" member-photo clickable">
+            <span className="member-photo_span">{memberInfo?.member_avatar ? '' : '+' }</span>
             <input
               type="file"
               className="photo-none"
               onChange={handleImageUpload} />
-            <p>+</p>
+            <img src={memberInfo?.member_avatar} className=" member-photo-inner" />
           </label>
           <div style={{ textAlign: "left" }}>
             <span>姓名：</span>
