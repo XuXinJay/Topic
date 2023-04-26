@@ -3,20 +3,25 @@ import "./style4.css";
 import useAuthContext from "../context/AuthContext";
 import axios from "../api/axios";
 import loaDing from "/src/loading.gif";
+import { useParams } from 'react-router-dom';
+
 function Event() {
   const { user, loading } = useAuthContext();
+
   const [eventData, setEventData] = useState(null);
+
   const [message, setMessage] = useState(
     {
       content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
-  
+  const { activity_id } = useParams();
+
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
-    axios.get("api/activities")
+    axios.get("api/activities/" + activity_id)
       .then(response => {
         // 请求成功时更新组件的数据状态
         setEventData(response.data);
@@ -25,6 +30,7 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
+      
     axios.get("api/messages")
       .then(response => {
         // 请求成功时处理 /messages 返回的数据
@@ -36,10 +42,9 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching messages:", error);
       });
-  }, []);
+  }, [activity_id]);
 
-
-
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -169,16 +174,18 @@ function Event() {
             <div key={message.comment_id} className="event_page-grid-item-message">
               <div className="user d-flex flex-row align-items-center">
                 <img
-                  src="picture/test1.png"
+                  src={message.member_avatar}
                   width={30}
                   className="user-img rounded-circle mr-2"
+                  style={{borderRadius: "50%"}}
+
                 />
                 <span>
-                  <small className="font-weight-bold text-primary">{message.member_id}</small>
-                  <small className="font-weight-bold">{message.comment_content}</small>
+                  <small className="font-weight-bold text-primary"> {message.name}</small>
+                  <small className="font-weight-bold"> {message.comment_content}</small>
                 </span>
               </div>
-              <div className="event_page-time">{message.created_at}</div>
+              <div className="event_page-time"> {message.created_at}</div>
             </div>
           ))}
           </div>
