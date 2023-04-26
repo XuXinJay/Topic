@@ -34,7 +34,7 @@ Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
 
-Route::get('/activities', [ActivityController::class,'index']);
+Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
 
 Route::get('/notify', [OrganizeActivityController::class,'notify']);
 

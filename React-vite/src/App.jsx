@@ -44,7 +44,7 @@ function App() {
         <Route path="/activity3" element={<Acticity33 />} />
 
         {/* 明哲 */}
-        <Route path="/event" element={<EventPages />} />
+        <Route path="/event/:activity_id" element={<EventPages />} />
         <Route path="/review" element={<EventReviewPages />} />
       </Routes>
     // </Router>
