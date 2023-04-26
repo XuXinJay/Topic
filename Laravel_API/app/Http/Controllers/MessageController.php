@@ -26,7 +26,10 @@ class MessageController extends Controller
 
     public function index(Request $request)
     {
-        $allnews = DB::table('comments')->get();
+        $allnews = DB::table('comments')
+        ->join('users', 'id', '=', 'comments.member_id')
+        ->select('comments.*','users.name', 'users.member_avatar')
+        ->get();
         $json = $allnews->toJson();
         return $json;
     }
