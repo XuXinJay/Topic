@@ -152,7 +152,7 @@ function Main() {
                   return (
                     <a
                       className="grid-item"
-                      href="/event"
+                      href={`/event/${activity.activity_id}`}
                       key={activity.activity_id}
                     >
                       <img className="grid-img" src={img4} alt="" />
