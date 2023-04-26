@@ -33,6 +33,17 @@ class JoinActivityController extends Controller
         
         return response()->json($activities,200,[],JSON_UNESCAPED_UNICODE);
     }
+    public function reviewActivities($activity_id)
+    {
+        $activities = joinActivities::join('users', 'users.id', '=', 'join_activities.member_id')
+            ->join('activities', 'activities.activity_id', '=', 'join_activities.activity_id')
+            ->select('activities.*', 'users.*','join_activities.join_state')
+            ->where('join_activities.activity_id',$activity_id)
+            ->get();
+
+        
+        return response()->json($activities,200,[],JSON_UNESCAPED_UNICODE);
+    }
 
 
 

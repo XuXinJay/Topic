@@ -294,7 +294,7 @@ function MemberPage() {
                   />
                 </div>
                 <div style={{ position: "relative" }}>
-                  <a className="organise-submit" href="/review">
+                  <a className="organise-submit" href={`/review/${activity.activity_id}`}>
                     審核
                   </a>
                 </div>

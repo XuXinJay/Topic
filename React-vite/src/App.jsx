@@ -45,7 +45,7 @@ function App() {
 
         {/* 明哲 */}
         <Route path="/event/:activity_id" element={<EventPages />} />
-        <Route path="/review" element={<EventReviewPages />} />
+        <Route path="/review/:activity_id" element={<EventReviewPages />} />
       </Routes>
     // </Router>
   );

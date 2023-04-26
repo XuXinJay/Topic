@@ -3,12 +3,14 @@ import "./introduce.css";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "../loading.gif";
 import axios from "../api/axios";
+import { useParams } from 'react-router-dom';
 
 function EventReview() {
 
   const { user, loading } = useAuthContext();
   const [joinActivities, setJoinActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
+  const { activity_id } = useParams();
 
   useEffect(() => {
     setMemberInfo(user);
@@ -18,7 +20,7 @@ function EventReview() {
   useEffect(() => {
     async function getActivity() {
       try {
-        const response = await axios.get("api/joinActivities");
+        const response = await axios.get(`api/joinActivities/${activity_id}`);
         // console.log(response.data);
         setJoinActivities(response.data);
       } catch (error) {
