@@ -3,20 +3,25 @@ import "./style4.css";
 import useAuthContext from "../context/AuthContext";
 import axios from "../api/axios";
 import loaDing from "/src/loading.gif";
+import { useParams } from 'react-router-dom';
+
 function Event() {
   const { user, loading } = useAuthContext();
+
   const [eventData, setEventData] = useState(null);
+
   const [message, setMessage] = useState(
     {
       content: ''
     }
   ); // 添加 message 状态来保存文本框的输入值
-  
+  const { activity_id } = useParams();
+
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
-    axios.get("api/activities")
+    axios.get("api/activities/" + activity_id)
       .then(response => {
         // 请求成功时更新组件的数据状态
         setEventData(response.data);
@@ -25,6 +30,7 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching event data:", error);
       });
+
     axios.get("api/messages")
       .then(response => {
         // 请求成功时处理 /messages 返回的数据
@@ -36,8 +42,7 @@ function Event() {
         // 请求失败时处理错误
         console.error("Error fetching messages:", error);
       });
-  }, []);
-
+  }, [activity_id]);
 
 
 
@@ -45,7 +50,7 @@ function Event() {
     e.preventDefault();
     // 在提交表单时执行的处理逻辑，可以使用 axios 发送 POST 请求等
     console.log("Form submitted. Message:", message);
-  
+
     try {
       // 发送 POST 请求到 http://127.0.0.1:8000/messages，并等待请求完成
       const response = await axios.post("/api/messages", message);
@@ -57,10 +62,10 @@ function Event() {
       // 请求失败时的处理逻辑
       console.error("Error sending message:", error);
     }
-  
+
     window.location.reload()
   };
-  
+
 
   if (loading) {
     return <div className="center"><img src={loaDing} alt="" /></div>;
@@ -165,22 +170,31 @@ function Event() {
           {/* 相關留言 */}
           <h2 className="event_page-title">相關留言</h2>
           <div className="event_page-grid-container-message">
-          {messages.map((message) => (
-            <div key={message.comment_id} className="event_page-grid-item-message">
-              <div className="user d-flex flex-row align-items-center">
-                <img
-                  src="picture/test1.png"
-                  width={30}
-                  className="user-img rounded-circle mr-2"
-                />
-                <span>
-                  <small className="font-weight-bold text-primary">{message.member_id}</small>
-                  <small className="font-weight-bold">{message.comment_content}</small>
-                </span>
-              </div>
-              <div className="event_page-time">{message.created_at}</div>
-            </div>
-          ))}
+            {messages.map((message) => {
+              
+              if (message.activity_id == activity_id) {
+                return (
+                  <div key={message.comment_id} className="event_page-grid-item-message">
+                    <div className="user d-flex flex-row align-items-center">
+                      <img
+                        src={message.member_avatar}
+                        width={30}
+                        className="user-img rounded-circle mr-2"
+                        style={{ borderRadius: "50%" }}
+
+                      />
+                      <span>
+                        <small className="font-weight-bold text-primary"> {message.name}</small>
+                        <small className="font-weight-bold"> {message.comment_content}</small>
+                      </span>
+                    </div>
+                    <div className="event_page-time"> {message.created_at}</div>
+                  </div>
+                );
+              }
+
+            })}
+
           </div>
           <h2 className="event_page-title">留言</h2>
           <form action="/messages" method="post" onSubmit={handleSubmit}>
