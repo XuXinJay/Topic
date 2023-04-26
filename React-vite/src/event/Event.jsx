@@ -29,7 +29,7 @@ function Event() {
       .then(response => {
         // 请求成功时处理 /messages 返回的数据
         console.log(response.data);
-        setMessages(response.data)
+        setMessages(response.data);
         // 更新状态或其他操作
       })
       .catch(error => {

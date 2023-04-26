@@ -2,16 +2,36 @@ import React, { useState, useEffect } from "react";
 import Pagination from "https://cdn.skypack.dev/rc-pagination@3.1.15";
 import axios from "../api/axios";
 import "./notify.css";
+import useAuthContext from "../context/AuthContext";
 
 function Notify() {
-  const [notifys, setNotifys] = useState([]);
+  const [activityNotifys, setActivityNotifys] = useState([]);
+  const [accountNotifys, setAccountNotifys] = useState([]);
+  const [systemNotifys, setSystemNotifys] = useState([]);
   const [perPage, setPerPage] = useState(15);
   const [size, setSize] = useState(perPage);
   const [current, setCurrent] = useState(1);
+  const { user, logout, loading } = useAuthContext();
 
-  const PerPageChange = (value) => {
+  const PerPageChangeActivity = (value) => {
     setSize(value);
-    const newPerPage = Math.ceil(notifys.length / value);
+    const newPerPage = Math.ceil(activityNotifys.length / value);
+    if (current > newPerPage) {
+      setCurrent(newPerPage);
+    }
+  };
+
+  const PerPageChangeAccount = (value) => {
+    setSize(value);
+    const newPerPage = Math.ceil(accountNotifys.length / value);
+    if (current > newPerPage) {
+      setCurrent(newPerPage);
+    }
+  };
+
+  const PerPageChangeSystem = (value) => {
+    setSize(value);
+    const newPerPage = Math.ceil(systemNotifys.length / value);
     if (current > newPerPage) {
       setCurrent(newPerPage);
     }
@@ -44,26 +64,46 @@ function Notify() {
     async function getNotify() {
       try {
         const response = await axios.get("api/notify");
-        console.log(response.data);
-        setNotifys(response.data);
-
-        // 找到id為chat的元素並顯示出來
-        const chatElement = document.querySelector("#chat");
-        chatElement.classList.add("checked");
+        const notifyData = response.data;
+        const activityNotifys = notifyData.filter(
+          (notify) => notify.notification_type === "活動" && notify.id === user.id
+          );
+        const accountNotifys = notifyData.filter(
+          (notify) => notify.notification_type === "帳號" && notify.id === user.id
+        );
+        const systemNotifys = notifyData.filter(
+          (notify) => notify.notification_type === "系統"
+        );
+        setActivityNotifys(activityNotifys);
+        setAccountNotifys(accountNotifys);
+        setSystemNotifys(systemNotifys);
       } catch (error) {
         console.error(error);
       }
     }
     getNotify();
-  }, []);
-
-  const getData = (current, pageSize) => {
+  }, [user]);
+  // console.log(activityNotifys)
+  // console.log(accountNotifys)
+  // console.log(systemNotifys)
+  const getDataActivity = (current, pageSize) => {
     // Normally you should get the data from the server
-    return notifys.slice((current - 1) * pageSize, current * pageSize);
+    return activityNotifys.slice((current - 1) * pageSize, current * pageSize);
+  };
+
+  const getDataAccount = (current, pageSize) => {
+    // Normally you should get the data from the server
+    return accountNotifys.slice((current - 1) * pageSize, current * pageSize);
+  };
+
+  const getDataSystem = (current, pageSize) => {
+    // Normally you should get the data from the server
+    return systemNotifys.slice((current - 1) * pageSize, current * pageSize);
   };
 
   return (
     <main className="main">
+    {user ? (
       <div className="container">
         <div className="content">
           <input
@@ -99,16 +139,14 @@ function Notify() {
                       </tr>
                     </thead>
                     <tbody className="notify_tbody">
-                      {getData(current, size).map((data, index) => {
-                        // if (data.notification_type === "活動") {
-                        return (
-                          <tr key={data.notify_id}>
-                            <td className="notify_tbody_border">
-                              {data.notify_state}
-                            </td>
-                          </tr>
-                        );
-                        // }
+                      {getDataActivity(current, size).map((activityNotifys, index) => {
+                          return (
+                            <tr key={activityNotifys.notify_id}>
+                              <td className="notify_tbody_border">
+                                {activityNotifys.notify_state}
+                              </td>
+                            </tr>
+                          );
                       })}
                     </tbody>
                   </table>
@@ -118,12 +156,12 @@ function Notify() {
                 <Pagination
                   className="pagination-data notify_change_page_li"
                   onChange={PaginationChange}
-                  total={notifys.length}
+                  total={activityNotifys.length}
                   current={current}
                   pageSize={size}
                   showSizeChanger={false}
                   itemRender={PrevNextArrow}
-                  onShowSizeChange={PerPageChange}
+                  onShowSizeChange={PerPageChangeActivity}
                 />
               </div>
             </div>
@@ -138,16 +176,16 @@ function Notify() {
                       </tr>
                     </thead>
                     <tbody className="notify_tbody">
-                      {getData(current, size).map((data, index) => {
-                        if (data.notification_type === "帳號") {
+                      {getDataAccount(current, size).map((accountNotifys, index) => {
+                       
                           return (
-                            <tr key={data.notify_id}>
+                            <tr key={accountNotifys.notify_id}>
                               <td className="notify_tbody_border">
-                                {data.notify_state}
+                                {accountNotifys.notify_state}
                               </td>
                             </tr>
                           );
-                        }
+                        
                       })}
                     </tbody>
                   </table>
@@ -157,12 +195,12 @@ function Notify() {
                 <Pagination
                   className="pagination-data notify_change_page_li"
                   onChange={PaginationChange}
-                  total={notifys.length}
+                  total={accountNotifys.length}
                   current={current}
                   pageSize={size}
                   showSizeChanger={false}
                   itemRender={PrevNextArrow}
-                  onShowSizeChange={PerPageChange}
+                  onShowSizeChange={PerPageChangeAccount}
                 />
               </div>
             </div>
@@ -177,16 +215,16 @@ function Notify() {
                       </tr>
                     </thead>
                     <tbody className="notify_tbody">
-                      {getData(current, size).map((data, index) => {
-                        if (data.notification_type === "系統") {
+                      {getDataSystem(current, size).map((systemNotifys, index) => {
+                        
                           return (
-                            <tr key={data.notify_id}>
+                            <tr key={systemNotifys.notify_id}>
                               <td className="notify_tbody_border">
-                                {data.notify_state}
+                                {systemNotifys.notify_state}
                               </td>
                             </tr>
                           );
-                        }
+                        
                       })}
                     </tbody>
                   </table>
@@ -196,18 +234,78 @@ function Notify() {
                 <Pagination
                   className="pagination-data notify_change_page_li"
                   onChange={PaginationChange}
-                  total={notifys.length}
+                  total={systemNotifys.length}
                   current={current}
                   pageSize={size}
                   showSizeChanger={false}
                   itemRender={PrevNextArrow}
-                  onShowSizeChange={PerPageChange}
+                  onShowSizeChange={PerPageChangeSystem}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+    ) : (
+      <div className="container">
+        <div className="content">
+          <input
+            className="radio"
+            type="radio"
+            id="chat"
+            name="slider"
+            defaultChecked={true}
+          />
+          <div className="color_box"></div>
+          <div className="list">
+            <label htmlFor="chat" className="chat-btn notify-btn" tabIndex="1">
+              <span className="title">系統通知</span>
+            </label>
+          </div>
+          <div className="text-content">
+            <div className="chat text bulletin">
+              <div className="title">系統通知</div>
+              <div className="notify_box">
+                <div className="notify_table_divbox">
+                  <table className="notify_table">
+                    <thead className="notify_table_thead">
+                      <tr>
+                        <th>公告</th>
+                      </tr>
+                    </thead>
+                    <tbody className="notify_tbody">
+                    {getDataSystem(current, size).map((systemNotifys, index) => {
+                        
+                        return (
+                          <tr key={systemNotifys.notify_id}>
+                            <td className="notify_tbody_border">
+                              {systemNotifys.notify_state}
+                            </td>
+                          </tr>
+                        );
+                      
+                    })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="notify_change_page table-filter-info">
+              <Pagination
+                  className="pagination-data notify_change_page_li"
+                  onChange={PaginationChange}
+                  total={systemNotifys.length}
+                  current={current}
+                  pageSize={size}
+                  showSizeChanger={false}
+                  itemRender={PrevNextArrow}
+                  onShowSizeChange={PerPageChangeSystem}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      )}
     </main>
   );
 }
