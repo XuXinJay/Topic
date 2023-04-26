@@ -24,6 +24,7 @@ function Main() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activities, setActivities] = useState([]);
   const [filterByLocation, setFilterByLocation] = useState('');
+  const [filteredActivities, setFilteredActivities] = useState('');
 
   const nextSlide = () => {
     if (currentSlide === 2) {
@@ -55,12 +56,14 @@ function Main() {
   }, []);
 
   const handleFilterClick = (location) => {
+    const filtered = activities.filter((activity) =>
+      activity.activity_place.includes(location)
+    );
     setFilterByLocation(location);
+    setFilteredActivities(filtered);
   };
 
-  const filteredActivities = activities.filter((activity) => {
-    return filterByLocation === '' || activity.activity_place === filterByLocation;
-  });
+  const activitiesToShow = filterByLocation ? filteredActivities : activities;
 
   return (
     <main>
@@ -144,7 +147,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {filteredActivities.map((activity) => {
+                {activitiesToShow.map((activity) => {
 
                   return (
                     <a
@@ -183,7 +186,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {filteredActivities.map((activity) => {
+                {activitiesToShow.map((activity) => {
                   if (activity.movie === 1) {
                     return (
                       <a
@@ -226,7 +229,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {filteredActivities.map((activity) => {
+                {activitiesToShow.map((activity) => {
                   if (activity.sports === 1) {
                     return (
                       <a
@@ -269,7 +272,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {filteredActivities.map((activity) => {
+                {activitiesToShow.map((activity) => {
                   if (activity.board_game === 1) {
                     return (
                       <a
@@ -312,7 +315,7 @@ function Main() {
           <div className="tabs_content">
             <div className="grid-box">
               <div className="grid-container">
-                {filteredActivities.map((activity) => {
+                {activitiesToShow.map((activity) => {
                   if (activity.dine_together === 1) {
                     return (
                       <a
