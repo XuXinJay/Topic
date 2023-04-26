@@ -142,7 +142,8 @@ function Notify() {
                       {getDataActivity(current, size).map((activityNotifys, index) => {
                           return (
                             <tr key={activityNotifys.notify_id}>
-                              <td className="notify_tbody_border">
+                              <td className={activityNotifys.notify_state.includes("未通過") ? "notify_tbody_border_RED"
+                             : "notify_tbody_border"}>
                                 {activityNotifys.notify_state}
                               </td>
                             </tr>
