@@ -33,7 +33,7 @@ function Header() {
       {user ? (
         <nav>
           <span className="home_title">
-            <img className="logo_img" src={LOGO} alt="" />
+            <img className="logo_img" src={LOGO} alt="LOGO" />
           </span>
           <ul className="allUl">
             <li>
@@ -125,8 +125,7 @@ function Header() {
       ) : (
         <nav>
           <span className="home_title">
-            <i className="uil uil-glass-martini" />
-            桌游派對
+            <img className="logo_img" src={LOGO} alt="LOGO" />
           </span>
           <ul className="allUl">
             <li>
