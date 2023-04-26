@@ -8,6 +8,11 @@
   transition: 0.3s;
 }
 
+.logo_img {
+  width: 147px;
+  height: 80px;
+}
+
 .home_header {
   width: 100%;
   height: 80px;

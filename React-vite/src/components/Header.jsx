@@ -4,8 +4,8 @@ import "./header.css";
 import "./header_login.css";
 import useAuthContext from "../context/AuthContext";
 // import head from "./img/head.jpg";
-import loaDing from "/src/loading.gif"
-
+import loaDing from "/src/loading.gif";
+import LOGO from "./img/LOGO.png";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,7 +21,11 @@ function Header() {
   }
 
   if (loading) {
-    return <div className="center"><img src={loaDing} alt="" /></div>;
+    return (
+      <div className="center">
+        <img src={loaDing} alt="" />
+      </div>
+    );
   }
 
   return (
@@ -29,22 +33,17 @@ function Header() {
       {user ? (
         <nav>
           <span className="home_title">
-            <i className="uil uil-glass-martini" />
-            同樂樂
+            <img className="logo_img" src={LOGO} alt="" />
           </span>
           <ul className="allUl">
             <li>
               <a href="/">聚會活動</a>
             </li>
             <li>
-              <a href="/notify">
-                通知
-              </a>
+              <a href="/notify">通知</a>
             </li>
             <li>
-              <a href="/gpt">
-                AI客服
-              </a>
+              <a href="/gpt">AI客服</a>
             </li>
             <li>
               <a href="/guide">指南</a>
@@ -93,7 +92,7 @@ function Header() {
                 </a>
               </li>
               <li className="mobile-li">
-                <a className="underline" onClick={logout} >
+                <a className="underline" onClick={logout}>
                   登出
                 </a>
               </li>
@@ -123,7 +122,6 @@ function Header() {
             </ul>
           </div>
         </nav>
-
       ) : (
         <nav>
           <span className="home_title">
@@ -135,14 +133,10 @@ function Header() {
               <a href="/">所有活動</a>
             </li>
             <li>
-              <a href="/notify">
-                通知
-              </a>
+              <a href="/notify">通知</a>
             </li>
             <li>
-              <a href="/gpt">
-                AI客服
-              </a>
+              <a href="/gpt">AI客服</a>
             </li>
             <li>
               <a href="/guide">指南</a>
@@ -193,9 +187,7 @@ function Header() {
         </nav>
       )}
     </header>
-
-  )
-
+  );
 }
 
 export default Header;

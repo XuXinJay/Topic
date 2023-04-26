@@ -10,21 +10,18 @@ import taoyuan from "./image/桃園.jpg";
 import kaohsiung from "./image/高雄.jpg";
 
 // 輪播圖
-import slide1 from "./image/slide1.jpg";
-import slide2 from "./image/slide2.jpg";
-import slide3 from "./image/slide3.jpg";
+import slide1 from "./image/01.jpeg";
+import slide2 from "./image/02.jpeg";
+import slide3 from "./image/03.jpeg";
 
 // 首頁內容圖，接好後端即可刪除
-import img1 from "./image/test/img1.jpg";
-import img2 from "./image/test/img2.jpg";
-import img3 from "./image/test/img3.jpg";
 import img4 from "./image/test/img4.jpg";
 
 function Main() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activities, setActivities] = useState([]);
-  const [filterByLocation, setFilterByLocation] = useState('');
-  const [filteredActivities, setFilteredActivities] = useState('');
+  const [filterByLocation, setFilterByLocation] = useState("");
+  const [filteredActivities, setFilteredActivities] = useState("");
 
   const nextSlide = () => {
     if (currentSlide === 2) {
@@ -70,25 +67,13 @@ function Main() {
       <section className="carousel">
         <div className="slideshow-container">
           <div className={`mySlides fade ${currentSlide === 0 ? "show" : ""}`}>
-            <img
-              src={slide1}
-              style={{ width: "100%", height: "auto", overflow: "hidden" }}
-              alt="Slide 1"
-            />
+            <img src={slide1} alt="Slide 1" />
           </div>
           <div className={`mySlides fade ${currentSlide === 1 ? "show" : ""}`}>
-            <img
-              src={slide2}
-              style={{ width: "100%", height: "auto", overflow: "hidden" }}
-              alt="Slide 1"
-            />
+            <img src={slide2} alt="Slide 1" />
           </div>
           <div className={`mySlides fade ${currentSlide === 2 ? "show" : ""}`}>
-            <img
-              src={slide3}
-              style={{ width: "100%", height: "auto", overflow: "hidden" }}
-              alt="Slide 1"
-            />
+            <img src={slide3} alt="Slide 1" />
           </div>
           <div className="test" style={{ textAlign: "center" }}>
             <span className="dot" onClick={() => setCurrentSlide(0)} />
@@ -106,27 +91,27 @@ function Main() {
 
       <h1 className="hottitle">熱門地點</h1>
       <section className="hotbox">
-        <button className="hotplace" onClick={() => handleFilterClick('台北')}>
+        <button className="hotplace" onClick={() => handleFilterClick("台北")}>
           <img className="hotimg" src={taipei101} alt="" />
           <div className="hottext">台北</div>
         </button>
-        <button className="hotplace" onClick={() => handleFilterClick('新北')}>
+        <button className="hotplace" onClick={() => handleFilterClick("新北")}>
           <img className="hotimg" src={newTaipei} alt="" />
           <div className="hottext">新北</div>
         </button>
-        <button className="hotplace" onClick={() => handleFilterClick('桃園')}>
+        <button className="hotplace" onClick={() => handleFilterClick("桃園")}>
           <img className="hotimg" src={taoyuan} alt="" />
           <div className="hottext">桃園</div>
         </button>
-        <button className="hotplace" onClick={() => handleFilterClick('台中')}>
+        <button className="hotplace" onClick={() => handleFilterClick("台中")}>
           <img className="hotimg" src={taichung} alt="" />
           <div className="hottext">台中</div>
         </button>
-        <button className="hotplace" onClick={() => handleFilterClick('台南')}>
+        <button className="hotplace" onClick={() => handleFilterClick("台南")}>
           <img className="hotimg" src={tainan} alt="" />
           <div className="hottext">台南</div>
         </button>
-        <button className="hotplace" onClick={() => handleFilterClick('高雄')}>
+        <button className="hotplace" onClick={() => handleFilterClick("高雄")}>
           <img className="hotimg" src={kaohsiung} alt="" />
           <div className="hottext">高雄</div>
         </button>
@@ -148,7 +133,6 @@ function Main() {
             <div className="grid-box">
               <div className="grid-container">
                 {activitiesToShow.map((activity) => {
-
                   return (
                     <a
                       className="grid-item"
@@ -359,7 +343,12 @@ function Main() {
             <div className="grid-box">
               <div className="grid-container">
                 {activities.map((activity) => {
-                  if (activity.movie === 0 && activity.sports === 0 && activity.board_game === 0 && activity.dine_together === 0) {
+                  if (
+                    activity.movie === 0 &&
+                    activity.sports === 0 &&
+                    activity.board_game === 0 &&
+                    activity.dine_together === 0
+                  ) {
                     return (
                       <a
                         className="grid-item"
