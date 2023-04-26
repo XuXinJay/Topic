@@ -212,8 +212,8 @@
 
 .notify_table {
   width: 100%;
-  border-collapse: collapse; /* 合併邊框 */
-  border-spacing: 0; /* 設置元素間距為 0，以防止邊框重疊 */
+  border-collapse: collapse;
+  border-spacing: 0;
   border: 1px solid #ccc;
 }
 
@@ -221,9 +221,15 @@
   background-color: #f7c242;
 }
 
+.notify_tbody_border_RED {
+  border: 1px solid #ccc;
+  padding: 5.5px;
+  color: #FF4500 ;
+}
+
 .notify_tbody_border {
   border: 1px solid #ccc;
-  padding: 5.5px; /* 添加內邊距 */
+  padding: 5.5px;
 }
 
 .rc-pagination-item {
@@ -234,4 +240,8 @@
   text-align: center;
   margin-right: 2.5px;
   margin-left: 2.5px;
+}
+
+.rc-pagination-item:hover {
+  cursor: pointer;
 }

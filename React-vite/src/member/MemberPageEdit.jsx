@@ -21,18 +21,18 @@ function MemberPageEdit() {
     const memberInfo_required = {
       姓名: memberInfo?.name || '',
       電子郵件: memberInfo?.email || '',
-      birth:memberInfo?.member_birth,
+      birth: memberInfo?.member_birth,
     }
-    for(let key in memberInfo_required){
-      if(memberInfo_required[key].trim() === ''){
+    for (let key in memberInfo_required) {
+      if (memberInfo_required[key].trim() === '') {
         alert(`${key}的內容不得為空值`);
         return;
       }
     }
-    if(memberInfo_required.birth){
+    if (memberInfo_required.birth) {
       const birthDate = new Date(memberInfo_required.birth);
       const today = new Date();
-      if(birthDate >= today){
+      if (birthDate >= today) {
         alert("出生日期不得大於目前時間");
         return;
       }
@@ -54,8 +54,20 @@ function MemberPageEdit() {
   if (loading) {
     return <div className="center"><img src={loaDing} alt="" /></div>;
   }
-  console.log(memberInfo);
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const imageData = reader.result;
+      // console.log(reader.result)
+      setMemberInfo({
+        ...memberInfo,
+        member_avatar: imageData,
+      })
+    };
+  };
 
   return user ? (
     <div className="member-body">
@@ -63,8 +75,11 @@ function MemberPageEdit() {
       <form>
         <div className="member-intro">
           <label className=" member-photo clickable">
-          <input type="file" className="photo-none" />
-            <p>＋</p>
+            <input
+              type="file"
+              className="photo-none"
+              onChange={handleImageUpload} />
+            <p>+</p>
           </label>
           <div style={{ textAlign: "left" }}>
             <span>姓名：</span>
@@ -174,12 +189,12 @@ function MemberPageEdit() {
               <label style={{ position: "relative" }}>性　　別：</label>
               <div style={{ display: "inline" }}>
 
-                <select name="member_sex" 
-                      
-                  onChange={(e) => 
-                  setMemberInfo({ 
-                    ...memberInfo, 
-                    member_sex: e.target.value 
+                <select name="member_sex"
+
+                  onChange={(e) =>
+                    setMemberInfo({
+                      ...memberInfo,
+                      member_sex: e.target.value
                     })}>
                   <option value="男">男</option>
                   <option value="女">女</option>
