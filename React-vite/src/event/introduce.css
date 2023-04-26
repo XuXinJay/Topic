@@ -22,6 +22,7 @@
   border-radius: 20px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   height: 150px;
+  margin-bottom: 20px;
 }
 
 .event_introduce .event_container_123 > div > img {
@@ -54,18 +55,42 @@
   flex-direction: column;
 }
 
-.event_page-check button {
+.event_page-check_pass {
   margin: 1rem;
-  background-color: #ffc107;
   width: 80%;
   text-align: center;
   border: none;
   border-radius: 10px;
   padding: 5px;
-  font-size: large;
+  font-size: medium;
   margin-right: 0.5rem;
+  border: 1px solid #36bf36;
+  color: #36bf36;
 }
 
-.event_page-check-btn:hover {
+.event_page-check_refuse {
+  margin: 1rem;
+  width: 80%;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: medium;
+  margin-right: 0.5rem;
+  border: 1px solid #ff4d00;
+  color: #ff4d00;
+}
+
+
+.event_page-check_pass:hover {
   cursor: pointer;
+  color: white;
+  background-color: #36bf36;
+
+}
+.event_page-check_refuse:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #ff4d00;
+
 }

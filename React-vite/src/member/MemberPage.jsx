@@ -24,7 +24,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/organizeActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setorganizeActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -38,7 +38,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/joinActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setjoinActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -52,7 +52,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/favoriteActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setfavoriteActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -60,6 +60,34 @@ function MemberPage() {
     }
     getActivity();
   }, []);
+
+
+
+
+
+
+  
+
+
+  // const handleDelete = async () => {
+  //   try {
+  //     const response = await axios.delete(`api/favoriteActivities/${user.id}`);
+  //     console.log(response.data);
+  //     // update the state after deleting the item
+  //     setfavoriteActivities(
+  //       favorite_activities.filter((activity) => activity.id !== user.id)
+  //     );
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  
+
+
+
+
+
+
 
 
 
@@ -223,8 +251,11 @@ function MemberPage() {
 
 
           {organize_activities.map((activity) => {
-
-            return (
+            // console.log(user.id);
+            // console.log(organize_activities[2].id);
+            // console.log(activity.id);
+            if(user.id === activity.id){
+            return  (
               <div className="organise-content">
                 <div>
                   <img src={design} className="organise-photo" />
@@ -269,8 +300,10 @@ function MemberPage() {
                 </div>
 
               </div>
+              
 
             );
+          }
           })}
         </form>
         {/* organise_event tab end */}
@@ -319,7 +352,7 @@ function MemberPage() {
 
         <form className="member-form-content">
           {join_activities.map((activity) => {
-
+            if(user.id === activity.id){
             return (
               <div className="campaign-content" >
                 <div>
@@ -372,6 +405,7 @@ function MemberPage() {
                 </div>
               </div>
             );
+            }
           })}
         </form>
         {/* campaign tab end */}
@@ -442,7 +476,7 @@ function MemberPage() {
 
 
           {favorite_activities.map((activity) => {
-
+            if(user.id === activity.id){
             return (
               <div className="collect-content">
                 <div>
@@ -484,11 +518,13 @@ function MemberPage() {
                     type="button"
                     defaultValue="取消收藏"
                     className="collect-cancel"
+                    // onClick={handleDelete}
                   />
                 </div>
               </div>
 
             );
+            }
           })}
 
 

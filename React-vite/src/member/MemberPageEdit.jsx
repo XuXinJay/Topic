@@ -196,6 +196,7 @@ function MemberPageEdit() {
                       ...memberInfo,
                       member_sex: e.target.value
                     })}>
+                  <option value="無">無</option>
                   <option value="男">男</option>
                   <option value="女">女</option>
                   <option value="其他">其他</option>
