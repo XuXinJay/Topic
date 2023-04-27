@@ -141,6 +141,17 @@
   margin-bottom: 50px;
 }
 
+.event_page-button2 {
+  background-color: lightslategrey;
+  width: 50%;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: large;
+  margin-bottom: 50px;
+}
+
 .event_page-button:hover {
   cursor: pointer;
   transform: scale(1.1);
@@ -190,6 +201,15 @@
 .event_page-button-message {
   margin: 20px auto;
   background-color: #ffc107;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.event_page-button-message2 {
+  margin: 20px auto;
+  background-color: lightslategrey;
   border: none;
   border-radius: 10px;
   padding: 10px;
