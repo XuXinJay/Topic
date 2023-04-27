@@ -34,20 +34,15 @@ class JoinActivityController extends Controller
         $joinState = $request->input('join_state');
         $user = joinActivities::where('activity_id', $activity_id)
             ->where('member_id', $member_id)
-            // ->get()
-            // ->limit(1)
-            // ->firstOrFail()
-            ->update(['join_state' => $joinState])
-            ->where('member_id', $member_id)
-            ->where('activity_id', $activity_id);
+            ->update(['join_state' => $joinState]);
+
         if (!$user) {
             return response()->json(["error" => "找不到對應的使用者"], 404);
         }
 
-        // $user->join_state = $joinState;
-        // $user->save();
 
-        return response()->json($user);
+
+        return response()->json(["message" => "審核狀態已更新成功"]);
     }
 
     public function reviewActivities($activity_id)

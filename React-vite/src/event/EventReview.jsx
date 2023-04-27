@@ -54,7 +54,7 @@ function EventReview() {
         },
       });
       console.log(res.data);
-      // window.location.href = `/review/${activity_id}`;
+      window.location.href = `/review/${activityId}`;
     } catch (err) {
       console.log(err.response.data);
     }
