@@ -261,14 +261,10 @@
   align-items: center;
   padding: 10px 20px;
   font-size: medium;
-<<<<<<< HEAD
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 2;
   background-color: #f5f5f5;
-=======
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
->>>>>>> 793f358dc26772794a2dbbfef5bed15438c54ff9
 }
 
 .organise-photo {
@@ -311,13 +307,9 @@
   align-items: center;
   padding: 10px 20px;
   font-size: medium;
-<<<<<<< HEAD
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   z-index: 2;
   background-color: #f5f5f5;
-=======
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
->>>>>>> 793f358dc26772794a2dbbfef5bed15438c54ff9
 }
 
 .campaign-photo {
@@ -414,13 +406,9 @@
   align-items: center;
   padding: 10px 20px;
   font-size: medium;
-<<<<<<< HEAD
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   z-index: 2;
   background-color: #f5f5f5;
-=======
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
->>>>>>> 793f358dc26772794a2dbbfef5bed15438c54ff9
 }
 
 .collect-photo {
