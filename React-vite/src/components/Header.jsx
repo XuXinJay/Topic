@@ -147,6 +147,9 @@ function Header() {
             <li>
               <a href="/about">關於我們</a>
             </li>
+            <li>
+              <DarkMode />
+            </li>
           </ul>
           <div className="hamburger-icon" onClick={toggleMobileMenu}>
             <i id="menubtn" className="uil uil-bars menubtn" />
