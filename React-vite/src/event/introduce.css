@@ -23,6 +23,7 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   height: 150px;
   margin-bottom: 20px;
+  min-width: 360px;
 }
 
 .event_introduce .event_container_123 > div > img {

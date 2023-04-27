@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ActivityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,5 +19,7 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
+
+Route::get('/activities/{activity_id}/timediff', [ActivityController::class,'timediff']);
 
 

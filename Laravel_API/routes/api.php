@@ -32,9 +32,13 @@ Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivi
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
+Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityController::class,'update']);
+
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
 
 Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
+
+Route::get('/activities/{activity_id}/timediff', [ActivityController::class,'timediff']);
 
 Route::get('/joinActivities/{activity_id}', [JoinActivityController::class,'reviewActivities']);
 
