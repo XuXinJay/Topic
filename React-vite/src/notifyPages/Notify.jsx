@@ -271,7 +271,7 @@ function Notify() {
           </div>
         </div>
       ) : (
-        <div className="container">
+        <div className="notify_container">
           <div className="content">
             <input
               className="radio"

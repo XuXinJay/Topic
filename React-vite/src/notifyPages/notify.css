@@ -121,6 +121,7 @@
 .content .text-content {
   width: 100%;
   height: 700px;
+  min-width: 320px;
 }
 
 .content .text-content .title {
