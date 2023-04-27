@@ -53,7 +53,7 @@
   margin: 0 20px;
 }
 
-.memberButton>i {
+.memberButton > i {
   margin: 0 0 0 5px;
 }
 
@@ -104,7 +104,7 @@
   width: 100%;
 }
 
-.activity_main_3>* {
+.activity_main_3 > * {
   margin: 0 auto;
 }
 
@@ -113,7 +113,7 @@
   width: 80%;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .gap {
@@ -164,7 +164,7 @@
   border: 1px solid black;
 }
 
-.hostName_3>img {
+.hostName_3 > img {
   border: 1px solid black;
   width: 50px;
   height: 50px;
@@ -178,7 +178,7 @@
   border: 1px solid black;
 }
 
-.place>span>a {
+.place > span > a {
   text-decoration: none;
   color: black;
 }
@@ -195,7 +195,7 @@
   margin: auto;
 }
 
-.uploadImage>img {
+.uploadImage > img {
   text-align: center;
   width: 80%;
   height: 40vh;
@@ -212,7 +212,7 @@
   margin: 10px auto;
 }
 
-.activityText_3>textarea {
+.activityText_3 > textarea {
   display: block;
   margin: 30px auto;
   padding-left: 15px;
