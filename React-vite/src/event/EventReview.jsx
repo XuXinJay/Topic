@@ -10,6 +10,7 @@ function EventReview() {
   const { user, loading } = useAuthContext();
   const [joinActivities, setJoinActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
+  // const [join_activities, setjoinActivities] = useState([]);
   const { activity_id } = useParams();
 
   useEffect(() => {
@@ -34,6 +35,81 @@ function EventReview() {
 
 
 
+  // ------------------------------------------------------------------確認按鈕
+
+
+  useEffect(() => {
+    setMemberInfo(user);
+  }, [user]);
+  async function handleCheckPass(id) {
+    try {
+      const updateJoinState = {
+        ...joinActivities,
+        join_state: "已通過",
+      };
+      const res = await axios.post("/api/joinActivities/update", updateJoinState, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(res.data);
+      // window.location.href = `/review/${activity_id}`;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+  handleCheckPass();
+
+
+
+
+
+
+
+
+
+
+
+  // ------------------------------------------------------------------拒絕按鈕
+
+
+  // useEffect(() => {
+  //   async function handleCheckPass() {
+  //     try {
+  //       const updateJoinState ={
+  //         ...memberInfo,
+  //         join_state:"已拒絕",
+  //       };
+  //       const res = await axios.put("/api/joinActivities", updateJoinState, {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //       });
+  //       console.log(res.data);
+  //       window.location.href = '/member';
+  //     } catch (err) {
+  //       console.log(err.response.data);
+  //     }
+  //   }
+  //   getActivity();
+  // }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -52,7 +128,7 @@ function EventReview() {
       {
         //  console.log(join_activities);
         joinActivities.map((activity) => {
-          if (user.id !== activity.id) {
+          if (user.id !== activity.id && activity.join_state === "審核中") {
             return (
               <React.Fragment>
 
@@ -73,7 +149,7 @@ function EventReview() {
                     </div>
 
                     <div className="event_page-check">
-                      <button className="event_page-check_pass">確認</button>
+                      <input type="button" defaultValue="確認" className="event_page-check_pass" onClick={handleCheckPass(activity.activity_id)} />
                       <button className="event_page-check_refuse">拒絕</button>
                     </div>
                   </div>
