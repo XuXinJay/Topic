@@ -1,19 +1,13 @@
-
 /* ----------------------------- footer ----------------------------- */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    z-index: 0;
-    font-family: 'Poppins', sans-serif;
-    transition: 0.3s;
-  }
-
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+  font-family: "Poppins", sans-serif;
+}
 
 .footer {
-    height: 250px;
-    background-color: #F7C242;
-  }
-  
-  
-  
+  height: 250px;
+  background-color: #f7c242;
+}

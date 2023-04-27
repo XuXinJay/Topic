@@ -17,7 +17,6 @@
 /* 主設定 */
 * {
   box-sizing: border-box;
-  transition: 0.3s;
   text-decoration: none;
 }
 
@@ -25,6 +24,9 @@
 .event_page-container {
   max-width: 968px;
   margin: auto;
+  color: var(--body_color);
+  display: flex;
+  flex-direction: column;
 }
 
 .event_page-allActivity {
@@ -35,7 +37,8 @@
   width: 80%;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  color: var(--body_color);
 }
 
 .event_page-allActivity-down {
@@ -46,7 +49,7 @@
   width: 80%;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .event_page-gap {
@@ -86,13 +89,12 @@
   align-items: center;
 }
 
-.event_page-hostName>img {
+.event_page-hostName > img {
   border: 1px solid black;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
-
 }
 
 .event_page-uploadImage {
@@ -100,7 +102,7 @@
   text-align: center;
 }
 
-.event_page-uploadImage>img {
+.event_page-uploadImage > img {
   width: 70%;
   height: 40vh;
   border-radius: 20px;
@@ -112,7 +114,7 @@
   margin: 10px auto;
 }
 
-.event_page-activityText>textarea {
+.event_page-activityText > textarea {
   display: block;
   margin: 20px auto;
   padding-left: 20px;
@@ -155,7 +157,7 @@
 .event_page-button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .event_page-grid-container {

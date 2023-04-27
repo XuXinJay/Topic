@@ -20,7 +20,7 @@
   padding: 15px;
   background-color: #f5f5f5;
   border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   height: 150px;
   margin-bottom: 20px;
   min-width: 360px;
@@ -82,16 +82,13 @@
   color: #ff4d00;
 }
 
-
 .event_page-check_pass:hover {
   cursor: pointer;
   color: white;
   background-color: #36bf36;
-
 }
 .event_page-check_refuse:hover {
   cursor: pointer;
   color: white;
   background-color: #ff4d00;
-
 }
