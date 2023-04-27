@@ -10,9 +10,9 @@ import taoyuan from "./image/桃園.jpg";
 import kaohsiung from "./image/高雄.jpg";
 
 // 輪播圖
-import slide1 from "./image/01.jpeg";
-import slide2 from "./image/02.jpeg";
-import slide3 from "./image/03.jpeg";
+import slide1 from "./image/01.png";
+import slide2 from "./image/02.png";
+import slide3 from "./image/03.png";
 
 // 首頁內容圖，接好後端即可刪除
 import img4 from "./image/test/img4.jpg";
