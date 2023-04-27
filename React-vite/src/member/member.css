@@ -6,7 +6,6 @@ body {
   background-color: #f5f5f5;
   text-align: center;
   position: relative;
-  /* border: 1px orange solid; */
   width: fit-content;
   margin-top: 7rem;
   min-height: 800px;
@@ -16,6 +15,7 @@ body {
   padding-top: 1rem;
   padding-bottom: 4rem;
   margin-bottom: 4rem;
+  min-width: 745.8px;
 }
 
 /* --------------------------- 會員大頭貼、姓名及生日（上面區塊）-start --------------------------- */
@@ -135,6 +135,13 @@ body {
   height: 500px;
   overflow: overlay;
   margin-top: 1rem;
+
+}
+
+.member-form-content > p {
+  position: absolute;
+  z-index: -1;
+  margin: 20px 35%;
 }
 
 .member-form-content::-webkit-scrollbar {
@@ -260,6 +267,9 @@ body {
   padding: 10px 20px;
   font-size: medium;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  background-color: #f5f5f5;
 }
 
 .organise-photo {
@@ -303,6 +313,8 @@ body {
   padding: 10px 20px;
   font-size: medium;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  background-color: #f5f5f5;
 }
 
 .campaign-photo {
@@ -400,6 +412,8 @@ body {
   padding: 10px 20px;
   font-size: medium;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  background-color: #f5f5f5;
 }
 
 .collect-photo {
