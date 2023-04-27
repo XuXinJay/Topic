@@ -1,5 +1,3 @@
-/* Create by Tivotal */
-
 /* Google Fonts(Poppins) */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
@@ -19,6 +17,7 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 1rem;
+  background-color: var(--body_background_color);
 }
 
 /* ------------------------ 導覽列補充 ---------------------- */
@@ -42,14 +41,16 @@
   min-width: 380px;
   border-radius: 20px;
 }
+
 .container {
   max-width: 968px;
   width: 100%;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: var(--body_background_color);
   border-radius: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   margin-top: 6rem;
+  color: var(--body_color);
 }
 
 .container .heading {
@@ -107,12 +108,12 @@
   border-radius: 10px;
 }
 
-#user:checked ~ .color_box {
+#user:checked~.color_box {
   transform: translateX(90px);
   transition: 0.4s;
 }
 
-#info:checked ~ .color_box {
+#info:checked~.color_box {
   transform: translateX(180px);
   transition: 0.4s;
 }
@@ -152,16 +153,16 @@
   transition: 0.5s;
 }
 
-#home:checked ~ .text-content .home,
-#chat:checked ~ .text-content .chat,
-#user:checked ~ .text-content .user,
-#info:checked ~ .text-content .info {
+#home:checked~.text-content .home,
+#chat:checked~.text-content .chat,
+#user:checked~.text-content .user,
+#info:checked~.text-content .info {
   display: block;
 }
 
-#chat:checked ~ .text-content .home,
-#user:checked ~ .text-content .home,
-#info:checked ~ .text-content .home {
+#chat:checked~.text-content .home,
+#user:checked~.text-content .home,
+#info:checked~.text-content .home {
   display: none;
 }
 
@@ -219,12 +220,13 @@
 
 .notify_table_thead {
   background-color: #f9da91;
+  color: black;
 }
 
 .notify_tbody_border_RED {
   border: 1px solid #ccc;
   padding: 5.5px;
-  color: #FF4500 ;
+  color: #FF4500;
 }
 
 .notify_tbody_border {

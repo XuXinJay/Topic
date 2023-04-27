@@ -5,7 +5,6 @@
   padding: 0;
   z-index: 0;
   font-family: "Poppins", sans-serif;
-  transition: 0.3s;
 }
 
 .home_header {
@@ -36,7 +35,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fcfcfc;
+  background-color: var(--body_background_color);
   height: 80px;
   width: 100%;
   padding: 10px 20px;
@@ -61,7 +60,7 @@ nav {
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: var(--body_color);
 }
 
 .home_activity {
@@ -74,7 +73,7 @@ nav {
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: var(--body_color);
   margin-right: 1rem;
 }
 
@@ -100,7 +99,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: black;
+  color: var(--body_color);
   text-decoration: none;
   font-size: 1rem;
 }
@@ -119,7 +118,7 @@ nav ul li a {
 .hamburger-icon div {
   width: 24px;
   height: 3px;
-  background-color: black;
+  background-color: var(--body_background_color);
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -170,7 +169,7 @@ nav ul li a {
   top: 80px;
   right: 0;
   width: 150px;
-  background-color: #fcfcfc;
+  background-color: var(--body_background_color);
   border-radius: 0px 0px 0px 20px;
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
 }
@@ -216,7 +215,7 @@ nav ul li a {
   position: absolute;
   right: 0;
   width: 200px;
-  background-color: #fcfcfc;
+  background-color: var(--body_background_color);
   border-radius: 0px 0px 0px 20px;
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
 }

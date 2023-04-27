@@ -29,9 +29,12 @@ h2 {
 
 .row {
   display: flex;
+
 }
 .row .col {
   flex: 1;
+  background-color: var(--body_background_color);
+  color: var(--body_color);
 }
 
 .tabs {
@@ -42,7 +45,7 @@ h2 {
 
 .tab {
   width: 100%;
-  color: white;
+  color: #F5F5F5;
   overflow: hidden;
 }
 .tab-label {

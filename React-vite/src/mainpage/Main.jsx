@@ -63,7 +63,7 @@ function Main() {
   const activitiesToShow = filterByLocation ? filteredActivities : activities;
 
   return (
-    <main>
+    <main className="main_pages_j">
       <section className="carousel">
         <div className="slideshow-container">
           <div className={`mySlides fade ${currentSlide === 0 ? "show" : ""}`}>

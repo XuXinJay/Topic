@@ -21,7 +21,6 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  transition: 0.3s;
 }
 
 /* 導覽列的設定 */
@@ -74,7 +73,6 @@
   align-items: center;
   height: 50px;
   text-align: center;
-  background-color: #dcdcdc;
   position: sticky;
   top: 80px;
   z-index: 10;

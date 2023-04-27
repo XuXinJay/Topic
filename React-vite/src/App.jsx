@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import "./App.css"
 import Gpt from "./pages/Gpt.jsx";
 import Login from "./Loginpages/Login.jsx";
 import Member from "./pages/Member.jsx";

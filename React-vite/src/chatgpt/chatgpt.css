@@ -21,6 +21,16 @@
   margin-bottom: 1rem;
 }
 
+.scrollbar-container {
+  background-color: var(--body_background_color);
+  color: var(--body_color);
+  transition: 0s;
+}
+
+.cs-message-input {
+  background-color: var(--body_background_color) !important;
+}
+
 /* ------------------------ 導覽列補充 ---------------------- */
 
 .home_header {

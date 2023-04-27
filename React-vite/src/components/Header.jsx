@@ -6,6 +6,7 @@ import useAuthContext from "../context/AuthContext";
 // import head from "./img/head.jpg";
 import loaDing from "/src/loading.gif";
 import LOGO from "./img/LOGO.png";
+import DarkMode from "./DarkMode/DarkMode";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,6 +51,9 @@ function Header() {
             </li>
             <li>
               <a href="/about">關於我們</a>
+            </li>
+            <li>
+              <DarkMode />
             </li>
           </ul>
           <div className="hamburger-icon" onClick={toggleMobileMenu}>
