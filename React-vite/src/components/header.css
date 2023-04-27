@@ -47,7 +47,6 @@ nav {
   background-color: #fcfcfc;
   height: 80px;
   width: 100%;
-  padding: 10px 20px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -61,7 +60,7 @@ nav {
 }
 
 .home_user {
-  border: 3px solid #f7c242;
+  border: 2.5px solid #f7c242;
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -84,13 +83,11 @@ nav ul {
 nav ul li {
   display: inline-block;
   list-style: none;
-  margin-left: 0.5rem;
 }
 
 nav ul li a {
   color: black;
   text-decoration: none;
-  font-size: 1rem;
 }
 
 .uil-user-circle {
@@ -105,10 +102,7 @@ nav ul li a {
   cursor: pointer;
 }
 .hamburger-icon div {
-  width: 24px;
-  height: 3px;
   background-color: black;
-  margin: 6px 0;
   transition: 0.4s;
 }
 
@@ -140,6 +134,11 @@ nav ul li a {
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
 }
 
+.dark_btn {
+  margin-right: 0.3rem;
+  display: block;
+}
+
 /* 配合React */
 .mobile-menu.open {
   display: block;
@@ -156,11 +155,15 @@ nav ul li a {
 }
 
 @media screen and (max-width: 890px) {
-  .home_header nav .allUl {
+  .home_header nav .allUl .allUl_li {
     display: none;
   }
 
   .home_user {
+    display: none;
+  }
+
+  .dark_btn_out {
     display: none;
   }
 

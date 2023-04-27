@@ -118,7 +118,7 @@ function Main() {
       </section>
 
       <section className="tabs_box">
-        <div className="tabs">
+        <div className="main_tabs">
           <input
             type="radio"
             className="tabs_radio"

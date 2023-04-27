@@ -309,6 +309,7 @@
   outline-style: none;
   border: 0px;
   background-color: transparent;
+  color: var(--body_color);
 }
 
 /* ---------------- 審核狀態 campaign-state start ---------------- */

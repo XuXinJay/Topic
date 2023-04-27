@@ -5,8 +5,7 @@
 }
 
 body {
-  color: #2c3e50;
-  background: #ecf0f1;
+  background-color: var(--body_background_color);
 }
 
 .test1 > h1 {

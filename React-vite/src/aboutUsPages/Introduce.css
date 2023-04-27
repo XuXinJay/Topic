@@ -1,5 +1,4 @@
 .introduce {
-  height: 2000px;
   width: 800px;
 }
 
@@ -14,7 +13,7 @@
   background-color: var(--body_background_color);
   border-radius: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  margin-top: 3rem;
+  margin-top: 2rem;
   color: var(--body_color);
 }
 
@@ -38,8 +37,8 @@
 .introduce_des {
   /* border-radius: 20px; */
   /* border: gray 1px solid; */
-  margin-top: 3rem;
-  height: 1000px;
+  /* margin-top: 1.5rem; */
+  height: 750px;
 }
 
 .introduce_1 {

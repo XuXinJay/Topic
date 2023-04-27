@@ -161,7 +161,7 @@ main {
   margin-top: 2rem;
 }
 
-.tabs {
+.main_tabs {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -183,7 +183,6 @@ main {
 .tabs_content {
   order: 1;
   width: 100%;
-  border-bottom: 3px solid #dddddd;
   line-height: 1.5;
   font-size: 0.9em;
   display: none;

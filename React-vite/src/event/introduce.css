@@ -1,3 +1,9 @@
+.event_all_box {
+  background-color: var(--body_background_color);
+  display: flex;
+  justify-content: center;
+}
+
 .event_introduce {
   width: 100%;
   display: flex;
@@ -8,8 +14,14 @@
 
 .event_introduce_box {
   height: 1000px;
-  margin-top: 7rem;
-  margin-bottom: 1rem;
+  margin-top: 5rem;
+  background-color: var(--body_background_color);
+}
+
+.event_introduce_box_title {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--body_color);
 }
 
 .event_introduce .event_container_123 {
@@ -18,12 +30,13 @@
   max-width: 968px;
   width: 50%;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: var(--body_background_color);
   border-radius: 20px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   height: 150px;
   margin-bottom: 20px;
   min-width: 360px;
+  color: var(--body_color);
 }
 
 .event_introduce .event_container_123 > div > img {
