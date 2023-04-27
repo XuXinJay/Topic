@@ -247,20 +247,15 @@ function MemberPage() {
           發起活動
         </label>
         <form className="member-form-content">
-
-
-
+          <p>未發起任何活動</p>
           {organize_activities.map((activity) => {
-            // console.log(user.id);
-            // console.log(organize_activities[2].id);
-            // console.log(activity.id);
             if(user.id === activity.id){
             return  (
               <div className="organise-content">
                 <div>
                   <img src={design} className="organise-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -281,9 +276,7 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>
-                    活動日期：
-                  </span>
+                  <span>活動日期：</span>
                   <input
                     type="datetime"
                     name="organiseName"
@@ -351,6 +344,8 @@ function MemberPage() {
 
 
         <form className="member-form-content">
+        <p>未參加任何活動</p>
+
           {join_activities.map((activity) => {
             if(user.id === activity.id){
             return (
@@ -358,7 +353,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="campaign-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -378,9 +373,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="campaign-sub"
                     size={10}
@@ -473,7 +468,7 @@ function MemberPage() {
           收藏
         </label>
         <form className="member-form-content">
-
+        <p>未收藏任何活動</p>
 
           {favorite_activities.map((activity) => {
             if(user.id === activity.id){
@@ -482,7 +477,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="collect-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -503,9 +498,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative", left: 7 }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     name="collectName"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="collect-sub"
