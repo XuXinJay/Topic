@@ -3,8 +3,7 @@ import axios from "../api/axios";
 import "./member.css";
 import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/AuthContext";
-import memberPhoto from "./img/member-photo.gif";
-import design from "./img/design.jpg";
+
 import loaDing from "../loading.gif";
 
 
@@ -66,26 +65,7 @@ function MemberPageEdit() {
         ...memberInfo,
         member_avatar: imageData,
       })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
     };
   };
 
