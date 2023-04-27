@@ -255,7 +255,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="organise-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -276,9 +276,7 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>
-                    活動日期：
-                  </span>
+                  <span>活動日期：</span>
                   <input
                     type="datetime"
                     name="organiseName"
@@ -355,7 +353,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="campaign-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -375,9 +373,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="campaign-sub"
                     size={10}
@@ -479,7 +477,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="collect-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -500,9 +498,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative", left: 7 }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     name="collectName"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="collect-sub"
