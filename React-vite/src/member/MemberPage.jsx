@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./member.css";
 import useAuthContext from "../context/AuthContext";
-import memberPhoto from "./img/member-photo.gif";
+
 import design from "./img/design.jpg";
 import loaDing from "../loading.gif";
 import axios from "../api/axios";
@@ -533,7 +533,7 @@ function MemberPage() {
       </div >
     </div >
   ) : (
-    <Navidate to="/" />
+    <Navigate to="/" />
   );
 }
 
