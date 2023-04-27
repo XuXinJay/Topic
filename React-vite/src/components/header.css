@@ -67,8 +67,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 135px;
-  font-size: 1.2rem;
+  min-width: 120px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
@@ -91,7 +91,7 @@ nav ul li {
 nav ul li a {
   color: black;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .uil-user-circle {
@@ -114,7 +114,7 @@ nav ul li a {
 }
 
 .menubtn {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .underline {
@@ -135,7 +135,7 @@ nav ul li a {
   position: absolute;
   top: 60px;
   right: 0;
-  width: 200px;
+  width: 150px;
   background-color: #fcfcfc;
   border-radius: 0px 0px 0px 20px;
   box-shadow: 0 16px 16px rgba(0, 0, 0, 0.1);
