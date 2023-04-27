@@ -41,13 +41,14 @@ function EventReview() {
   useEffect(() => {
     setMemberInfo(user);
   }, [user]);
-  async function handleCheckPass(id) {
+  async function handleCheckPass(activity_id,id) {
+    const activityId = activity_id;
+    const memberId = id;
     try {
       const updateJoinState = {
-        ...joinActivities,
         join_state: "已通過",
       };
-      const res = await axios.post("/api/joinActivities/update", updateJoinState, {
+      const res = await axios.post(`/api/joinActivities/update/${activityId}/${memberId}`, updateJoinState, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -58,7 +59,7 @@ function EventReview() {
       console.log(err.response.data);
     }
   }
-  handleCheckPass();
+  // handleCheckPass();
 
 
 
@@ -149,7 +150,7 @@ function EventReview() {
                     </div>
 
                     <div className="event_page-check">
-                      <input type="button" defaultValue="確認" className="event_page-check_pass" onClick={handleCheckPass(activity.activity_id)} />
+                      <input type="button" defaultValue="確認" className="event_page-check_pass" onClick={()=>handleCheckPass(activity.activity_id,activity.id)} />
                       <button className="event_page-check_refuse">拒絕</button>
                     </div>
                   </div>

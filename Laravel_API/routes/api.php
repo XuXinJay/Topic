@@ -32,7 +32,7 @@ Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivi
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
-Route::post('/joinActivities/update', [JoinActivityController::class,'update']);
+Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityController::class,'update']);
 
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
 
