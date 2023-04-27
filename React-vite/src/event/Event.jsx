@@ -81,8 +81,8 @@ function Event() {
         </div>
         <div className="event_page-box">
           <div className="event_page-hostName">
-            <img src="" />
-            <p>主辦人名字</p>
+            <img src={eventData[0].member_avatar} />
+            <p>{eventData[0].name}</p>
           </div>
           <div className="place">
             <i className="bi bi-geo-alt-fill" />
@@ -96,8 +96,7 @@ function Event() {
         </div>
         <div className="event_page-uploadImage">
           <img
-            src="https://i1.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/27.jpeg?resize=640%2C479"
-            alt=""
+            src={eventData[0].activity_image}
           />
         </div>
         <div className="event_page-activityText">
@@ -107,7 +106,7 @@ function Event() {
             className="activityName"
             cols={30}
             rows={10}
-            placeholder={123231231231231231231231231231}
+            placeholder={eventData[0].activity_board}
             readOnly
             defaultValue={""}
           />
@@ -117,13 +116,13 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-coin" />
-              <div className="">現金</div>
+              <div className="">{eventData[0].activity_payment}</div>
             </div>
           </div>
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-wallet2" />
-              <div className="">預算</div>
+              <div className="">{eventData[0].activity_budget}</div>
             </div>
           </div>
         </div>
@@ -131,13 +130,13 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-calendar" />
-              <div>2023/04/05</div>
+              <div>{eventData[0].activity_partyTime}</div>
             </div>
           </div>
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-hourglass-split" />
-              <div style={{ color: "red" }}>4:40</div>
+              <div style={{ color: "red" }}>時間差</div>
             </div>
           </div>
         </div>
