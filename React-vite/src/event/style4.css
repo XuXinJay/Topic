@@ -24,6 +24,9 @@
 .event_page-container {
   max-width: 968px;
   margin: auto;
+  color: var(--body_color);
+  display: flex;
+  flex-direction: column;
 }
 
 .event_page-allActivity {
@@ -35,6 +38,7 @@
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  color: var(--body_color);
 }
 
 .event_page-allActivity-down {
@@ -153,7 +157,7 @@
 .event_page-button:hover {
   cursor: pointer;
   transform: scale(1.1);
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .event_page-grid-container {
