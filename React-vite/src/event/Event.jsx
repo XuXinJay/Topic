@@ -136,7 +136,7 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-hourglass-split" />
-              <div style={{ color: "red" }}>時間差</div>
+              <div style={{ color: "red" }}>123</div>
             </div>
           </div>
         </div>
