@@ -38,6 +38,8 @@ Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivi
 
 Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
 
+Route::get('/activities/{activity_id}/timediff', [ActivityController::class,'timediff']);
+
 Route::get('/joinActivities/{activity_id}', [JoinActivityController::class,'reviewActivities']);
 
 Route::get('/notify', [OrganizeActivityController::class,'notify']);
