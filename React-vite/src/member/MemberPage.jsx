@@ -255,7 +255,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="organise-photo" />
                 </div>
-                <div style={{ marginLeft: ".3rem" }}>
+                <div style={{ marginLeft: ".3rem" ,color:"black"}}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -353,7 +353,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="campaign-photo" />
                 </div>
-                <div style={{ marginLeft: ".3rem" }}>
+                <div style={{ marginLeft: ".3rem",color:"black" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -477,7 +477,7 @@ function MemberPage() {
                 <div>
                   <img src={design} className="collect-photo" />
                 </div>
-                <div style={{ marginLeft: ".3rem" }}>
+                <div style={{ marginLeft: ".3rem",color:"black" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
