@@ -54,13 +54,12 @@ function Activity3() {
     window.location.href = '/';
     // .catch(error => console.error(error))
   }
-
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress">1. 活動畫面</div>
-        <div className="progress">2. 細項資料</div>
-        <div className="progress">3. 預覽</div>
+        <div className="progress1">1. 活動畫面</div>
+        <div className="progress2">2. 細項資料</div>
+        <div className="progress3">3. 預覽</div>
       </div>
       <main className="activity_main_3">
         <div className="allActivity">
