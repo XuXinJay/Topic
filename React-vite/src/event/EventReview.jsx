@@ -4,6 +4,7 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "../loading.gif";
 import axios from "../api/axios";
 import { useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function EventReview() {
   const { user, loading } = useAuthContext();
@@ -92,6 +93,8 @@ function EventReview() {
   return user ? (
     <div className="event_introduce_box">
       <h1 className="event_introduce_box_title">活動審核</h1>
+      <br/>
+      <h2>目前無人報名此活動</h2>
       {
         //  console.log(join_activities);
         joinActivities.map((activity) => {
@@ -133,7 +136,7 @@ function EventReview() {
       }
     </div>
   ) : (
-    <Navidate to="/" />
+    <Navigate to="/" />
   );
 }
 
