@@ -22,7 +22,7 @@ function Activity1() {
     { id: 6, icon: '🛍', label: '購物' },
     { id: 7, icon: '🎨', label: '彩繪' },
     { id: 8, icon: '🏋️‍♀️', label: '健身' },
-    { id: 9, icon: '🎬', label: '影集' },
+    { id: 9, icon: '🍲', label: '烹飪' },
     { id: 10, icon: '🚗', label: '旅遊' },
     { id: 11, icon: '🍺', label: '酒吧' },
     { id: 12, icon: '🎵', label: '音樂' },
@@ -73,9 +73,9 @@ function Activity1() {
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress">1. 活動畫面</div>
-        <div className="progress">2. 細項資料</div>
-        <div className="progress">3. 預覽</div>
+        <div className="progress1">1. 活動畫面</div>
+        <div className="progress2">2. 細項資料</div>
+        <div className="progress3">3. 預覽</div>
       </div>
       <main className="activity_main">
         <div className="meetType">
