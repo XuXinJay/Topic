@@ -26,7 +26,7 @@ function Activity1() {
     { id: 10, icon: '🚗', label: '旅遊' },
     { id: 11, icon: '🍺', label: '酒吧' },
     { id: 12, icon: '🎵', label: '音樂' },
-    { id: 13, icon: '🏸', label: '羽球' },
+    { id: 13, icon: '🧺', label: '野餐' },
     { id: 14, icon: '🍻', label: '聚會' }
   ];
 
@@ -102,24 +102,23 @@ function Activity1() {
               accept="image/*"
               className="fileInput"
               required=""
-              Value={defaultImg}
             />
           </label>
           <div className="imageDefault">
             <span className="arrowButton">◀</span>
             <div className="imageBox">
               <img 
-                src="1.jpg" 
+                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360" 
                 alt="1" 
                 onClick={handleImgClick}
               />
               <img 
-                src="2.jpg" 
+                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360" 
                 alt="2" 
                 onClick={handleImgClick}
               />
               <img 
-                src="3.jpg" 
+                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360" 
                 alt="3" 
                 onClick={handleImgClick}
               />
@@ -134,23 +133,21 @@ function Activity1() {
               <input 
                 type="text" 
                 className="activityName" 
-                required=""
                 onChange={handleActivityNameChange}
                 value={activityName}
+                required
               />
             </label>
           </div>
           <textarea
             name=""
             id="activityText"
-            // cols={15}
-            // rows={20}
             placeholder="請簡述活動內容，300字以內"
             className="activityText"
-            required=""
             defaultValue={activityText}
             onChange={handleInputChange}
             maxLength={MAX_LENGTH}
+            required
           />
         </div>
         <div className="buttonControl-one">

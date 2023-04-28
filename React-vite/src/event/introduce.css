@@ -10,6 +10,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 11rem;
 }
 
 .event_introduce_box {
@@ -22,6 +23,7 @@
   font-size: x-large;
   position: relative;
   z-index: -2;
+  color: var(--body_color);
 }
 
 .event_introduce_box_title {
