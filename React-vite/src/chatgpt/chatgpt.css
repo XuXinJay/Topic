@@ -25,6 +25,30 @@
   color: var(--body_color);
   transition: 0s;
 }
+    
+.cs-message-input__content-editor-wrapper,.cs-message-input__content-editor {
+  background-color:#f7c242 !important;
+}
+
+.cs-main-container {
+  border: 1px solid #f7c242 !important;
+}
+
+.cs-chat-container .cs-message-input {
+  border-top: solid 1px #f7c242 !important;
+  border-right: solid 0px #f7c242 !important;
+  border-bottom: solid 0px #f7c242 !important;
+  border-left: solid 0px #f7c242 !important;
+}
+
+.cs-message__content {
+  margin-top: 5px !important;
+  background-color:#fce1a1 !important;
+}
+
+.cs-message--outgoing .cs-message__content {
+  background-color:#f7c242 !important;
+}
 
 .cs-message-input {
   background-color: var(--body_background_color) !important;
