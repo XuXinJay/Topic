@@ -14,6 +14,7 @@ function MemberPage() {
   const [join_activities, setjoinActivities] = useState([]);
   const [favorite_activities, setfavoriteActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
+  
 
   useEffect(() => {
     setMemberInfo(user);
@@ -52,7 +53,6 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/favoriteActivities");
-        // console.log(response.data);
         setfavoriteActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -61,32 +61,19 @@ function MemberPage() {
     getActivity();
   }, []);
 
-
-
-
-
-
+  // ------------------------------------------------------------刪除收藏活動
   
 
-
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(`api/favoriteActivities/${user.id}`);
-  //     console.log(response.data);
-  //     // update the state after deleting the item
-  //     setfavoriteActivities(
-  //       favorite_activities.filter((activity) => activity.id !== user.id)
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  
-
-
-
-
-
+    async function deleteActivity(activity_id,id) {
+      const activityId = activity_id;
+      const memberId = id;
+      try {
+        const response = await axios.delete(`api/favoriteActivities/${activityId}/${memberId}`);
+        window.location.href = '/member';
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
 
 
@@ -471,6 +458,7 @@ function MemberPage() {
         <p>未收藏任何活動</p>
 
           {favorite_activities.map((activity) => {
+            console.log(activity.activity_id)
             if(user.id === activity.id){
             return (
               <div className="collect-content">
@@ -513,7 +501,9 @@ function MemberPage() {
                     type="button"
                     defaultValue="取消收藏"
                     className="collect-cancel"
-                    // onClick={handleDelete}
+                    onClick={() =>
+                      deleteActivity(activity.activity_id, user.id)
+                    }
                   />
                 </div>
               </div>
