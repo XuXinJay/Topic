@@ -7,7 +7,7 @@ function Acticity33() {
   return (
     <div>
       <Header />
-      <div className="">
+      <div className="activity_all_box">
         <Activity3 />
       </div>
       <Footer />

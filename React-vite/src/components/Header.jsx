@@ -4,8 +4,9 @@ import "./header.css";
 import "./header_login.css";
 import useAuthContext from "../context/AuthContext";
 // import head from "./img/head.jpg";
-import loaDing from "/src/loading.gif"
-
+import loaDing from "/src/loading.gif";
+import LOGO from "./img/LOGO.png";
+import DarkMode from "./DarkMode/DarkMode";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,7 +22,11 @@ function Header() {
   }
 
   if (loading) {
-    return <div className="center"><img src={loaDing} alt="" /></div>;
+    return (
+      <div className="center">
+        <img src={loaDing} alt="" />
+      </div>
+    );
   }
 
   return (
@@ -29,27 +34,25 @@ function Header() {
       {user ? (
         <nav>
           <span className="home_title">
-            <i className="uil uil-glass-martini" />
-            同樂樂
+            <img className="logo_img" src={LOGO} alt="LOGO" />
           </span>
           <ul className="allUl">
             <li>
+              <DarkMode />
+            </li>
+            <li className="allUl_li">
               <a href="/">聚會活動</a>
             </li>
-            <li>
-              <a href="/notify">
-                通知
-              </a>
+            <li className="allUl_li">
+              <a href="/notify">通知</a>
             </li>
-            <li>
-              <a href="/gpt">
-                AI客服
-              </a>
+            <li className="allUl_li">
+              <a href="/gpt">AI客服</a>
             </li>
-            <li>
+            <li className="allUl_li">
               <a href="/guide">指南</a>
             </li>
-            <li>
+            <li className="allUl_li">
               <a href="/about">關於我們</a>
             </li>
           </ul>
@@ -93,7 +96,7 @@ function Header() {
                 </a>
               </li>
               <li className="mobile-li">
-                <a className="underline" onClick={logout} >
+                <a className="underline" onClick={logout}>
                   登出
                 </a>
               </li>
@@ -123,40 +126,41 @@ function Header() {
             </ul>
           </div>
         </nav>
-
       ) : (
         <nav>
           <span className="home_title">
-            <i className="uil uil-glass-martini" />
-            桌游派對
+            <img className="logo_img" src={LOGO} alt="LOGO" />
           </span>
           <ul className="allUl">
             <li>
+              <DarkMode />
+            </li>
+            <li className="allUl_li">
               <a href="/">所有活動</a>
             </li>
-            <li>
-              <a href="/notify">
-                通知
-              </a>
+            <li className="allUl_li">
+              <a href="/notify">通知</a>
             </li>
-            <li>
-              <a href="/gpt">
-                AI客服
-              </a>
+            <li className="allUl_li">
+              <a href="/gpt">AI客服</a>
             </li>
-            <li>
+            <li className="allUl_li">
               <a href="/guide">指南</a>
             </li>
-            <li>
+            <li className="allUl_li">
               <a href="/about">關於我們</a>
             </li>
           </ul>
-          <div className="hamburger-icon" onClick={toggleMobileMenu}>
-            <i id="menubtn" className="uil uil-bars menubtn" />
+          <div className="hamburger-icon">
+            <i
+              id="menubtn"
+              className="uil uil-bars menubtn"
+              onClick={toggleMobileMenu}
+            />
             <ul className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
               <li className="mobile-li">
                 <a className="underline" href="/Login">
-                  會員登入/註冊
+                  登入/註冊
                 </a>
               </li>
               <li className="mobile-li">
@@ -187,15 +191,13 @@ function Header() {
             </ul>
           </div>
           <a className="home_user" href="/Login">
-            會員/註冊
+            登入/註冊
             <i className="uil uil-user-circle" />
           </a>
         </nav>
       )}
     </header>
-
-  )
-
+  );
 }
 
 export default Header;

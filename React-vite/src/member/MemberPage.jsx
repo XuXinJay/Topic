@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./member.css";
 import useAuthContext from "../context/AuthContext";
-import memberPhoto from "./img/member-photo.gif";
+import { Navigate } from "react-router-dom";
 import design from "./img/design.jpg";
 import loaDing from "../loading.gif";
 import axios from "../api/axios";
@@ -24,7 +24,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/organizeActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setorganizeActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -38,7 +38,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/joinActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setjoinActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -52,7 +52,7 @@ function MemberPage() {
     async function getActivity() {
       try {
         const response = await axios.get("api/favoriteActivities");
-        console.log(response.data);
+        // console.log(response.data);
         setfavoriteActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -60,6 +60,34 @@ function MemberPage() {
     }
     getActivity();
   }, []);
+
+
+
+
+
+
+  
+
+
+  // const handleDelete = async () => {
+  //   try {
+  //     const response = await axios.delete(`api/favoriteActivities/${user.id}`);
+  //     console.log(response.data);
+  //     // update the state after deleting the item
+  //     setfavoriteActivities(
+  //       favorite_activities.filter((activity) => activity.id !== user.id)
+  //     );
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  
+
+
+
+
+
+
 
 
 
@@ -219,17 +247,15 @@ function MemberPage() {
           發起活動
         </label>
         <form className="member-form-content">
-
-
-
+          <p>未發起任何活動</p>
           {organize_activities.map((activity) => {
-
-            return (
+            if(user.id === activity.id){
+            return  (
               <div className="organise-content">
                 <div>
                   <img src={design} className="organise-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -250,9 +276,7 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>
-                    活動日期：
-                  </span>
+                  <span>活動日期：</span>
                   <input
                     type="datetime"
                     name="organiseName"
@@ -263,14 +287,16 @@ function MemberPage() {
                   />
                 </div>
                 <div style={{ position: "relative" }}>
-                  <a className="organise-submit" href="/review">
+                  <a className="organise-submit" href={`/review/${activity.activity_id}`}>
                     審核
                   </a>
                 </div>
 
               </div>
+              
 
             );
+          }
           })}
         </form>
         {/* organise_event tab end */}
@@ -318,14 +344,16 @@ function MemberPage() {
 
 
         <form className="member-form-content">
-          {join_activities.map((activity) => {
+        <p>未參加任何活動</p>
 
+          {join_activities.map((activity) => {
+            if(user.id === activity.id){
             return (
               <div className="campaign-content" >
                 <div>
                   <img src={design} className="campaign-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -345,9 +373,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative" }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="campaign-sub"
                     size={10}
@@ -372,6 +400,7 @@ function MemberPage() {
                 </div>
               </div>
             );
+            }
           })}
         </form>
         {/* campaign tab end */}
@@ -439,16 +468,16 @@ function MemberPage() {
           收藏
         </label>
         <form className="member-form-content">
-
+        <p>未收藏任何活動</p>
 
           {favorite_activities.map((activity) => {
-
+            if(user.id === activity.id){
             return (
               <div className="collect-content">
                 <div>
                   <img src={design} className="collect-photo" />
                 </div>
-                <div>
+                <div style={{ marginLeft: ".3rem" }}>
                   <span>活動名稱：</span>
                   <input
                     type="text"
@@ -469,9 +498,9 @@ function MemberPage() {
                     readOnly
                   />
                   <br />
-                  <span style={{ position: "relative", left: 7 }}>活動日期： </span>
+                  <span>活動日期：</span>
                   <input
-                    type="date"
+                    type="datetime"
                     name="collectName"
                     defaultValue={formatDate(activity.activity_partyTime)}
                     className="collect-sub"
@@ -484,11 +513,13 @@ function MemberPage() {
                     type="button"
                     defaultValue="取消收藏"
                     className="collect-cancel"
+                    // onClick={handleDelete}
                   />
                 </div>
               </div>
 
             );
+            }
           })}
 
 
@@ -497,7 +528,7 @@ function MemberPage() {
       </div >
     </div >
   ) : (
-    <Navidate to="/" />
+    <Navigate to="/" />
   );
 }
 

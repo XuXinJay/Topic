@@ -114,7 +114,7 @@ function ChatGpt() {
 
   return (
     <main className="main">
-      <div className="container">
+      <div className="gpt_container">
         <div className="content">
           <div className="text-content">
             <div className="home text chatgpt">

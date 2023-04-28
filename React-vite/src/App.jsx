@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import "./App.css"
 import Gpt from "./pages/Gpt.jsx";
 import Login from "./Loginpages/Login.jsx";
 import Member from "./pages/Member.jsx";
@@ -44,8 +44,8 @@ function App() {
         <Route path="/activity3" element={<Acticity33 />} />
 
         {/* 明哲 */}
-        <Route path="/event" element={<EventPages />} />
-        <Route path="/review" element={<EventReviewPages />} />
+        <Route path="/event/:activity_id" element={<EventPages />} />
+        <Route path="/review/:activity_id" element={<EventReviewPages />} />
       </Routes>
     // </Router>
   );

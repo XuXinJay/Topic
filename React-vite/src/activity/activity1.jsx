@@ -26,7 +26,7 @@ function Activity1() {
     { id: 10, icon: '🚗', label: '旅遊' },
     { id: 11, icon: '🍺', label: '酒吧' },
     { id: 12, icon: '🎵', label: '音樂' },
-    { id: 13, icon: '🏸', label: '羽球' },
+    { id: 13, icon: '🧺', label: '野餐' },
     { id: 14, icon: '🍻', label: '聚會' }
   ];
 

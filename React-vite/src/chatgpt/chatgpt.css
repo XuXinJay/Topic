@@ -18,7 +18,20 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 1rem;
+}
+
+.scrollbar-container {
+  background-color: var(--body_background_color);
+  color: var(--body_color);
+  transition: 0s;
+}
+
+.cs-message-input {
+  background-color: var(--body_background_color) !important;
+}
+
+.cs-button > svg {
+  color: #f7c242 !important;
 }
 
 /* ------------------------ 導覽列補充 ---------------------- */
@@ -42,14 +55,16 @@
   min-width: 380px;
   border-radius: 20px;
 }
-.container {
+.gpt_container {
   max-width: 968px;
-  width: 100%;
+  width: 90%;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: var(--body_background_color);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   margin-top: 6rem;
+  margin-bottom: 1rem;
+  color: var(--body_color);
 }
 
 .container .heading {

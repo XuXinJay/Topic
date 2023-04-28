@@ -7,7 +7,7 @@ function Acticity22() {
   return (
     <div>
       <Header />
-      <div className="">
+      <div className="activity_all_box">
         <Activity2 />
       </div>
       <Footer />

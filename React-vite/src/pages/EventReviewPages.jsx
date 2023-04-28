@@ -7,7 +7,7 @@ function EventReviewPages() {
   return (
     <div>
       <Header />
-      <div className="">
+      <div className="event_all_box">
         <EventReview />
       </div>
       <Footer />
