@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "../api/axios";
 import "./style3.css";
 import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/AuthContext";
@@ -11,14 +12,48 @@ function Activity3() {
     return <div className="center"><img src={loaDing} alt="" /></div>;
   }
 
-  //取得活動名稱、活動簡述
+  //取得所有資料
+  const activityType = sessionStorage.getItem("活動類型")
+  const defaultImg = sessionStorage.getItem("預設圖片");
   const activityName = sessionStorage.getItem("活動名稱");
   const activityText = sessionStorage.getItem("活動簡述");
   const activityPlace = sessionStorage.getItem("活動地點");
-  const activityDate = sessionStorage.getItem("活動日期");
+  const activityStartDate = sessionStorage.getItem("活動日期");
+  const activityEndDate = sessionStorage.getItem("活動結束日期");
+  const activityDeadLine = sessionStorage.getItem("報名截止日期");
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
+
+  
+
+  async function sendData() {
+    const allActivityData = JSON.stringify({
+      "memberId" : user['id'],
+      "activityType" : activityType,
+      "defaultImg" : defaultImg,
+      "activityName" : activityName,
+      "activityText" : activityText,
+      "activityPlace" : activityPlace,
+      "activityStartDate" : activityStartDate,
+      "activityEndDate" : activityEndDate,
+      "activityDeadLine" : activityDeadLine,
+      "activityCount" : activityCount,
+      "activityPayment" : activityPayment,
+      "activityBudget" : activityBudget
+    });
+    
+    // let allObj = JSON.parse(allActivityData);
+    // console.log(allObj.activityBudget)
+    const res = await axios.post("/api/createActivity", allActivityData, {
+      headers: {
+        'Content-Type' : 'application/json',
+      },
+    })
+    console.log(res.data)
+    window.location.href = '/';
+    // .catch(error => console.error(error))
+  }
 
   return user ? (
     <div className="activity_container">
@@ -52,7 +87,7 @@ function Activity3() {
           </div>
           <div className="uploadImage">
             <img
-              src="https://i1.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/27.jpeg?resize=640%2C479"
+              src={defaultImg}
               alt=""
             />
           </div>
@@ -61,12 +96,9 @@ function Activity3() {
               name=""
               id=""
               className="activityName_3"
-              cols={30}
-              rows={10}
-              // placeholder={}
-              readOnly=""
-              defaultValue={""}
-              value={activityText}
+              readOnly
+              defaultValue={activityText}
+
             />
           </div>
           <hr className="gap" />
@@ -81,20 +113,21 @@ function Activity3() {
               <i class="uil uil-wallet"></i>
               <div 
                 className="">
-                  {activityBudget}
+                  ${activityBudget}
               </div>
             </div>
+            
           </div>
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
               <div>
-                {activityDate}
+                {activityStartDate}
               </div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>4:40</div>
+              <div style={{ color: "red" }}>1天</div>
             </div>
           </div>
         </div>
@@ -102,7 +135,10 @@ function Activity3() {
           <a className="button" href="/activity2">
             上一頁
           </a>
-          <a className="button">送出</a>
+          <a 
+            className="button"
+            onClick={sendData} 
+          >送出</a>
         </div>
       </main>
     </div>
