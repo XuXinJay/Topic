@@ -18,6 +18,10 @@ function Event() {
 
   const [messages, setMessages] = useState([]);
 
+  function review() {
+    window.location.href = 'http://localhost:5173/review/' + activity_id;
+  }
+
   useEffect(() => {
     // 在组件挂载时发送 GET 请求获取数据
     axios
@@ -44,7 +48,7 @@ function Event() {
         console.error("Error fetching messages:", error);
       });
   }, [activity_id]);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     // 在提交表单时执行的处理逻辑，可以使用 axios 发送 POST 请求等
@@ -64,6 +68,25 @@ function Event() {
 
     window.location.reload();
   };
+
+  const applySubmit = async (e) => {
+    e.preventDefault();  
+    try {
+      const response = await axios.post('/api/joinActivities', {
+        member_id: user.id,
+        activity_id: activity_id
+      });
+      console.log("applySubmit successfully:", response.data);
+  
+    } catch (error) {
+      console.error("Error applySubmit:", error);
+    }
+  
+    window.location.reload();
+  };
+  
+
+  
 
   if (loading) {
     return (
@@ -142,10 +165,10 @@ function Event() {
           </div>
         </div>
       </div>
-      {user == eventData[0].name ? (
+      {user.name == eventData[0].name ? (
         <div className="event_page-allActivity-down">
           <div className="event_page-container-button">
-            <button className="event_page-button" type="button">
+            <button className="event_page-button" type="button" onClick={review}>
               審核
             </button>
           </div>
@@ -230,9 +253,13 @@ function Event() {
         </div>
       ) : user ? (
         <div className="event_page-allActivity-down">
-          <div className="event_page-container-button">
-            <button className="event_page-button">報名</button>
-          </div>
+
+          <form action="/api/joinActivities" method="post" onSubmit={applySubmit}>
+            <div className="event_page-container-button">
+              <button className="event_page-button" type="submit">報名</button>
+            </div>
+          </form>
+
           <div className="event_page-grid-container">
             <div
               className="event_page-iconBox col"
