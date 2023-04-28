@@ -192,6 +192,7 @@
   width: 80%;
   height: 40vh;
   border-radius: 20px;
+  overflow: hidden;
   margin: auto;
 }
 
@@ -199,6 +200,7 @@
   text-align: center;
   width: 80%;
   height: 40vh;
+  overflow: hidden;
   border-radius: 20px;
 }
 
@@ -219,7 +221,7 @@
   padding-right: 5px;
   padding-top: 10px;
   width: 80%;
-  height: 40vh;
+  height: 35vh;
   resize: none;
   font-size: 1rem;
   border-radius: 20px;
