@@ -11,16 +11,17 @@ class Activitycontroller extends Controller
 {
 
     public function index($activity_id)
-    {
-        // $activities = Activity::where('activity_id',$activity_id)->get();
-        $activities = OrganizeActivity::join('users', 'users.id', '=', 'organize_activities.member_id')
-            ->join('activities', 'activities.activity_id', '=', 'organize_activities.activity_id')
-            ->select('activities.*', 'users.name', 'users.member_avatar')
-            ->where('activities.activity_id', $activity_id)
-            ->get();
+{
+    $activities = OrganizeActivity::join('users', 'users.id', '=', 'organize_activities.member_id')
+        ->join('activities', 'activities.activity_id', '=', 'organize_activities.activity_id')
+        ->join('join_activities', 'join_activities.activity_id', '=', 'activities.activity_id')
+        ->select('activities.*', 'users.name', 'users.member_avatar', 'join_activities.member_id', 'join_activities.join_state')
+        ->where('activities.activity_id', $activity_id)
+        ->get();
 
-        return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
-    }
+    return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
+}
+
 
     public function timediff($activity_id)
     {

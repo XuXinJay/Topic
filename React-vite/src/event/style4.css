@@ -89,7 +89,7 @@
   align-items: center;
 }
 
-.event_page-hostName > img {
+.event_page-hostName>img {
   border: 1px solid black;
   width: 50px;
   height: 50px;
@@ -102,7 +102,7 @@
   text-align: center;
 }
 
-.event_page-uploadImage > img {
+.event_page-uploadImage>img {
   width: 70%;
   height: 40vh;
   border-radius: 20px;
@@ -114,7 +114,7 @@
   margin: 10px auto;
 }
 
-.event_page-activityText > textarea {
+.event_page-activityText>textarea {
   display: block;
   margin: 20px auto;
   padding-left: 20px;
@@ -160,6 +160,11 @@
   transition: 0.3s;
 }
 
+.event_page-grid {
+  display: flex;
+  justify-content: center;
+}
+
 .event_page-grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -167,6 +172,7 @@
 
 .event_page-grid-grid-item {
   text-align: center;
+  margin-left: 2rem;
 }
 
 .event_page-grid-container-message {
@@ -181,8 +187,34 @@
   margin-top: 1rem;
 }
 
+.event_page-message-board {
+  display: flex;
+  align-items:center;
+}
+
+.font-weight-bold1 {
+  margin-left: 30px;
+  width: 70%;
+  padding: 1rem;
+  border:1px solid #f7c242;
+  border-radius: 10px;
+}
+
+.event_page-grid-grid-img {
+  border-radius: 50%;
+}
+
 .event_page-time {
   text-align: right;
+  font-size: 1rem;
+  width: 30%;
+  
+}
+
+.event_page-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .event_page-textarea {
