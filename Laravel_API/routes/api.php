@@ -40,7 +40,11 @@ Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityContr
 
 Route::post('/joinActivities', [JoinActivityController::class,'store']);
 
+Route::delete('/joinActivities/{activityId}/{memberId}', [JoinActivityController::class, 'deletejoinActivities']);
+
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
+
+Route::delete('/favoriteActivities/{activityId}/{memberId}', [JoinActivityController::class, 'deletefavoriteActivities']);
 
 Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
 

@@ -48,7 +48,7 @@ function ChatGpt() {
     // Check for specific questions and provide responses
     if (message.includes("註冊")) {
       const responseMessage = {
-        message: "您好，可以點選頁面左上角按鈕的[登入/註冊]進行創建哦!",
+        message: "您好，可以點選頁面右上角按鈕的[登入/註冊]進行創建哦!",
         sentTime: "just now",
         sender: "ChatGPT",
       };

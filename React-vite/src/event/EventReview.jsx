@@ -40,7 +40,7 @@ function EventReview() {
     const memberId = id;
     try {
       const updateJoinState = {
-        join_state: "未通過",
+        join_state: "已通過",
       };
       const res = await axios.post(
         `/api/joinActivities/update/${activityId}/${memberId}`,

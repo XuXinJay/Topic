@@ -44,6 +44,17 @@ class JoinActivityController extends Controller
 
         return response()->json(["message" => "審核狀態已更新成功"]);
     }
+    public function deletejoinActivities(Request $request, $activity_id, $member_id)
+    {
+
+        $favoriteActivity = joinActivities::where('activity_id', $activity_id)
+        ->where('member_id', $member_id)
+        ->delete();
+
+        return response()->json([
+            'message' => `$favoriteActivity 活動已取消報名`,
+        ]);     
+    }
 
     public function reviewActivities($activity_id)
     {
@@ -56,6 +67,7 @@ class JoinActivityController extends Controller
         return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
     }
 
+
     public function favoriteActivities()
     {
         $activities = favoriteActivities::join('users', 'users.id', '=', 'favorite_activities.member_id')
@@ -65,12 +77,23 @@ class JoinActivityController extends Controller
 
         return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
     }
-    
+
+    public function deletefavoriteActivities(Request $request, $activity_id, $member_id)
+    {
+        $favoriteActivity = favoriteActivities::where('activity_id', $activity_id)
+        ->where('member_id', $member_id)
+        ->delete();
+
+        return response()->json([
+            'message' => `$favoriteActivity 活動已移除收藏`,
+        ]);        
+    }
+
     public function store(Request $request)
     {
         $rev = new joinActivities;
         $rev->member_id = $request->input('member_id');
-        $rev->activity_id = $request->input('activity_id');       
+        $rev->activity_id = $request->input('activity_id');
         $rev->save();
     }
 
