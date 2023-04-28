@@ -40,7 +40,7 @@ function EventReview() {
     const memberId = id;
     try {
       const updateJoinState = {
-        join_state: "已通過",
+        join_state: "未通過",
       };
       const res = await axios.post(
         `/api/joinActivities/update/${activityId}/${memberId}`,
@@ -61,26 +61,40 @@ function EventReview() {
 
   // ------------------------------------------------------------------拒絕按鈕
 
-  // useEffect(() => {
-  //   async function handleCheckPass() {
-  //     try {
-  //       const updateJoinState ={
-  //         ...memberInfo,
-  //         join_state:"已拒絕",
-  //       };
-  //       const res = await axios.put("/api/joinActivities", updateJoinState, {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       });
-  //       console.log(res.data);
-  //       window.location.href = '/member';
-  //     } catch (err) {
-  //       console.log(err.response.data);
-  //     }
-  //   }
-  //   getActivity();
-  // }, []);
+  useEffect(() => {
+    setMemberInfo(user);
+  }, [user]);
+  async function handleCheckUnPass(activity_id, id) {
+    const activityId = activity_id;
+    const memberId = id;
+    try {
+      const updateJoinState = {
+        join_state: "已拒絕",
+      };
+      const res = await axios.post(
+        `/api/joinActivities/update/${activityId}/${memberId}`,
+        updateJoinState,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(res.data);
+      window.location.href = `/review/${activityId}`;
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }
+
+
+
+
+
+
+
+
+
 
   if (loading) {
     return (
@@ -125,7 +139,14 @@ function EventReview() {
                           handleCheckPass(activity.activity_id, activity.id)
                         }
                       />
-                      <button className="event_page-check_refuse">拒絕</button>
+                      <input
+                        type="button"
+                        defaultValue="拒絕"
+                        className="event_page-check_refuse"
+                        onClick={() =>
+                          handleCheckUnPass(activity.activity_id, activity.id)
+                        }
+                      />
                     </div>
                   </div>
                 </div>
