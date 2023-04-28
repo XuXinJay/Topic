@@ -10,6 +10,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 11rem;
 }
 
 .event_introduce_box {
