@@ -14,6 +14,7 @@ function Activity2() {
 
   //取得活動名稱、活動簡述
   const activityName = sessionStorage.getItem("活動名稱");
+  const defaultImg = sessionStorage.getItem("預設圖片")
   const activityText = sessionStorage.getItem("活動簡述");
 
   //活動地點
@@ -26,31 +27,50 @@ function Activity2() {
   //活動總人數
   const [activityCount, setactivityCount] = useState(sessionStorage.getItem('活動總人數') || '')
   function handleActivityCount(event) {
-    setactivityCount(event.target.value);
-    sessionStorage.setItem('活動總人數', event.target.value);
+    let maxCount = 20;
+    let minCount = 0;
+    let newCount = event.target.value;
+    if (newCount <= maxCount && newCount >= minCount) {
+      setactivityCount(newCount);
+      sessionStorage.setItem('活動總人數', event.target.value);
+      console.log(newCount)
+    }
   }
+
+  //活動時間 //活動結束日期 //報名截止日期
+  const [activityStartDate, setActivityStartDate] = useState(sessionStorage.getItem('活動日期') || '');
+  const [activityEndDate, setactivityEndDate] = useState(sessionStorage.getItem('活動結束日期') || '');
+  const [activityDeadLine, setActivityDeadLine] = useState(sessionStorage.getItem('報名截止日期') || '');
   
-  //活動時間
-  const [activityDate, setActivityDate] = useState(sessionStorage.getItem('活動日期'))
-  function handleActivityDate(event) {
-    setActivityDate(event.target.value);
+  const today = new Date().toISOString().slice(0, 10);
+
+    
+  function handleActivityStartDate(event) {
+    setActivityStartDate(event.target.value);
     sessionStorage.setItem('活動日期', event.target.value);
   }
 
-  //報名截止日期
+  function handleActivityEndDate(event) {
+    setactivityEndDate(event.target.value);
+    sessionStorage.setItem('活動結束日期', event.target.value);
+  }
 
+  function handleActivityDeadLine(event) {
+    setActivityDeadLine(event.target.value);
+    sessionStorage.setItem('報名截止日期', event.target.value);
+  }
 
   //付款方式
   const [activityPayment, setActivityPayment] = useState(sessionStorage.getItem('付款方式'));
   function handleActivityPayment(event) {
-    setActivityPayment(event.target.option);
-    sessionStorage.setItem('付款方式',event.target.option);
+    setActivityPayment(event.target.value);
+    sessionStorage.setItem('付款方式',event.target.value);
   }
 
   //活動預算
   const [activityBudget, setActivityBudget] = useState(sessionStorage.getItem('活動預算'));
   function handleActivityBudget(event) {
-    setActivityPayment(event.target.value);
+    setActivityBudget(event.target.value);
     sessionStorage.setItem('活動預算',event.target.value);
   }
 
@@ -74,7 +94,7 @@ function Activity2() {
           </div>
           <div className="uploadImage">
             <img
-              src="https://i1.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/27.jpeg?resize=640%2C479"
+              src={defaultImg}
               alt=""
             />
           </div>
@@ -100,6 +120,7 @@ function Activity2() {
                 name="place"
                 defaultValue={activityPlace}
                 onChange={handleActivityPlace}
+                required
               />
             </div>
             <div className="box">
@@ -110,33 +131,61 @@ function Activity2() {
                 name="count"
                 defaultValue={activityCount}
                 onChange={handleActivityCount}
-              />
+                min={0}
+                required
+              /><span>人</span>
             </div>
             <div className="box">
               <label htmlFor="">活動日期 :</label>
               <input 
                 type="date" 
                 className="formType" 
-                name="time"
-                defaultValue={activityDate}
-                onChange={handleActivityDate}
+                name="activityDate"
+                defaultValue={activityStartDate}
+                onChange={handleActivityStartDate}
+                min={today}
+                required
               />
+            </div>
+            <div className="box">
+              <label htmlFor="">活動結束日期 :</label>
+              <input 
+                type="date" 
+                className="formType" 
+                name="activityEndDate"
+                defaultValue={activityEndDate}
+                onChange={handleActivityEndDate}
+                min={activityStartDate}
+                required
+                />
             </div>
             <div className="box">
               <label htmlFor="">報名截止日期 :</label>
               <input 
                 type="date" 
                 className="formType" 
-                name="endDate" 
+                name="activityDeadLine"
+                defaultValue={activityDeadLine}
+                onChange={handleActivityDeadLine}
+                min={activityEndDate}
+                required
                 />
             </div>
             <div className="box">
               <label htmlFor="">付款方式 :</label>
-              <input type="select" 
-                className="formType" 
+              <select 
                 name="payment"
+                className="selectType" 
+                id=""
+                defaultValue={activityPayment}
                 onChange={handleActivityPayment}
-              />
+                required
+              >
+                <option value=""></option>
+                <option value="現金">現金</option>
+                <option value="信用卡">信用卡</option>
+                <option value="行動支付">行動支付</option>
+              </select>
             </div>
             <div className="box">
               <label htmlFor="">活動預算 :</label>
@@ -145,7 +194,10 @@ function Activity2() {
                 className="formType" 
                 name="budget" 
                 onChange={handleActivityBudget}
-              />
+                defaultValue={activityBudget}
+                min={0}
+                required
+              /><span>元</span>
             </div>
           </div>
         </div>

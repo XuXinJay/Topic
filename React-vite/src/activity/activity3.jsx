@@ -15,7 +15,9 @@ function Activity3() {
   const activityName = sessionStorage.getItem("活動名稱");
   const activityText = sessionStorage.getItem("活動簡述");
   const activityPlace = sessionStorage.getItem("活動地點");
-  const activityDate = sessionStorage.getItem("活動日期");
+  const activityStartDate = sessionStorage.getItem("活動日期");
+  const activityEndDate = sessionStorage.getItem("活動結束日期");
+  const activityDeadLine = sessionStorage.getItem("報名截止日期");
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
@@ -61,12 +63,9 @@ function Activity3() {
               name=""
               id=""
               className="activityName_3"
-              cols={30}
-              rows={10}
-              // placeholder={}
-              readOnly=""
-              defaultValue={""}
-              value={activityText}
+              readOnly
+              defaultValue={activityText}
+
             />
           </div>
           <hr className="gap" />
@@ -81,7 +80,7 @@ function Activity3() {
               <i class="uil uil-wallet"></i>
               <div 
                 className="">
-                  {activityBudget}
+                  ${activityBudget}
               </div>
             </div>
           </div>
@@ -89,12 +88,12 @@ function Activity3() {
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
               <div>
-                {activityDate}
+                {activityStartDate}
               </div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>4:40</div>
+              <div style={{ color: "red" }}>1天</div>
             </div>
           </div>
         </div>

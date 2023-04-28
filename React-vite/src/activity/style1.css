@@ -155,12 +155,12 @@
 }
 
 .fileLabel {
-  border: 1px dashed black;
-  display: block;
-  width: 80%;
-  height: 40vh;
-  text-align: center;
-  margin: 20px auto;
+    border: 1px dashed black;
+    display: block;
+    width: 80%;
+    height: 40vh;
+    text-align: center;
+    margin: 20px auto;
 }
 
 .fileLabel:hover {
@@ -209,7 +209,7 @@
   text-align: end;
 }
 
-/*  */
+/* 活動內容 */
 .activityUpload {
   margin: 20px auto;
   width: 80%;
@@ -254,6 +254,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 /* 上下頁 */
 .button {
   text-align: center;
