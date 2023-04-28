@@ -16,7 +16,7 @@ const API_KEY = "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";
 const systemMessage = {
   role: "system",
   content:
-    "Explain things like you're talking to a Customer Service Specialist of Social Platforms with 10 years of experience. 會在句尾加上'喵<3'",
+    "Explain things like you're talking to a Customer Service Specialist of Social Platforms with 10 years of experience.",
 };
 
 function ChatGpt() {
