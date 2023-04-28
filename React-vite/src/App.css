@@ -4,7 +4,7 @@
     --body_color: black;
     --line_color: black;
 }
-
+/*   #293a4c  */
 [data-theme="dark"] {
     --body_background_color: #293a4c;
     --body_background_color_white: #F5F5F5;

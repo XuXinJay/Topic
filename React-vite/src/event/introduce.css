@@ -13,9 +13,15 @@
 }
 
 .event_introduce_box {
+  text-align: center;
   height: 1000px;
   margin-top: 5rem;
   background-color: var(--body_background_color);
+}
+.event_introduce_box > h2 {
+  font-size: x-large;
+  position: relative;
+  z-index: -2;
 }
 
 .event_introduce_box_title {
@@ -27,16 +33,17 @@
 .event_introduce .event_container_123 {
   align-items: center;
   display: flex;
-  max-width: 968px;
-  width: 50%;
+  width: 745.8px;
   padding: 15px;
-  background-color: var(--body_background_color);
+  background-color: #f5f5f5;
   border-radius: 20px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   height: 150px;
   margin-bottom: 20px;
-  min-width: 360px;
-  color: var(--body_color);
+  color: black;
+  z-index: 2;
+  position: absolute;
+  margin-top: 5rem;
 }
 
 .event_introduce .event_container_123 > div > img {
@@ -58,10 +65,11 @@
 
 .event_introduce_des {
   border-radius: 10px;
-  width: 60%;
+  width: 70%;
   height: 100px;
   border: gray 1px solid;
   padding: 1rem;
+  text-align: initial;
 }
 
 .event_page-check {

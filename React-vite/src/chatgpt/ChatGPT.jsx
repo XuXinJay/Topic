@@ -11,17 +11,15 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
   content:
-    "Explain things like you're talking to a Customer Service Specialist of Social Platforms with 10 years of experience. 會在句尾加上'喵<3'",
+    "Explain things like you're talking to a Customer Service Specialist of Social Platforms with 10 years of experience.",
 };
 
 function ChatGpt() {
-  const [notifys, setNotifys] = useState([]);
-
   const [messages, setMessages] = useState([
     {
       message: "你好，我是智能客服，請問需要什麼幫助嗎?",
@@ -36,16 +34,60 @@ function ChatGpt() {
       message,
       direction: "outgoing",
       sender: "user",
+      sentTime: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
     const newMessages = [...messages, newMessage];
 
     setMessages(newMessages);
 
-    // Initial system message to determine ChatGPT functionality
-    // How it responds, how it talks, etc.
     setIsTyping(true);
+
+
+
+    // Check for specific questions and provide responses
+    if (message.includes("註冊")) {
+      const responseMessage = {
+        message: "您好，可以點選頁面左上角按鈕的[登入/註冊]進行創建哦!",
+        sentTime: "just now",
+        sender: "ChatGPT",
+      };
+      setTimeout(() => {
+        setMessages([...newMessages, responseMessage]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (message.includes("找不到朋友")) {
+      const responseMessage = {
+        message: "很抱歉讓你有這樣的感受，提供您一些關於交友技巧的介紹，可能會有幫助: https://www.youtube.com/watch?v=3srXy_3hDi8",
+        sentTime: "just now",
+        sender: "ChatGPT",
+      };
+      setTimeout(() => {
+        setMessages([...newMessages, responseMessage]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    } else if (message.includes("頁面錯誤")) {
+      const responseMessage = {
+        message: "很抱歉造成您不好的感受，已將資訊提交給工程師，將盡快為您解決問題，給您更完善的用戶體驗",
+        sentTime: "just now",
+        sender: "ChatGPT",
+      };
+      setTimeout(() => {
+        setMessages([...newMessages, responseMessage]);
+        setIsTyping(false);
+      }, 3000);
+      return;
+    }
+
+
+        // Initial system message to determine ChatGPT functionality
+    // How it responds, how it talks, etc.
+    
     await processMessageToChatGPT(newMessages);
+
+    
   };
 
   async function processMessageToChatGPT(chatMessages) {
@@ -98,19 +140,6 @@ function ChatGpt() {
         setIsTyping(false);
       });
   }
-
-  useEffect(() => {
-    async function getNotify() {
-      try {
-        const response = await axios.get("api/notify");
-        console.log(response.data);
-        setNotifys(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getNotify();
-  }, []);
 
   return (
     <main className="main">

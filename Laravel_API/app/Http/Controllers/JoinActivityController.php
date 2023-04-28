@@ -65,5 +65,13 @@ class JoinActivityController extends Controller
 
         return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
     }
+    
+    public function store(Request $request)
+    {
+        $rev = new joinActivities;
+        $rev->member_id = $request->input('member_id');
+        $rev->activity_id = $request->input('activity_id');       
+        $rev->save();
+    }
 
 }
