@@ -38,6 +38,8 @@ Route::post('/joinActivities', [JoinActivityController::class,'store']);
 
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
 
+Route::delete('/favoriteActivities/{activityId}/{memberId}', [JoinActivityController::class, 'deletefavoriteActivities']);
+
 Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
 
 Route::get('/activities/{activity_id}/timediff', [ActivityController::class,'timediff']);
