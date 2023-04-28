@@ -30,6 +30,8 @@ Route::put('/members/update', [MemberController::class,'update']);
 
 Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivities']);
 
+Route::post('/createActivity' , [OrganizeActivityController::class,'createActivity']);
+
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
 Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityController::class,'update']);

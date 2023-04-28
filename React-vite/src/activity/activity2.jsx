@@ -87,7 +87,7 @@ function Activity2() {
         </div>
         <div className="allActivity">
           <div className="hostName">
-            <img src="https://img.lovepik.com/free-png/20211130/lovepik-girl-character-photo-sticker-3-png-image_401230533_wh1200.png" />
+            <img src="defaultImg" />
             <p>
               {"{"}主辦人名字{"}"}
             </p>
