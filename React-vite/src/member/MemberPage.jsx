@@ -48,6 +48,21 @@ function MemberPage() {
     getActivity();
   }, []);
 
+   // ------------------------------------------------------------取消報名活動
+  
+
+   async function deletejoinActivity(activity_id,id) {
+    const activityId = activity_id;
+    const memberId = id;
+    try {
+      const response = await axios.delete(`api/joinActivities/${activityId}/${memberId}`);
+      window.location.href = '/member';
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   // ------------------------------------------------------------收藏活動
   useEffect(() => {
     async function getActivity() {
@@ -383,6 +398,9 @@ function MemberPage() {
                     type="button"
                     value="取消報名"
                     className="campaign-cancel"
+                    onClick={() =>
+                      deletejoinActivity(activity.activity_id, user.id)
+                    }
                   />
                 </div>
               </div>
@@ -458,7 +476,6 @@ function MemberPage() {
         <p>未收藏任何活動</p>
 
           {favorite_activities.map((activity) => {
-            console.log(activity.activity_id)
             if(user.id === activity.id){
             return (
               <div className="collect-content">

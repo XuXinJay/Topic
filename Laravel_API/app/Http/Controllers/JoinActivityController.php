@@ -44,6 +44,17 @@ class JoinActivityController extends Controller
 
         return response()->json(["message" => "審核狀態已更新成功"]);
     }
+    public function deletejoinActivities(Request $request, $activity_id, $member_id)
+    {
+
+        $favoriteActivity = joinActivities::where('activity_id', $activity_id)
+        ->where('member_id', $member_id)
+        ->delete();
+
+        return response()->json([
+            'message' => `$favoriteActivity 活動已取消報名`,
+        ]);     
+    }
 
     public function reviewActivities($activity_id)
     {
