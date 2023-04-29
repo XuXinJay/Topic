@@ -36,11 +36,17 @@ Route::get('/createactivity' , [OrganizeActivityController::class, 'getUser']);
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
+Route::get('/joinActivities/{activityId}', [JoinActivityController::class,'joinActivities2']);
+
 Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityController::class,'update']);
 
 Route::post('/joinActivities', [JoinActivityController::class,'store']);
 
+Route::delete('/joinActivities/{activityId}/{memberId}', [JoinActivityController::class, 'deletejoinActivities']);
+
 Route::get('/favoriteActivities', [JoinActivityController::class,'favoriteActivities']);
+
+Route::delete('/favoriteActivities/{activityId}/{memberId}', [JoinActivityController::class, 'deletefavoriteActivities']);
 
 Route::get('/activities/{activity_id}', [ActivityController::class,'index']);
 

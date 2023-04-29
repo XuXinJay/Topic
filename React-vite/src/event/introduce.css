@@ -23,6 +23,7 @@
   font-size: x-large;
   position: relative;
   z-index: -2;
+  color: var(--body_color);
 }
 
 .event_introduce_box_title {

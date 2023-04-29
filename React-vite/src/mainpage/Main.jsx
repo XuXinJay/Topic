@@ -139,7 +139,7 @@ function Main() {
                       href={`/event/${activity.activity_id}`}
                       key={activity.activity_id}
                     >
-                      <img className="grid-img" src={img4} alt="" />
+                      <img className="grid-img" src={activity.activity_image} alt="" />
                       <div className="grid-text">
                         <h6>主題:{activity.activity_name}</h6>
                         <span className="grid_text_txt">
@@ -175,10 +175,10 @@ function Main() {
                     return (
                       <a
                         className="grid-item"
-                        href="/event"
+                        href={`/event/${activity.activity_id}`}
                         key={activity.activity_id}
                       >
-                        <img className="grid-img" src={img4} alt="" />
+                        <img className="grid-img" src={activity.activity_image} alt="" />
                         <div className="grid-text">
                           <h6>主題:{activity.activity_name}</h6>
                           <span className="grid_text_txt">
@@ -218,10 +218,10 @@ function Main() {
                     return (
                       <a
                         className="grid-item"
-                        href="/event"
+                        href={`/event/${activity.activity_id}`}
                         key={activity.activity_id}
                       >
-                        <img className="grid-img" src={img4} alt="" />
+                        <img className="grid-img" src={activity.activity_image} alt="" />
                         <div className="grid-text">
                           <h6>主題:{activity.activity_name}</h6>
                           <span className="grid_text_txt">
@@ -261,10 +261,10 @@ function Main() {
                     return (
                       <a
                         className="grid-item"
-                        href="/event"
+                        href={`/event/${activity.activity_id}`}
                         key={activity.activity_id}
                       >
-                        <img className="grid-img" src={img4} alt="" />
+                        <img className="grid-img" src={activity.activity_image} alt="" />
                         <div className="grid-text">
                           <h6>主題:{activity.activity_name}</h6>
                           <span className="grid_text_txt">
@@ -304,10 +304,10 @@ function Main() {
                     return (
                       <a
                         className="grid-item"
-                        href="/event"
+                        href={`/event/${activity.activity_id}`}
                         key={activity.activity_id}
                       >
-                        <img className="grid-img" src={img4} alt="" />
+                        <img className="grid-img" src={activity.activity_image} alt="" />
                         <div className="grid-text">
                           <h6>主題:{activity.activity_name}</h6>
                           <span className="grid_text_txt">
@@ -352,10 +352,10 @@ function Main() {
                     return (
                       <a
                         className="grid-item"
-                        href="/event"
+                        href={`/event/${activity.activity_id}`}
                         key={activity.activity_id}
                       >
-                        <img className="grid-img" src={img4} alt="" />
+                        <img className="grid-img" src={activity.activity_image} alt="" />
                         <div className="grid-text">
                           <h6>主題:{activity.activity_name}</h6>
                           <span className="grid_text_txt">

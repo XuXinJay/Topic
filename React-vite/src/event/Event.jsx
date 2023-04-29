@@ -10,6 +10,8 @@ function Event() {
 
   const [eventData, setEventData] = useState(null);
 
+  const [joinData, setjoinData] = useState(null);
+
   const [message, setMessage] = useState({
     content: "",
   }); // 添加 message 狀態來保存文本框的輸入值
@@ -29,6 +31,17 @@ function Event() {
       .then((response) => {
         // 請求成功時更新組件的數據狀態
         setEventData(response.data);
+      })
+      .catch((error) => {
+        // 請求失敗時處理錯誤
+        console.error("Error fetching event data:", error);
+      });
+
+    axios
+      .get("api/joinActivities/" + activity_id)
+      .then((response) => {
+        // 請求成功時更新組件的數據狀態
+        setjoinData(response.data);
       })
       .catch((error) => {
         // 請求失敗時處理錯誤
@@ -150,7 +163,7 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-calendar" />
-              <div>{eventData[0].activity_partyTime}</div>
+              <div>{eventData[0].activity_partyTime.slice(5, 10)}</div>
             </div>
           </div>
           <div className="event_page-iconBox">
@@ -185,10 +198,7 @@ function Event() {
                 <img src="" style={{ width: 70 }} />
                 <div>鄭明哲</div>
               </div>
-              <div className="event_page-grid-grid-item">
-                <img src="" style={{ width: 70 }} />
-                <div>吳士顯</div>
-              </div>
+
             </div>
             {/* 相關留言 */}
             <h2 className="event_page-title">相關留言</h2>
@@ -269,14 +279,21 @@ function Event() {
                   </div>
                 </div>
               </div>
-              <div className="event_page-grid-grid-item">
-                <img src="" style={{ width: 70 }} />
-                <div>鄭明哲</div>
+
+              <div className="event_page-grid">
+                {joinData.map((member) => {
+                  if (member.join_state == "已通過") {
+                    return (
+                      <div className="event_page-grid-grid-item" key={member.id}>
+                        <img className="event_page-grid-grid-img" src={member.member_avatar} style={{ width: 70 }} />
+                        <div>{member.name}</div>
+                      </div>
+                    )
+                  }
+
+                })}
               </div>
-              <div className="event_page-grid-grid-item">
-                <img src="" style={{ width: 70 }} />
-                <div>吳士顯</div>
-              </div>
+
             </div>
             {/* 相關留言 */}
             <h2 className="event_page-title">相關留言</h2>
@@ -288,25 +305,26 @@ function Event() {
                       key={message.comment_id}
                       className="event_page-grid-item-message"
                     >
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src={message.member_avatar}
-                          width={30}
-                          className="user-img rounded-circle mr-2"
-                          style={{ borderRadius: "50%" }}
-                        />
-                        <span>
-                          <small className="font-weight-bold text-primary">
+                      <div className="event_page-message-board">
+                        <div className="event_page-message">
+                          <img
+                            src={message.member_avatar}
+                            width={60}
+                            className="user-img rounded-circle mr-2"
+                            style={{ borderRadius: "50%" }}
+                          />
+                          <span className="font-weight-bold text-primary">
                             {" "}
                             {message.name}
-                          </small>
-                          <small className="font-weight-bold">
+                          </span>
+                        </div>
+                          <small className="font-weight-bold1">
                             {" "}
                             {message.comment_content}
                           </small>
-                        </span>
-                      </div>
+                        
                       <div className="event_page-time"> {message.created_at}</div>
+                      </div>
                     </div>
                   );
                 }
@@ -359,10 +377,7 @@ function Event() {
               <img src="" style={{ width: 70 }} />
               <div>鄭明哲</div>
             </div>
-            <div className="event_page-grid-grid-item">
-              <img src="" style={{ width: 70 }} />
-              <div>吳士顯</div>
-            </div>
+
           </div>
           {/* 相關留言 */}
           <h2 className="event_page-title">相關留言</h2>

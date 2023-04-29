@@ -14,6 +14,7 @@ function MemberPage() {
   const [join_activities, setjoinActivities] = useState([]);
   const [favorite_activities, setfavoriteActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
+  
 
   useEffect(() => {
     setMemberInfo(user);
@@ -47,12 +48,26 @@ function MemberPage() {
     getActivity();
   }, []);
 
+   // ------------------------------------------------------------取消報名活動
+  
+
+   async function deletejoinActivity(activity_id,id) {
+    const activityId = activity_id;
+    const memberId = id;
+    try {
+      const response = await axios.delete(`api/joinActivities/${activityId}/${memberId}`);
+      window.location.href = '/member';
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   // ------------------------------------------------------------收藏活動
   useEffect(() => {
     async function getActivity() {
       try {
         const response = await axios.get("api/favoriteActivities");
-        // console.log(response.data);
         setfavoriteActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -61,32 +76,19 @@ function MemberPage() {
     getActivity();
   }, []);
 
-
-
-
-
-
+  // ------------------------------------------------------------刪除收藏活動
   
 
-
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(`api/favoriteActivities/${user.id}`);
-  //     console.log(response.data);
-  //     // update the state after deleting the item
-  //     setfavoriteActivities(
-  //       favorite_activities.filter((activity) => activity.id !== user.id)
-  //     );
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  
-
-
-
-
-
+    async function deleteActivity(activity_id,id) {
+      const activityId = activity_id;
+      const memberId = id;
+      try {
+        const response = await axios.delete(`api/favoriteActivities/${activityId}/${memberId}`);
+        window.location.href = '/member';
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
 
 
@@ -396,6 +398,9 @@ function MemberPage() {
                     type="button"
                     value="取消報名"
                     className="campaign-cancel"
+                    onClick={() =>
+                      deletejoinActivity(activity.activity_id, user.id)
+                    }
                   />
                 </div>
               </div>
@@ -513,7 +518,9 @@ function MemberPage() {
                     type="button"
                     defaultValue="取消收藏"
                     className="collect-cancel"
-                    // onClick={handleDelete}
+                    onClick={() =>
+                      deleteActivity(activity.activity_id, user.id)
+                    }
                   />
                 </div>
               </div>
