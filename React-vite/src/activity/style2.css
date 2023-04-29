@@ -81,19 +81,19 @@
   width: 100%;
 }
 
-.progress1 {
+.progress12 {
   width: 33.3%;
   background-color: lightgray;
   line-height: 50px;
   font-weight: bold;
 }
-.progress2 {
+.progress22 {
   width: 33.3%;
   font-weight: bold;
   line-height: 50px;
   background-color: #f7c242;
 }
-.progress3 {
+.progress32 {
   font-weight: bold;
   width: 33.4%;
   line-height: 50px;
@@ -222,7 +222,7 @@
   margin: 10px;
 }
 
-.box:first-child>input {
+.box:first-child > input {
   width: 300px;
 }
 
