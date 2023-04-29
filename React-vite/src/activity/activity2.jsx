@@ -43,7 +43,7 @@ function Activity2() {
   const [activityDeadLine, setActivityDeadLine] = useState(sessionStorage.getItem('報名截止日期') || '');
   
   const today = new Date().toISOString().slice(0, 10);
-
+  // const yesterday = new Date()
     
   function handleActivityStartDate(event) {
     setActivityStartDate(event.target.value);
@@ -77,9 +77,9 @@ function Activity2() {
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
-        <div className="progress">1. 活動畫面</div>
-        <div className="progress">2. 細項資料</div>
-        <div className="progress">3. 預覽</div>
+        <div className="progress1">1. 活動畫面</div>
+        <div className="progress2">2. 細項資料</div>
+        <div className="progress3">3. 預覽</div>
       </div>
       <main className="activity_main_2">
         <div className="activity_title">
@@ -167,7 +167,7 @@ function Activity2() {
                 name="activityDeadLine"
                 defaultValue={activityDeadLine}
                 onChange={handleActivityDeadLine}
-                min={activityEndDate}
+                // min={}
                 required
                 />
             </div>

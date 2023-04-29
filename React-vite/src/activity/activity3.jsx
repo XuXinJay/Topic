@@ -25,8 +25,7 @@ function Activity3() {
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
 
-  
-
+  //送出表單的資料
   async function sendData() {
     const allActivityData = JSON.stringify({
       "memberId" : user['id'],
@@ -43,6 +42,7 @@ function Activity3() {
       "activityBudget" : activityBudget
     });
     
+    const allActivity = JSON.parse(allActivityData)
     // let allObj = JSON.parse(allActivityData);
     // console.log(allObj.activityBudget)
     const res = await axios.post("/api/createActivity", allActivityData, {
@@ -50,6 +50,7 @@ function Activity3() {
         'Content-Type' : 'application/json',
       },
     })
+    sessionStorage.clear();
     console.log(res.data)
     window.location.href = '/';
     // .catch(error => console.error(error))

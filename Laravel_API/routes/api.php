@@ -7,7 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\JoinActivityController;
 use App\Http\Controllers\MessageController;
-
+use App\Models\OrganizeActivity;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +31,8 @@ Route::put('/members/update', [MemberController::class,'update']);
 Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivities']);
 
 Route::post('/createActivity' , [OrganizeActivityController::class,'createActivity']);
+
+Route::get('/createactivity' , [OrganizeActivityController::class, 'getUser']);
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 

@@ -78,20 +78,26 @@
 
 .progress_2 {
   font-weight: bold;
+  width: 100%;
 }
 
-.progress_2:nth-child(1) {
+.progress1 {
   width: 33.3%;
-}
-
-.progress_2:nth-child(2) {
-  width: 33.3%;
-  background-color: #f7c242;
+  background-color: lightgray;
   line-height: 50px;
+  font-weight: bold;
 }
-
-.progress_2:nth-child(3) {
+.progress2 {
+  width: 33.3%;
+  font-weight: bold;
+  line-height: 50px;
+  background-color: #f7c242;
+}
+.progress3 {
+  font-weight: bold;
   width: 33.4%;
+  line-height: 50px;
+  background-color: lightgray;
 }
 
 .activity_main_2 {

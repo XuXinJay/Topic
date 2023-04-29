@@ -62,4 +62,8 @@ class OrganizeActivityController extends Controller
         $organizeActivity->member_id = $request->input("memberId");
         $organizeActivity->save();
     }
+
+    public function getUser() {
+        
+    }
 }
