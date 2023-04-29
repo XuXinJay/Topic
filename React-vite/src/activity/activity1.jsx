@@ -89,7 +89,7 @@ function Activity1() {
         <div className="progress2">2. 細項資料</div>
         <div className="progress3">3. 預覽</div>
       </div>
-      <main className="activity_main">
+      <main className="activity_main">     
         <div className="meetType">
           <div className="activity_title">聚會類型 : </div>
           <div className="tagBox">
@@ -103,6 +103,30 @@ function Activity1() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="activityUpload">
+          <div className="activity_title">
+            <label htmlFor="">
+              活動名稱 :
+              <input 
+                type="text" 
+                className="activityName" 
+                onChange={handleActivityNameChange}
+                value={activityName}
+                required
+              />
+            </label>
+          </div>
+          <textarea
+            name=""
+            id="activityText"
+            placeholder="請簡述活動內容，300字以內"
+            className="activityText"
+            defaultValue={activityText}
+            onChange={handleInputChange}
+            maxLength={MAX_LENGTH}
+            required
+          />
         </div>
         <div className="imageUpload">
           <div className="activity_title">上傳圖片 : </div>
@@ -139,30 +163,7 @@ function Activity1() {
             <span className="arrowButton">▶</span>
           </div>
         </div>
-        <div className="activityUpload">
-          <div className="activity_title">
-            <label htmlFor="">
-              活動名稱 :
-              <input 
-                type="text" 
-                className="activityName" 
-                onChange={handleActivityNameChange}
-                value={activityName}
-                required
-              />
-            </label>
-          </div>
-          <textarea
-            name=""
-            id="activityText"
-            placeholder="請簡述活動內容，300字以內"
-            className="activityText"
-            defaultValue={activityText}
-            onChange={handleInputChange}
-            maxLength={MAX_LENGTH}
-            required
-          />
-        </div>
+        
         <div className="buttonControl-one">
           {/* <div class="button">上一頁</div> */}
           <a className="button" href="/activity2">
