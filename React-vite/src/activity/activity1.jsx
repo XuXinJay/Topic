@@ -49,6 +49,18 @@ function Activity1() {
     sessionStorage.setItem('預設圖片',event.target.src)
   }
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const imageData = reader.result;
+      // console.log(reader.result)
+      sessionStorage.setItem('預設圖片',imageData)
+
+    
+    };
+  };
 
   //限制文字輸入字數
   const MAX_LENGTH = 300;
@@ -102,6 +114,7 @@ function Activity1() {
               accept="image/*"
               className="fileInput"
               required=""
+              onClick={handleImageUpload}
             />
           </label>
           <div className="imageDefault">

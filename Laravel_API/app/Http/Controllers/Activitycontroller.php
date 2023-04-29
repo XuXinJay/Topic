@@ -14,8 +14,9 @@ class Activitycontroller extends Controller
 {
     $activities = OrganizeActivity::join('users', 'users.id', '=', 'organize_activities.member_id')
         ->join('activities', 'activities.activity_id', '=', 'organize_activities.activity_id')
-        ->join('join_activities', 'join_activities.activity_id', '=', 'activities.activity_id')
-        ->select('activities.*', 'users.name', 'users.member_avatar', 'join_activities.member_id', 'join_activities.join_state')
+        // ->join('join_activities', 'join_activities.activity_id', '=', 'activities.activity_id')
+        // ->select('activities.*', 'users.name', 'users.member_avatar', 'join_activities.member_id', 'join_activities.join_state')
+        ->select('activities.*', 'users.name', 'users.member_avatar')
         ->where('activities.activity_id', $activity_id)
         ->get();
 
