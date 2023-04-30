@@ -31,9 +31,10 @@ function Activity3() {
 
   //送出表單的資料
   async function sendData() {
+    let activityTypeJSON = JSON.parse(activityType)
     const allActivityData = JSON.stringify({
       memberId: user["id"],
-      activityType: activityType,
+      activityType: activityTypeJSON,
       defaultImg: defaultImg,
       activityName: activityName,
       activityText: activityText,
@@ -73,8 +74,8 @@ function Activity3() {
           </div>
           <div className="box_4">
             <div className="hostName_3">
-              <img src="" alt="" />
-              <p>主辦人名字</p>
+              <img src={user.member_avatar} alt="" />
+              <p>{user.name}</p>
             </div>
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
