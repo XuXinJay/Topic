@@ -36,11 +36,7 @@ function Activity1() {
   ];
 
   useEffect(() => {
-    isActive.forEach((isActive, index) => {
-      if (isActive) {
-        sessionStorage.setItem("活動類型", activities[index].label);
-      }
-    });
+    sessionStorage.setItem("活動類型", JSON.stringify(isActive));
   }, [isActive]);
 
   function handleClick(event) {
@@ -112,7 +108,7 @@ function Activity1() {
                 key={activity.id}
                 className={`test ${isActive[index] ? "tagAfter" : "tag"}`}
                 onClick={() => handleClick(index)}
-              >
+                >
                 {activity.icon} {activity.label}
               </div>
             ))}
