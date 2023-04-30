@@ -4,6 +4,7 @@ import "./style1.css";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function Activity1() {
   const { user, loading } = useAuthContext();
@@ -34,17 +35,22 @@ function Activity1() {
     { id: 14, icon: "🍻", label: "聚會" },
   ];
 
+  useEffect(() => {
+    isActive.forEach((isActive, index) => {
+      if (isActive) {
+        sessionStorage.setItem("活動類型", activities[index].label);
+      }
+    });
+  }, [isActive]);
+
   function handleClick(event) {
     setIsActive((prevState) => {
       const newState = [...prevState];
       newState[event] = !newState[event];
       return newState;
     });
-
-    if (!isActive[event]) {
-      sessionStorage.setItem("活動類型", activities[event].label);
-    }
   }
+  
   //點擊預設圖片
   const [defaultImg, setdefaultImg] = useState(
     sessionStorage.getItem("預設圖片") || ""
@@ -97,7 +103,7 @@ function Activity1() {
         <div className="progress21">2. 細項資料</div>
         <div className="progress31">3. 預覽</div>
       </div>
-      <main className="activity_main">     
+      <main className="activity_main">
         <div className="meetType">
           <div className="activity_title">聚會類型 : </div>
           <div className="tagBox">
@@ -116,9 +122,9 @@ function Activity1() {
           <div className="activity_title">
             <label htmlFor="">
               活動名稱 :
-              <input 
-                type="text" 
-                className="activityName" 
+              <input
+                type="text"
+                className="activityName"
                 onChange={handleActivityNameChange}
                 value={activityName}
                 required
@@ -171,31 +177,7 @@ function Activity1() {
             <span className="arrowButton">▶</span>
           </div>
         </div>
-        
-        <div className="activityUpload">
-          <div className="activity_title">
-            <label htmlFor="">
-              活動名稱 :
-              <input
-                type="text"
-                className="activityName"
-                onChange={handleActivityNameChange}
-                value={activityName}
-                required
-              />
-            </label>
-          </div>
-          <textarea
-            name=""
-            id="activityText"
-            placeholder="請簡述活動內容，300字以內"
-            className="activityText"
-            defaultValue={activityText}
-            onChange={handleInputChange}
-            maxLength={MAX_LENGTH}
-            required
-          />
-        </div>
+
         <div className="buttonControl-one">
           {/* <div class="button">上一頁</div> */}
           <a className="button" href="/activity2">
