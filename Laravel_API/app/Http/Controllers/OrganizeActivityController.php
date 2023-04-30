@@ -50,10 +50,24 @@ class OrganizeActivityController extends Controller
         $activity->save();
         
         $partyType = new PartyType;
-        $partyType->movie = true;
+        $partyType->movie = $request->input("activityType.0");
+        $partyType->board_game = $request->input("activityType.1");
+        $partyType->dine_together = $request->input("activityType.2");
+        $partyType->read = $request->input("activityType.3");
+        $partyType->sports = $request->input("activityType.4");
+        $partyType->shopping = $request->input("activityType.5");
+        $partyType->painting = $request->input("activityType.6");
+        $partyType->bodycraft = $request->input("activityType.7");
+        $partyType->cooking = $request->input("activityType.8");
+        $partyType->travel = $request->input("activityType.9");
+        $partyType->bar = $request->input("activityType.10");
+        $partyType->music = $request->input("activityType.11");
+        $partyType->picnic = $request->input("activityType.12");
+        $partyType->party = $request->input("activityType.13");
+        
         // $partyType->board_game = false;
         // 其他欄位設置
-        $partyType->activity_id = $activity->activity_id; // 使用自动生成的 id
+        $partyType->activity_id = $activity->activity_id;
 
         $partyType->save();
         //organizeActivity
