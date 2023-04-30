@@ -41,7 +41,6 @@ function Activity2() {
     if (newCount <= maxCount && newCount >= minCount) {
       setactivityCount(newCount);
       sessionStorage.setItem("活動總人數", event.target.value);
-      console.log(newCount);
     }
   }
 
@@ -101,28 +100,6 @@ function Activity2() {
       </div>
       <main className="activity_main_2">
         <div className="activity_title">{activityName}</div>
-        <div className="allActivity">
-          <div className="hostName">
-            <img src="defaultImg" />
-            <p>
-              {"{"}主辦人名字{"}"}
-            </p>
-          </div>
-          <div className="uploadImage">
-            <img src={defaultImg} alt="" />
-          </div>
-          <div className="activityText_2">
-            <textarea
-              name=""
-              id=""
-              className="activityName_2"
-              cols={30}
-              rows={10}
-              readOnly
-              defaultValue={activityText}
-            />
-          </div>
-        </div>
         <div className="meetForm">
           <div className="meetBox">
             <div className="box">
@@ -216,6 +193,29 @@ function Activity2() {
             </div>
           </div>
         </div>
+        <div className="allActivity">
+          <div className="hostName">
+            <img src={user.member_avatar} />
+            <p>
+              {user.name}
+            </p>
+          </div>
+          <div className="uploadImage">
+            <img src={defaultImg} alt="" />
+          </div>
+          <div className="activityText_2">
+            <textarea
+              name=""
+              id=""
+              className="activityName_2"
+              cols={30}
+              rows={10}
+              readOnly
+              defaultValue={activityText}
+            />
+          </div>
+        </div>
+
         <div className="buttonControl">
           <a className="button" href="/activity">
             上一頁
