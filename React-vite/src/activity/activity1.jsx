@@ -17,7 +17,8 @@ function Activity1() {
     );
   }
   // 聚會類型
-  const [isActive, setIsActive] = useState(Array(14).fill(false));
+  const storedValue = sessionStorage.getItem('活動類型');
+  const [isActive, setIsActive] = useState(storedValue ? JSON.parse(storedValue) : Array(14).fill(false));
   const activities = [
     { id: 1, icon: "🍿", label: "電影" },
     { id: 2, icon: "🎲", label: "桌游" },
