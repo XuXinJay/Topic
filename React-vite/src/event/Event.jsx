@@ -20,6 +20,8 @@ function Event() {
 
   const [messages, setMessages] = useState([]);
 
+  
+
   function review() {
     window.location.href = 'http://localhost:5173/review/' + activity_id;
   }
@@ -94,8 +96,7 @@ function Event() {
     window.location.reload();
   };
 
-
-
+ 
 
   if (loading) {
     return (
@@ -190,13 +191,22 @@ function Event() {
                 <div>
                   <i className="bi bi-people" />
                   <div>
-                    <span>X</span>/<span>N</span>
+                    <span>{1}</span>/<span>{eventData[0].activity_number}</span>
                   </div>
                 </div>
               </div>
-              <div className="event_page-grid-grid-item">
-                <img src="" style={{ width: 70 }} />
-                <div>鄭明哲</div>
+              <div className="event_page-grid">
+                {joinData.map((member) => {
+                  if (member.join_state == "已通過") {
+                    return (
+                      <div className="event_page-grid-grid-item" key={member.id}>
+                        <img className="event_page-grid-grid-img" src={member.member_avatar} style={{ width: 70 }} />
+                        <div>{member.name}</div>
+                      </div>
+                    )
+                  }
+
+                })}
               </div>
 
             </div>
@@ -210,25 +220,26 @@ function Event() {
                       key={message.comment_id}
                       className="event_page-grid-item-message"
                     >
-                      <div className="user d-flex flex-row align-items-center">
-                        <img
-                          src={message.member_avatar}
-                          width={30}
-                          className="user-img rounded-circle mr-2"
-                          style={{ borderRadius: "50%" }}
-                        />
-                        <span>
-                          <small className="font-weight-bold text-primary">
+                      <div className="event_page-message-board">
+                        <div className="event_page-message">
+                          <img
+                            src={message.member_avatar}
+                            width={60}
+                            className="user-img rounded-circle mr-2"
+                            style={{ borderRadius: "50%" }}
+                          />
+                          <span className="font-weight-bold text-primary">
                             {" "}
                             {message.name}
-                          </small>
-                          <small className="font-weight-bold">
+                          </span>
+                        </div>
+                          <small className="font-weight-bold1">
                             {" "}
                             {message.comment_content}
                           </small>
-                        </span>
-                      </div>
+                        
                       <div className="event_page-time"> {message.created_at}</div>
+                      </div>
                     </div>
                   );
                 }
@@ -241,14 +252,14 @@ function Event() {
                   className="event_page-textarea"
                   id=""
                   rows={3}
-                  value={message?.comment_content} // 将状态中的值绑定到文本框的 value 属性
+                  value={message?.comment_content}
                   onChange={(event) =>
                     setMessage({
                       member_id: user?.id,
                       activity_id: eventData[0].activity_id,
                       comment_content: event.target.value,
                     })
-                  } // 处理表单输入变化 // 监听文本框的输入变化
+                  } 
                 />
                 <div className="event_page-bbb-message">
                   <button className="event_page-button-message" type="submit">
@@ -275,7 +286,7 @@ function Event() {
                 <div>
                   <i className="bi bi-people" />
                   <div>
-                    <span>X</span>/<span>N</span>
+                  <span>{1}</span>/<span>{eventData[0].activity_number}</span>
                   </div>
                 </div>
               </div>
@@ -369,14 +380,23 @@ function Event() {
               <div>
                 <i className="bi bi-people" />
                 <div>
-                  <span>X</span>/<span>N</span>
+                <span>{1}</span>/<span>{eventData[0].activity_number}</span>
                 </div>
               </div>
             </div>
-            <div className="event_page-grid-grid-item">
-              <img src="" style={{ width: 70 }} />
-              <div>鄭明哲</div>
-            </div>
+            <div className="event_page-grid">
+                {joinData.map((member) => {
+                  if (member.join_state == "已通過") {
+                    return (
+                      <div className="event_page-grid-grid-item" key={member.id}>
+                        <img className="event_page-grid-grid-img" src={member.member_avatar} style={{ width: 70 }} />
+                        <div>{member.name}</div>
+                      </div>
+                    )
+                  }
+
+                })}
+              </div>
 
           </div>
           {/* 相關留言 */}
@@ -386,29 +406,30 @@ function Event() {
               if (message.activity_id == activity_id) {
                 return (
                   <div
-                    key={message.comment_id}
-                    className="event_page-grid-item-message"
-                  >
-                    <div className="user d-flex flex-row align-items-center">
-                      <img
-                        src={message.member_avatar}
-                        width={30}
-                        className="user-img rounded-circle mr-2"
-                        style={{ borderRadius: "50%" }}
-                      />
-                      <span>
-                        <small className="font-weight-bold text-primary">
-                          {" "}
-                          {message.name}
-                        </small>
-                        <small className="font-weight-bold">
-                          {" "}
-                          {message.comment_content}
-                        </small>
-                      </span>
+                      key={message.comment_id}
+                      className="event_page-grid-item-message"
+                    >
+                      <div className="event_page-message-board">
+                        <div className="event_page-message">
+                          <img
+                            src={message.member_avatar}
+                            width={60}
+                            className="user-img rounded-circle mr-2"
+                            style={{ borderRadius: "50%" }}
+                          />
+                          <span className="font-weight-bold text-primary">
+                            {" "}
+                            {message.name}
+                          </span>
+                        </div>
+                          <small className="font-weight-bold1">
+                            {" "}
+                            {message.comment_content}
+                          </small>
+                        
+                      <div className="event_page-time"> {message.created_at}</div>
+                      </div>
                     </div>
-                    <div className="event_page-time"> {message.created_at}</div>
-                  </div>
                 );
               }
             })}
