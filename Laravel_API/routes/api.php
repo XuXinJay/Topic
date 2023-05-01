@@ -32,8 +32,6 @@ Route::get('/organizeActivities', [JoinActivityController::class,'organizeActivi
 
 Route::post('/createActivity' , [OrganizeActivityController::class,'createActivity']);
 
-Route::get('/createactivity' , [OrganizeActivityController::class, 'getUser']);
-
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
 Route::get('/joinActivities/{activityId}', [JoinActivityController::class,'joinActivities2']);
@@ -55,6 +53,8 @@ Route::get('/activities/{activity_id}/timediff', [ActivityController::class,'tim
 Route::get('/joinActivities/{activity_id}', [JoinActivityController::class,'reviewActivities']);
 
 Route::get('/notify', [OrganizeActivityController::class,'notify']);
+
+Route::get('/notify2', [OrganizeActivityController::class,'notify2']);
 
 Route::post('/messages',[MessageController::class,'store']);
 
