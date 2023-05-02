@@ -186,6 +186,12 @@
   color: black;
 }
 
+.googleMap {
+  color: black;
+  width: 600px;
+  height: 400px;
+}
+
 .uploadImage {
   text-align: center;
   width: 80%;
