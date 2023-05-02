@@ -16,11 +16,11 @@ function Activity3() {
     );
   }
   //地圖api
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs&callback=initMap"></script>
+  // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs&callback=initMap"></script>
   
-  function openGoogleMap(address) {
+  // function openGoogleMap(address) {
 
-  }
+  // }
 
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
@@ -30,7 +30,7 @@ function Activity3() {
   const activityPlace = sessionStorage.getItem("活動地點");
   const activityStartDate = sessionStorage.getItem("活動日期");
   const activityEndDate = sessionStorage.getItem("活動結束日期");
-  
+  const activityDeadLine = sessionStorage.getItem("報名截止日期");
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
@@ -71,7 +71,7 @@ function Activity3() {
   const deadline = new Date(activityDeadLine);
   const diffTime = deadline.getTime() - today.getTime();
   const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
-  sessionStorage.setItem('剩餘天數', diffDays)
+  // sessionStorage.setItem('剩餘天數', diffDays)
 
 
   return user ? (
@@ -94,7 +94,7 @@ function Activity3() {
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
               <div className="">
-                聚會地點 :<a href="#" onClick={openGoogleMap(`${activityPlace}`)} target="_blank" className="googleMap">{activityPlace}</a>
+                聚會地點 :<a href="#"  target="_blank" className="googleMap">{activityPlace}</a>
               </div>
             </div>
             <div className="count">
@@ -127,7 +127,7 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>{activityStartDate}</div>
+              <div>{activityStartDate.slice(5,10)}</div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
