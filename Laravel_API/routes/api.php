@@ -34,7 +34,7 @@ Route::post('/createActivity' , [OrganizeActivityController::class,'createActivi
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
-Route::get('/joinActivities', [JoinActivityController::class,'store']);
+Route::get('/joinActivities1', [JoinActivityController::class,'store']);
 
 Route::get('/joinActivities/{activityId}', [JoinActivityController::class,'joinActivities2']);
 

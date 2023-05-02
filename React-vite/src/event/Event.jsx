@@ -83,7 +83,7 @@ function Event() {
   const applySubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/joinActivities', {
+      const response = await axios.post('/api/joinActivities1', {
         member_id: user.id,
         activity_id: activity_id
       });
