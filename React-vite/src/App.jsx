@@ -11,7 +11,8 @@ import Acticity11 from "./pages/Activity1.jsx";
 import Acticity22 from "./pages/Activity2.jsx";
 import Acticity33 from "./pages/Activity3.jsx";
 import Register from "./Loginpages/Register.jsx";
-import ForgotPassword from "./Loginpages/ResetPassword.jsx";
+import ForgotPassword from "./Loginpages/ForgotPassword.jsx";
+import ResetPassword from "./Loginpages/ResetPassword.jsx";
 import Home from "./pages/Home.jsx"
 import EventPages from "./pages/EventPages";
 import EventReviewPages from "./pages/EventReviewPages";
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/Login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/password-reset/:token" element={<ResetPassword />} />
 
         {/* 瑞澤 */}
         <Route path="/activity" element={<Acticity11 />} />

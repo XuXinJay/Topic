@@ -28,6 +28,11 @@
   margin: 1rem;
 }
 
+.login_title_forget {
+  margin: 1rem;
+  text-align: center;
+}
+
 .login_form {
   width: 100%;
   text-align: center;

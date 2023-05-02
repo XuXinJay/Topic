@@ -29,7 +29,18 @@ class OrganizeActivityController extends Controller
             ->join('users', 'users.id', '=', 'notifications.member_id')
             ->join('notification_contents', 'notification_contents.notify_id', '=', 'notifications.notify_id')
             ->select('notification_contents.*', 'users.id')
-            ->get();
+            ->get()
+            ->sortByDesc('created_at');
+
+        return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
+    }
+
+    public function notify2()
+    {
+        $activities = DB::table('notification_contents')
+            ->where("notification_type" ,'=', "系統")
+            ->get()
+            ->sortByDesc('created_at');
 
         return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
     }
@@ -77,7 +88,4 @@ class OrganizeActivityController extends Controller
         $organizeActivity->save();
     }
 
-    public function getUser() {
-        
-    }
 }

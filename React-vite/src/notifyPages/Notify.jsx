@@ -64,7 +64,7 @@ function Notify() {
     async function getNotify() {
       try {
         const response = await axios.get("api/notify");
-        const notifyData = response.data;
+        const notifyData =  Object.values(response.data)
         const activityNotifys = notifyData.filter(
           (notify) =>
             notify.notification_type === "活動" && notify.id === user.id
@@ -72,18 +72,28 @@ function Notify() {
         const accountNotifys = notifyData.filter(
           (notify) =>
             notify.notification_type === "帳號" && notify.id === user.id
-        );
-        const systemNotifys = notifyData.filter(
-          (notify) => notify.notification_type === "系統"
-        );
+        );        
         setActivityNotifys(activityNotifys);
         setAccountNotifys(accountNotifys);
-        setSystemNotifys(systemNotifys);
       } catch (error) {
         console.error(error);
       }
     }
     getNotify();
+
+    async function getNotify2() {
+      try {
+        const response = await axios.get("api/notify2");
+        const notifyData2 =  Object.values(response.data)        
+        const systemNotifys = notifyData2.filter(
+          (notify) => notify.notification_type === "系統"
+        );        
+        setSystemNotifys(systemNotifys);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getNotify2();
   }, [user]);
   // console.log(activityNotifys)
   // console.log(accountNotifys)
