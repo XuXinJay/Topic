@@ -127,7 +127,7 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>{activityStartDate}</div>
+              <div>{activityStartDate.slice(5,10)}</div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
