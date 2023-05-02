@@ -255,7 +255,7 @@ function MemberPage() {
             return  (
               <div className="organise-content">
                 <div>
-                  <img src={design} className="organise-photo" />
+                  <img src={activity.activity_image} className="organise-photo" />
                 </div>
                 <div style={{ marginLeft: ".3rem" ,color:"black"}}>
                   <span>活動名稱：</span>
@@ -353,7 +353,7 @@ function MemberPage() {
             return (
               <div className="campaign-content" >
                 <div>
-                  <img src={design} className="campaign-photo" />
+                  <img src={activity.activity_image} className="campaign-photo" />
                 </div>
                 <div style={{ marginLeft: ".3rem",color:"black" }}>
                   <span>活動名稱：</span>
@@ -480,7 +480,7 @@ function MemberPage() {
             return (
               <div className="collect-content">
                 <div>
-                  <img src={design} className="collect-photo" />
+                  <img src={activity.activity_image} className="collect-photo" />
                 </div>
                 <div style={{ marginLeft: ".3rem",color:"black" }}>
                   <span>活動名稱：</span>
