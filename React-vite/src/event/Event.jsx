@@ -20,7 +20,7 @@ function Event() {
 
   const [messages, setMessages] = useState([]);
 
-  
+
 
   function review() {
     window.location.href = 'http://localhost:5173/review/' + activity_id;
@@ -96,7 +96,7 @@ function Event() {
     window.location.reload();
   };
 
- 
+
 
   if (loading) {
     return (
@@ -109,6 +109,15 @@ function Event() {
   return (
     <div className="event_page-container">
       <div className="event_page-allActivity">
+
+        {/* <form action="/api/joinActivities" type="submit" method="post" onSubmit={likeSubmit}>
+          <div className="event_page-bbb-message">
+          <button className="event_page-button-message" type="submit">
+            收藏
+          </button>
+        </div>
+        </form> */}
+        
         <div className="event_page-title" style={{ textAlign: "center" }}>
           {eventData[0].activity_name}
         </div>
@@ -170,7 +179,7 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-hourglass-split" />
-              <div style={{ color: "red" }}>123</div>
+              <div style={{ color: "red" }}>{eventData[0].activity_deadline-eventData[0].activity_partyTime}</div>
             </div>
           </div>
         </div>
@@ -233,12 +242,12 @@ function Event() {
                             {message.name}
                           </span>
                         </div>
-                          <small className="font-weight-bold1">
-                            {" "}
-                            {message.comment_content}
-                          </small>
-                        
-                      <div className="event_page-time"> {message.created_at}</div>
+                        <small className="font-weight-bold1">
+                          {" "}
+                          {message.comment_content}
+                        </small>
+
+                        <div className="event_page-time"> {message.created_at}</div>
                       </div>
                     </div>
                   );
@@ -259,7 +268,7 @@ function Event() {
                       activity_id: eventData[0].activity_id,
                       comment_content: event.target.value,
                     })
-                  } 
+                  }
                 />
                 <div className="event_page-bbb-message">
                   <button className="event_page-button-message" type="submit">
@@ -286,7 +295,7 @@ function Event() {
                 <div>
                   <i className="bi bi-people" />
                   <div>
-                  <span>{1}</span>/<span>{eventData[0].activity_number}</span>
+                    <span>{1}</span>/<span>{eventData[0].activity_number}</span>
                   </div>
                 </div>
               </div>
@@ -329,12 +338,12 @@ function Event() {
                             {message.name}
                           </span>
                         </div>
-                          <small className="font-weight-bold1">
-                            {" "}
-                            {message.comment_content}
-                          </small>
-                        
-                      <div className="event_page-time"> {message.created_at}</div>
+                        <small className="font-weight-bold1">
+                          {" "}
+                          {message.comment_content}
+                        </small>
+
+                        <div className="event_page-time"> {message.created_at}</div>
                       </div>
                     </div>
                   );
@@ -380,23 +389,23 @@ function Event() {
               <div>
                 <i className="bi bi-people" />
                 <div>
-                <span>{1}</span>/<span>{eventData[0].activity_number}</span>
+                  <span>{1}</span>/<span>{eventData[0].activity_number}</span>
                 </div>
               </div>
             </div>
             <div className="event_page-grid">
-                {joinData.map((member) => {
-                  if (member.join_state == "已通過") {
-                    return (
-                      <div className="event_page-grid-grid-item" key={member.id}>
-                        <img className="event_page-grid-grid-img" src={member.member_avatar} style={{ width: 70 }} />
-                        <div>{member.name}</div>
-                      </div>
-                    )
-                  }
+              {joinData.map((member) => {
+                if (member.join_state == "已通過") {
+                  return (
+                    <div className="event_page-grid-grid-item" key={member.id}>
+                      <img className="event_page-grid-grid-img" src={member.member_avatar} style={{ width: 70 }} />
+                      <div>{member.name}</div>
+                    </div>
+                  )
+                }
 
-                })}
-              </div>
+              })}
+            </div>
 
           </div>
           {/* 相關留言 */}
@@ -406,30 +415,30 @@ function Event() {
               if (message.activity_id == activity_id) {
                 return (
                   <div
-                      key={message.comment_id}
-                      className="event_page-grid-item-message"
-                    >
-                      <div className="event_page-message-board">
-                        <div className="event_page-message">
-                          <img
-                            src={message.member_avatar}
-                            width={60}
-                            className="user-img rounded-circle mr-2"
-                            style={{ borderRadius: "50%" }}
-                          />
-                          <span className="font-weight-bold text-primary">
-                            {" "}
-                            {message.name}
-                          </span>
-                        </div>
-                          <small className="font-weight-bold1">
-                            {" "}
-                            {message.comment_content}
-                          </small>
-                        
-                      <div className="event_page-time"> {message.created_at}</div>
+                    key={message.comment_id}
+                    className="event_page-grid-item-message"
+                  >
+                    <div className="event_page-message-board">
+                      <div className="event_page-message">
+                        <img
+                          src={message.member_avatar}
+                          width={60}
+                          className="user-img rounded-circle mr-2"
+                          style={{ borderRadius: "50%" }}
+                        />
+                        <span className="font-weight-bold text-primary">
+                          {" "}
+                          {message.name}
+                        </span>
                       </div>
+                      <small className="font-weight-bold1">
+                        {" "}
+                        {message.comment_content}
+                      </small>
+
+                      <div className="event_page-time"> {message.created_at}</div>
                     </div>
+                  </div>
                 );
               }
             })}
