@@ -156,7 +156,7 @@ function Activity1() {
             <span className="arrowButton">◀</span>
             <div className="imageBox">
               <img
-                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360"
+                src=""
                 alt="1"
                 onClick={handleImgClick}
               />

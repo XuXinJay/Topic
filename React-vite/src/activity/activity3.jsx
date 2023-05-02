@@ -30,7 +30,7 @@ function Activity3() {
   const activityPlace = sessionStorage.getItem("活動地點");
   const activityStartDate = sessionStorage.getItem("活動日期");
   const activityEndDate = sessionStorage.getItem("活動結束日期");
-  const activityDeadLine = sessionStorage.getItem("報名截止日期");
+  
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
@@ -71,6 +71,8 @@ function Activity3() {
   const deadline = new Date(activityDeadLine);
   const diffTime = deadline.getTime() - today.getTime();
   const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+  sessionStorage.setItem('剩餘天數', diffDays)
+
 
   return user ? (
     <div className="activity_container">
