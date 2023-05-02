@@ -16,6 +16,8 @@ function Activity3() {
     );
   }
 
+
+
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
   const defaultImg = sessionStorage.getItem("預設圖片");
@@ -60,6 +62,13 @@ function Activity3() {
     window.location.href = "/";
     // .catch(error => console.error(error))
   }
+
+  const today = new Date();
+  const deadline = new Date(activityDeadLine);
+  const diffTime = deadline.getTime() - today.getTime();
+  const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+  console.log(diffDays)
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -117,7 +126,7 @@ function Activity3() {
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>1天</div>
+              <div style={{ color: "red" }}>{diffDays}天</div>
             </div>
           </div>
         </div>
