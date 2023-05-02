@@ -56,7 +56,7 @@ function Activity2() {
   );
 
   const today = new Date().toISOString().slice(0, 10);
-  // const yesterday = new Date()
+  // const beforeEndDate = new Date(activityEndDate.getTime() - 86400000).toISOString().slice(0, 10);
 
   function handleActivityStartDate(event) {
     setActivityStartDate(event.target.value);
@@ -158,7 +158,8 @@ function Activity2() {
                 name="activityDeadLine"
                 defaultValue={activityDeadLine}
                 onChange={handleActivityDeadLine}
-                // min={}
+                min={activityStartDate}
+                max={activityEndDate ? new Date(new Date(activityEndDate).getTime() - 86400000).toISOString().slice(0, 10) : ""}
                 required
               />
             </div>
