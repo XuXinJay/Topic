@@ -107,8 +107,6 @@ function Event() {
 
   const today = new Date();
   const deadline = new Date(eventData[0].activity_deadline);
-  
-  
   const diffTime = deadline.getTime() - today.getTime();
   const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
 
