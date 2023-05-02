@@ -149,7 +149,7 @@ function Activity1() {
               accept="image/*"
               className="fileInput"
               required=""
-              onClick={handleImageUpload}
+              onChange={handleImageUpload}
             />
           </label>
           <div className="imageDefault">
