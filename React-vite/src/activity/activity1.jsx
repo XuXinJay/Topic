@@ -156,17 +156,17 @@ function Activity1() {
             <span className="arrowButton">◀</span>
             <div className="imageBox">
               <img
-                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360"
+                src="./src/mainpage/image/test/img7.jpg"
                 alt="1"
                 onClick={handleImgClick}
               />
               <img
-                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360"
+                src="./src/mainpage/image/test/img4.jpg"
                 alt="2"
                 onClick={handleImgClick}
               />
               <img
-                src="https://i0.wp.com/www.tripresso.com/blog/wp-content/uploads/2021/02/7.jpeg?resize=640%2C360"
+                src="./src/mainpage/image/test/img5.jpg"
                 alt="3"
                 onClick={handleImgClick}
               />

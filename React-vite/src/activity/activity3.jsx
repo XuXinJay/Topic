@@ -15,6 +15,12 @@ function Activity3() {
       </div>
     );
   }
+  //地圖api
+  // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs&callback=initMap"></script>
+  
+  // function openGoogleMap(address) {
+
+  // }
 
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
@@ -60,6 +66,14 @@ function Activity3() {
     window.location.href = "/";
     // .catch(error => console.error(error))
   }
+  //剩餘天數
+  const today = new Date();
+  const deadline = new Date(activityDeadLine);
+  const diffTime = deadline.getTime() - today.getTime();
+  const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+  // sessionStorage.setItem('剩餘天數', diffDays)
+
+
   return user ? (
     <div className="activity_container">
       <div className="progressBar">
@@ -80,7 +94,7 @@ function Activity3() {
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
               <div className="">
-                聚會地點 :<a href="">{activityPlace}</a>
+                聚會地點 :<a href="#"  target="_blank" className="googleMap">{activityPlace}</a>
               </div>
             </div>
             <div className="count">
@@ -113,11 +127,11 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>{activityStartDate}</div>
+              <div>{activityStartDate.slice(5,10)}</div>
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>1天</div>
+              <div style={{ color: "red" }}>{diffDays}天</div>
             </div>
           </div>
         </div>

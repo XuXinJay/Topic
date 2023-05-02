@@ -20,8 +20,7 @@ function Event() {
 
   const [messages, setMessages] = useState([]);
 
-
-
+  
   function review() {
     window.location.href = 'http://localhost:5173/review/' + activity_id;
   }
@@ -83,7 +82,7 @@ function Event() {
   const applySubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/joinActivities', {
+      const response = await axios.post('/api/joinActivities1', {
         member_id: user.id,
         activity_id: activity_id
       });
@@ -106,6 +105,13 @@ function Event() {
     );
   }
 
+  const today = new Date();
+  const deadline = new Date(eventData[0].activity_deadline);
+  const diffTime = deadline.getTime() - today.getTime();
+  const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+
+  const passedJoinData = joinData.filter(item => item.join_state == "已通過");
+  
   return (
     <div className="event_page-container">
       <div className="event_page-allActivity">
@@ -179,7 +185,7 @@ function Event() {
           <div className="event_page-iconBox">
             <div style={{ width: 100 }}>
               <i className="bi bi-hourglass-split" />
-              <div style={{ color: "red" }}>{eventData[0].activity_deadline-eventData[0].activity_partyTime}</div>
+              <div style={{ color: "red" }}>{diffDays}天</div>
             </div>
           </div>
         </div>
@@ -200,7 +206,7 @@ function Event() {
                 <div>
                   <i className="bi bi-people" />
                   <div>
-                    <span>{1}</span>/<span>{eventData[0].activity_number}</span>
+                    <span>{passedJoinData.length}</span>/<span>{eventData[0].activity_number}</span>
                   </div>
                 </div>
               </div>
@@ -295,7 +301,7 @@ function Event() {
                 <div>
                   <i className="bi bi-people" />
                   <div>
-                    <span>{1}</span>/<span>{eventData[0].activity_number}</span>
+                    <span>{passedJoinData.length}</span>/<span>{eventData[0].activity_number}</span>
                   </div>
                 </div>
               </div>
@@ -389,7 +395,7 @@ function Event() {
               <div>
                 <i className="bi bi-people" />
                 <div>
-                  <span>{1}</span>/<span>{eventData[0].activity_number}</span>
+                  <span>{passedJoinData.length}</span>/<span>{eventData[0].activity_number}</span>
                 </div>
               </div>
             </div>

@@ -269,6 +269,7 @@
 
 .organise-photo {
   width: 100px;
+  height: 75px;
   border-radius: 20%;
 }
 
@@ -315,6 +316,7 @@
 
 .campaign-photo {
   width: 100px;
+  height: 75px;
   border-radius: 20%;
 }
 
@@ -416,6 +418,7 @@
 
 .collect-photo {
   width: 100px;
+  height: 75px;
   border-radius: 20%;
 }
 
