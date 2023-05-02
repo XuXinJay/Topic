@@ -34,6 +34,8 @@ Route::post('/createActivity' , [OrganizeActivityController::class,'createActivi
 
 Route::get('/joinActivities', [JoinActivityController::class,'joinActivities']);
 
+Route::get('/joinActivities', [JoinActivityController::class,'store']);
+
 Route::get('/joinActivities/{activityId}', [JoinActivityController::class,'joinActivities2']);
 
 Route::post('/joinActivities/update/{activityId}/{memberId}', [JoinActivityController::class,'update']);
