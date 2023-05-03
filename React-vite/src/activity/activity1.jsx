@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 function Activity1() {
   const { user, loading } = useAuthContext();
-
+  
   if (loading) {
     return (
       <div className="center">
@@ -57,6 +57,7 @@ function Activity1() {
     setdefaultImg(event.target.src);
     sessionStorage.setItem("預設圖片", event.target.src);
   }
+  const [ImageState, setImageState] = useState("");
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -66,6 +67,7 @@ function Activity1() {
       const imageData = reader.result;
       // console.log(reader.result)
       sessionStorage.setItem("預設圖片", imageData);
+      setImageState(imageData);
     };
   };
 
@@ -142,7 +144,8 @@ function Activity1() {
         <div className="imageUpload">
           <div className="activity_title">上傳圖片 : </div>
           <label htmlFor="fileInput" className="fileLabel">
-            <span className="fileSpan">➕</span>
+            <span className="fileSpan">{ImageState? <img src={ImageState}/> : '+' }</span>
+            {/* <span className="fileSpan">+</span> */}
             <input
               type="file"
               id="fileInput"
