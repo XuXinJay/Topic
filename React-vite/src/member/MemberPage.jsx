@@ -34,8 +34,8 @@ function MemberPage() {
     getActivity();
   }, []);
 
-  
-  
+
+
   // ------------------------------------------------------------參與活動
   useEffect(() => {
     async function getActivity() {
@@ -48,19 +48,25 @@ function MemberPage() {
     }
     getActivity();
   }, []);
-  
+
   // ------------------------------------------------------------舉辦活動（報名人數）
- 
-    function getJoinCount(activity_id) {
-      let count = 0;
-      join_activities.forEach((activity) => {
-        if (activity.activity_id === activity_id && activity.join_state === "審核中") {
-          count++;
+
+  function getJoinCount(activity_id) {
+    let count = 0;
+    join_activities.forEach((activity) => {
+      if (activity.activity_id === activity_id && activity.join_state !== "未通過") {
+        count++;
+        const labels = document.querySelectorAll("label");
+        // labels.forEach((label) => {
+          if(labels.length>5){
+          labels[3].className = "member-label";
+        // });
         }
-      });
-      return count;
-    }
- 
+      }
+    });
+    return count;
+  }
+
   // ------------------------------------------------------------取消報名活動
 
 
@@ -256,16 +262,19 @@ function MemberPage() {
 
 
 
+
+
         {/* organise_event tab start */}
         <input id="tab2" type="radio" name="tab" />
-        <label className="member-label" htmlFor="tab2">
+
+        <label className="member-label" id="labelAlert" htmlFor="tab2">
           發起活動
         </label>
+
         <form className="member-form-content">
           <p>未發起任何活動</p>
           {organize_activities.map((activity) => {
             const count = getJoinCount(activity.activity_id);
-          console.log(joinCount)
             if (user.id === activity.id) {
               return (
                 <div className="organise-content">
@@ -310,9 +319,11 @@ function MemberPage() {
                     />
                   </div>
                   <div style={{ position: "relative" }}>
-                    <a className="organise-submit" href={`/review/${activity.activity_id}`}>
-                      審核
-                    </a>
+                    {count ?
+                      <a className="organise-submit" href={`/review/${activity.activity_id}`}>
+                        審核
+                      </a>
+                      : ""}
                   </div>
 
                 </div>
