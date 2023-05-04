@@ -7,12 +7,31 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import LOGO from "./img/LOGO.png";
 import DarkMode from "./DarkMode/DarkMode";
+import axios from "../api/axios";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfilePageOpen, setIsProfilePageOpen] = useState(false);
   const { user, logout, loading } = useAuthContext();
+  const [reviewState, setReviewState] = useState([]);
 
+  /* ------------------ */
+  // console.log(user.id)
+  useEffect(() => {
+    async function getActivity() {
+      try {
+        const responseState = await axios.get(`api/fetchOrganizeAndJoinData`);
+        setReviewState(responseState.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getActivity();
+  }, []);
+
+  console.log(reviewState)
+
+  /* ------------------ */
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   }
@@ -20,6 +39,7 @@ function Header() {
   function profilePage() {
     setIsProfilePageOpen(!isProfilePageOpen);
   }
+
 
   if (loading) {
     return (
@@ -109,7 +129,19 @@ function Header() {
           </a>
 
           <div className="profilePage_box" onClick={profilePage}>
-            <img className="login_head_img" src={user?.member_avatar}></img>
+
+            {/* 以下變更的部分*/}
+            <div className="login_head_img_box">
+              <img className="login_head_img" src={user?.member_avatar} />
+              
+              {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+                <div className="remind_circle">
+                  <i className="uil uil-bell remind_circle_icon"></i>
+                </div>
+              ) : null}
+            </div>
+            {/* 以上為變更的部分*/}
+
             <ul className={`mobile-login ${isProfilePageOpen ? "open" : ""}`}>
               <li className="profile-li">
                 <img className="login_head_img" src={user?.member_avatar}></img>
