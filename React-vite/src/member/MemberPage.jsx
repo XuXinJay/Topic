@@ -14,7 +14,7 @@ function MemberPage() {
   const [join_activities, setjoinActivities] = useState([]);
   const [favorite_activities, setfavoriteActivities] = useState([]);
   const [memberInfo, setMemberInfo] = useState(user);
-  
+  const [joinCount, setJoinCount] = useState(0);
 
   useEffect(() => {
     setMemberInfo(user);
@@ -34,12 +34,13 @@ function MemberPage() {
     getActivity();
   }, []);
 
+  
+  
   // ------------------------------------------------------------參與活動
   useEffect(() => {
     async function getActivity() {
       try {
         const response = await axios.get("api/joinActivities");
-        // console.log(response.data);
         setjoinActivities(response.data);
       } catch (error) {
         console.error(error);
@@ -47,11 +48,23 @@ function MemberPage() {
     }
     getActivity();
   }, []);
-
-   // ------------------------------------------------------------取消報名活動
   
+  // ------------------------------------------------------------舉辦活動（報名人數）
+ 
+    function getJoinCount(activity_id) {
+      let count = 0;
+      join_activities.forEach((activity) => {
+        if (activity.activity_id === activity_id && activity.join_state === "審核中") {
+          count++;
+        }
+      });
+      return count;
+    }
+ 
+  // ------------------------------------------------------------取消報名活動
 
-   async function deletejoinActivity(activity_id,id) {
+
+  async function deletejoinActivity(activity_id, id) {
     const activityId = activity_id;
     const memberId = id;
     try {
@@ -77,18 +90,18 @@ function MemberPage() {
   }, []);
 
   // ------------------------------------------------------------刪除收藏活動
-  
 
-    async function deleteActivity(activity_id,id) {
-      const activityId = activity_id;
-      const memberId = id;
-      try {
-        const response = await axios.delete(`api/favoriteActivities/${activityId}/${memberId}`);
-        window.location.href = '/member';
-      } catch (error) {
-        console.error(error);
-      }
+
+  async function deleteActivity(activity_id, id) {
+    const activityId = activity_id;
+    const memberId = id;
+    try {
+      const response = await axios.delete(`api/favoriteActivities/${activityId}/${memberId}`);
+      window.location.href = '/member';
+    } catch (error) {
+      console.error(error);
     }
+  }
 
 
 
@@ -251,54 +264,62 @@ function MemberPage() {
         <form className="member-form-content">
           <p>未發起任何活動</p>
           {organize_activities.map((activity) => {
-            if(user.id === activity.id){
-            return  (
-              <div className="organise-content">
-                <div>
-                  <img src={activity.activity_image} className="organise-photo" />
-                </div>
-                <div style={{ marginLeft: ".3rem" ,color:"black"}}>
-                  <span>活動名稱：</span>
-                  <input
-                    type="text"
-                    name="organiseName"
-                    defaultValue={activity.activity_name}
-                    className="organise-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動地點：</span>
-                  <input
-                    type="text"
-                    name="organiseName"
-                    defaultValue={activity.activity_place}
-                    className="organise-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動日期：</span>
-                  <input
-                    type="datetime"
-                    name="organiseName"
-                    defaultValue={formatDate(activity.activity_partyTime)}
-                    className="organise-sub"
-                    size={10}
-                    readOnly
-                  />
-                </div>
-                <div style={{ position: "relative" }}>
-                  <a className="organise-submit" href={`/review/${activity.activity_id}`}>
-                    審核
-                  </a>
+            const count = getJoinCount(activity.activity_id);
+          console.log(joinCount)
+            if (user.id === activity.id) {
+              return (
+                <div className="organise-content">
+                  <div>
+                    <img src={activity.activity_image} className="organise-photo" />
+                  </div>
+                  <div style={{ marginLeft: ".3rem", color: "black", textAlign: "initial" }}>
+                    <span>活動名稱：</span>
+                    <input
+                      type="text"
+                      name="organiseName"
+                      defaultValue={activity.activity_name}
+                      className="organise-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+
+                    <span>報名人數：</span>
+                    <span>{count}/{activity.activity_number}</span>
+                    {/* <span>0/{activity.activity_number}</span> */}
+
+                    <br />
+                    <span>活動地點：</span>
+                    <input
+                      type="text"
+                      name="organiseName"
+                      defaultValue={activity.activity_place}
+                      className="organise-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+                    <span>活動日期：</span>
+                    <input
+                      type="datetime"
+                      name="organiseName"
+                      defaultValue={formatDate(activity.activity_partyTime)}
+                      className="organise-sub"
+                      size={10}
+                      readOnly
+                    />
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <a className="organise-submit" href={`/review/${activity.activity_id}`}>
+                      審核
+                    </a>
+                  </div>
+
                 </div>
 
-              </div>
-              
 
-            );
-          }
+              );
+            }
           })}
         </form>
         {/* organise_event tab end */}
@@ -346,65 +367,65 @@ function MemberPage() {
 
 
         <form className="member-form-content">
-        <p>未參加任何活動</p>
+          <p>未參加任何活動</p>
 
           {join_activities.map((activity) => {
-            if(user.id === activity.id){
-            return (
-              <div className="campaign-content" >
-                <div>
-                  <img src={activity.activity_image} className="campaign-photo" />
+            if (user.id === activity.id) {
+              return (
+                <div className="campaign-content" >
+                  <div>
+                    <img src={activity.activity_image} className="campaign-photo" />
+                  </div>
+                  <div style={{ marginLeft: ".3rem", color: "black" }}>
+                    <span>活動名稱：</span>
+                    <input
+                      type="text"
+                      name="campaignName"
+                      defaultValue={activity.activity_name}
+                      className="campaign-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+                    <span>活動地點：</span>
+                    <input
+                      type="text"
+                      defaultValue={activity.activity_place}
+                      className="campaign-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+                    <span>活動日期：</span>
+                    <input
+                      type="datetime"
+                      defaultValue={formatDate(activity.activity_partyTime)}
+                      className="campaign-sub"
+                      size={10}
+                      readOnly
+                    />
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <input
+                      type="button"
+                      // defaultValue="審核中"
+                      defaultValue={activity.join_state}
+                      className={activity.join_state === "未通過" ? "campaign-unpass"
+                        : activity.join_state === "已通過" ? "campaign-pass"
+                          : "campaign-review"}
+                    // className="campaign-review"
+                    />
+                    <input
+                      type="button"
+                      value="取消報名"
+                      className="campaign-cancel"
+                      onClick={() =>
+                        deletejoinActivity(activity.activity_id, user.id)
+                      }
+                    />
+                  </div>
                 </div>
-                <div style={{ marginLeft: ".3rem",color:"black" }}>
-                  <span>活動名稱：</span>
-                  <input
-                    type="text"
-                    name="campaignName"
-                    defaultValue={activity.activity_name}
-                    className="campaign-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動地點：</span>
-                  <input
-                    type="text"
-                    defaultValue={activity.activity_place}
-                    className="campaign-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動日期：</span>
-                  <input
-                    type="datetime"
-                    defaultValue={formatDate(activity.activity_partyTime)}
-                    className="campaign-sub"
-                    size={10}
-                    readOnly
-                  />
-                </div>
-                <div style={{ position: "relative" }}>
-                  <input
-                    type="button"
-                    // defaultValue="審核中"
-                    defaultValue={activity.join_state}
-                    className={activity.join_state === "未通過"? "campaign-unpass"
-                             : activity.join_state === "已通過"? "campaign-pass"
-                                                               : "campaign-review"}
-                  // className="campaign-review"
-                  />
-                  <input
-                    type="button"
-                    value="取消報名"
-                    className="campaign-cancel"
-                    onClick={() =>
-                      deletejoinActivity(activity.activity_id, user.id)
-                    }
-                  />
-                </div>
-              </div>
-            );
+              );
             }
           })}
         </form>
@@ -473,59 +494,59 @@ function MemberPage() {
           收藏
         </label>
         <form className="member-form-content">
-        <p>未收藏任何活動</p>
+          <p>未收藏任何活動</p>
 
           {favorite_activities.map((activity) => {
-            if(user.id === activity.id){
-            return (
-              <div className="collect-content">
-                <div>
-                  <img src={activity.activity_image} className="collect-photo" />
+            if (user.id === activity.id) {
+              return (
+                <div className="collect-content">
+                  <div>
+                    <img src={activity.activity_image} className="collect-photo" />
+                  </div>
+                  <div style={{ marginLeft: ".3rem", color: "black" }}>
+                    <span>活動名稱：</span>
+                    <input
+                      type="text"
+                      name="collectName"
+                      defaultValue={activity.activity_name}
+                      className="collect-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+                    <span>活動地點：</span>
+                    <input
+                      type="text"
+                      name="collectName"
+                      defaultValue={activity.activity_place}
+                      className="collect-sub"
+                      size={10}
+                      readOnly
+                    />
+                    <br />
+                    <span>活動日期：</span>
+                    <input
+                      type="datetime"
+                      name="collectName"
+                      defaultValue={formatDate(activity.activity_partyTime)}
+                      className="collect-sub"
+                      size={10}
+                      readOnly
+                    />
+                  </div>
+                  <div style={{ position: "relative" }}>
+                    <input
+                      type="button"
+                      defaultValue="取消收藏"
+                      className="collect-cancel"
+                      onClick={() =>
+                        deleteActivity(activity.activity_id, user.id)
+                      }
+                    />
+                  </div>
                 </div>
-                <div style={{ marginLeft: ".3rem",color:"black" }}>
-                  <span>活動名稱：</span>
-                  <input
-                    type="text"
-                    name="collectName"
-                    defaultValue={activity.activity_name}
-                    className="collect-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動地點：</span>
-                  <input
-                    type="text"
-                    name="collectName"
-                    defaultValue={activity.activity_place}
-                    className="collect-sub"
-                    size={10}
-                    readOnly
-                  />
-                  <br />
-                  <span>活動日期：</span>
-                  <input
-                    type="datetime"
-                    name="collectName"
-                    defaultValue={formatDate(activity.activity_partyTime)}
-                    className="collect-sub"
-                    size={10}
-                    readOnly
-                  />
-                </div>
-                <div style={{ position: "relative" }}>
-                  <input
-                    type="button"
-                    defaultValue="取消收藏"
-                    className="collect-cancel"
-                    onClick={() =>
-                      deleteActivity(activity.activity_id, user.id)
-                    }
-                  />
-                </div>
-              </div>
 
-            );
+              );
             }
           })}
 
