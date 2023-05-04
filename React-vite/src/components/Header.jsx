@@ -40,6 +40,17 @@ function Header() {
     setIsProfilePageOpen(!isProfilePageOpen);
   }
 
+  function handleClick() {
+    const remindCircle = document.querySelector('.remind_circle');
+    if (remindCircle) {
+      if (remindCircle.classList.contains('remind_hidden')) {
+        remindCircle.classList.remove('remind_hidden');
+      } else {
+        remindCircle.classList.add('remind_hidden');
+      }
+    }
+  }
+
 
   if (loading) {
     return (
@@ -89,6 +100,11 @@ function Header() {
                 <a className="underline" href="/member">
                   會員頁面
                 </a>
+                {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+                  <div className="remind_circle_close">
+                    <i className="uil uil-bell remind_circle_icon_close"></i>
+                  </div>
+                ) : null}
               </li>
               <li className="mobile-li">
                 <a className="underline" href="/">
@@ -132,8 +148,8 @@ function Header() {
 
             {/* 以下變更的部分*/}
             <div className="login_head_img_box">
-              <img className="login_head_img" src={user?.member_avatar} />
-              
+              <img className="login_head_img" src={user?.member_avatar} onClick={handleClick} />
+
               {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
                 <div className="remind_circle">
                   <i className="uil uil-bell remind_circle_icon"></i>
@@ -152,10 +168,10 @@ function Header() {
               <li className="profile-li">
                 <a href="/member">查看個人頁面</a>
                 {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
-                <div className="remind_circle_open">
-                  <i className="uil uil-bell remind_circle_icon_open"></i>
-                </div>
-              ) : null}
+                  <div className="remind_circle_open">
+                    <i className="uil uil-bell remind_circle_icon_open"></i>
+                  </div>
+                ) : null}
               </li>
               <li className="profile-li">
                 <a onClick={logout}>登出</a>
