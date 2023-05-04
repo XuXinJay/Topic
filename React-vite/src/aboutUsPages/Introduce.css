@@ -22,7 +22,7 @@
   margin: 0 auto;
 }
 
-.introduce .container_123 > div > p {
+.introduce .container_123 > div > div {
   /* text-align: center; */
   height: 150px;
   padding: 30px;

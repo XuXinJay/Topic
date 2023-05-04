@@ -14,14 +14,18 @@ import slide1 from "./image/03.jpg";
 import slide2 from "./image/02.jpg";
 import slide3 from "./image/01.jpg";
 
-// 首頁內容圖，接好後端即可刪除
-import img4 from "./image/test/img4.jpg";
-
 function Main() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activities, setActivities] = useState([]);
   const [filterByLocation, setFilterByLocation] = useState("");
   const [filteredActivities, setFilteredActivities] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
 
   const nextSlide = () => {
     if (currentSlide === 2) {
