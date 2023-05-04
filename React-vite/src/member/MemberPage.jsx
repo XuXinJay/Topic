@@ -56,15 +56,9 @@ function MemberPage() {
     join_activities.forEach((activity) => {
       if (activity.activity_id === activity_id && activity.join_state !== "未通過") {
         count++;
-        const labels = document.querySelectorAll("label");
-        // labels.forEach((label) => {
-          if(labels.length>5){
-          labels[3].className = "member-label";
-        // });
-        }
       }
     });
-    return count;
+    return count > 0 ? count : 0;
   }
 
   // ------------------------------------------------------------取消報名活動
@@ -269,6 +263,9 @@ function MemberPage() {
 
         <label className="member-label" id="labelAlert" htmlFor="tab2">
           發起活動
+
+          <span className="alertIcon" >❗</span>
+
         </label>
 
         <form className="member-form-content">
@@ -295,7 +292,6 @@ function MemberPage() {
 
                     <span>報名人數：</span>
                     <span>{count}/{activity.activity_number}</span>
-                    {/* <span>0/{activity.activity_number}</span> */}
 
                     <br />
                     <span>活動地點：</span>

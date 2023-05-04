@@ -326,6 +326,13 @@
   background-color: transparent;
   color: black;
 }
+.alertIcon{
+  border: red 2px solid;
+  border-radius: 50%;
+  margin-left: 5px;
+  /* display: none; */
+}
+
 
 /* ---------------- 審核狀態 campaign-state start ---------------- */
 
