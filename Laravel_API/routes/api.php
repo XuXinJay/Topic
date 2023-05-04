@@ -62,3 +62,6 @@ Route::post('/messages',[MessageController::class,'store']);
 
 Route::get('/messages',[MessageController::class,'index']);
 
+Route::get('/fetchOrganizeAndJoinData',[ActivityController::class,'fetchOrganizeAndJoinData']);
+
+

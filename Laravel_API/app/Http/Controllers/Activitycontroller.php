@@ -37,4 +37,14 @@ class Activitycontroller extends Controller
         $timeDiff = $deadline - $now;
         return response()->json(['time_diff' => $timeDiff], 200, [], JSON_UNESCAPED_UNICODE);;
     }
+
+    public function fetchOrganizeAndJoinData()
+    {
+        $data = DB::table('organize_activities')
+                    ->join('join_activities', 'organize_activities.activity_id', '=', 'join_activities.activity_id')
+                    ->select('organize_activities.member_id', 'organize_activities.activity_id', 'join_activities.join_state')
+                    ->get();
+        return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE); 
+    }
+
 }
