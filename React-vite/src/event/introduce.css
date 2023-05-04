@@ -35,7 +35,7 @@
 .event_introduce .event_container_123 {
   align-items: center;
   display: flex;
-  width: 745.8px;
+  width: 45%;
   padding: 15px;
   background-color: #f5f5f5;
   border-radius: 20px;
@@ -114,4 +114,12 @@
   cursor: pointer;
   color: white;
   background-color: #ff4d00;
+}
+
+
+
+@media screen and (max-width: 840px) {
+  .event_introduce .event_container_123{
+    width: 90%;
+  }
 }

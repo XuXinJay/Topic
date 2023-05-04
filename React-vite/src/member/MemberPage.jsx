@@ -180,6 +180,7 @@ function MemberPage() {
               電子信箱：
               <input
                 defaultValue={memberInfo?.email}
+                title={memberInfo?.email}
                 className="introduction-input"
                 readOnly
               />
