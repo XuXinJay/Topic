@@ -20,7 +20,7 @@ function Event() {
 
   const [messages, setMessages] = useState([]);
 
-  
+
   function review() {
     window.location.href = 'http://localhost:5173/review/' + activity_id;
   }
@@ -95,7 +95,23 @@ function Event() {
     window.location.reload();
   };
 
-
+  const likeSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('/api/like', {
+        member_id: user.id,
+        activity_id: activity_id
+      });
+      console.log("likeSubmit successfully:", response.data);
+      alert('收藏成功');
+    } catch (error) {
+      console.error("Error likeSubmit:", error);
+      if (error.response.status === 400) {
+        alert('該活動已經收藏過了');
+      }
+    }
+    
+  };
 
   if (loading) {
     return (
@@ -111,19 +127,19 @@ function Event() {
   const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
 
   const passedJoinData = joinData.filter(item => item.join_state == "已通過");
-  
+
   return (
     <div className="event_page-container">
       <div className="event_page-allActivity">
 
-        {/* <form action="/api/joinActivities" type="submit" method="post" onSubmit={likeSubmit}>
+        <form action="/api/joinActivities" type="submit" method="post" onSubmit={likeSubmit}>
           <div className="event_page-bbb-message">
-          <button className="event_page-button-message" type="submit">
-            收藏
-          </button>
-        </div>
-        </form> */}
-        
+            <button className="event_page-button-message" type="submit">
+              收藏
+            </button>
+          </div>
+        </form>
+
         <div className="event_page-title" style={{ textAlign: "center" }}>
           {eventData[0].activity_name}
         </div>

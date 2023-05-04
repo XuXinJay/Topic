@@ -109,6 +109,91 @@ nav ul li a {
   font-size: 30px;
 }
 
+/* ----------------------------- 提醒圓圈(紅) ----------------------------- */
+
+.login_head_img_box {
+  width: 60px;
+  height: 80px;
+  display: flex;
+  align-items: center
+}
+
+@keyframes scaleDraw {
+
+  /*定義關鍵幀、scaleDrew是需要繫結到選擇器的關鍵幀名稱*/
+  0% {
+    transform: scale(1);
+    /*開始為原始大小*/
+  }
+
+  25% {
+    transform: scale(1.2);
+    /*放大1.1倍*/
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.2);
+  }
+}
+
+.remind_circle_icon {
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 55px;
+  color: rgb(255, 90, 41);
+  -webkit-animation-name: scaleDraw;
+  /*關鍵幀名稱*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*動畫的速度曲線*/
+  -webkit-animation-iteration-count: infinite;
+  /*動畫播放的次數*/
+  -webkit-animation-duration: 3s;
+  /*動畫所花費的時間*/
+}
+
+.remind_hidden {
+  display: none;
+}
+
+.remind_circle_icon_open {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 11.8rem;
+  right: 20px;
+  color: rgb(255, 90, 41);
+  -webkit-animation-name: scaleDraw;
+  /*關鍵幀名稱*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*動畫的速度曲線*/
+  -webkit-animation-iteration-count: infinite;
+  /*動畫播放的次數*/
+  -webkit-animation-duration: 3s;
+  /*動畫所花費的時間*/
+}
+
+.remind_circle_icon_close {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 3.5rem;
+  right: 3.5rem;
+  color: rgb(255, 90, 41);
+  -webkit-animation-name: scaleDraw;
+  /*關鍵幀名稱*/
+  -webkit-animation-timing-function: ease-in-out;
+  /*動畫的速度曲線*/
+  -webkit-animation-iteration-count: infinite;
+  /*動畫播放的次數*/
+  -webkit-animation-duration: 3s;
+  /*動畫所花費的時間*/
+}
+
+
+
 /* ----------------------------- RWD導覽列收縮 ----------------------------- */
 
 .hamburger-icon {
@@ -116,6 +201,7 @@ nav ul li a {
   display: none;
   cursor: pointer;
 }
+
 .hamburger-icon div {
   background-color: var(--body_background_color);
   transition: 0.4s;
