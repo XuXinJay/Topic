@@ -51,6 +51,17 @@ function Header() {
     }
   }
 
+  function handleClickMenu() {
+    const remindCircle = document.querySelector(".remind_circle_menu");
+    if (remindCircle) {
+      if (remindCircle.classList.contains("remind_hidden_menu")) {
+        remindCircle.classList.remove("remind_hidden_menu");
+      } else {
+        remindCircle.classList.add("remind_hidden_menu");
+      }
+    }
+  }
+
   if (loading) {
     return (
       <div className="center">
@@ -87,7 +98,22 @@ function Header() {
             </li>
           </ul>
           <div className="hamburger-icon" onClick={toggleMobileMenu}>
-            <i id="menubtn" className="uil uil-bars menubtn" />
+            {reviewState.some(
+              (state) =>
+                state.member_id === user.id && state.join_state === "審核中"
+            ) ? (
+              <div className="remind_circle_menu">
+                <i
+                  className="uil uil-bell remind_circle_icon_menu"
+                  onClick={handleClickMenu}
+                ></i>
+              </div>
+            ) : null}
+            <i
+              id="menubtn"
+              className="uil uil-bars menubtn"
+              onClick={handleClickMenu}
+            />
             <ul className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
               <li className="mobile-li">
                 <a className="mobile_activity" href="/activity">
@@ -160,7 +186,10 @@ function Header() {
                   state.member_id === user.id && state.join_state === "審核中"
               ) ? (
                 <div className="remind_circle">
-                  <i className="uil uil-bell remind_circle_icon"></i>
+                  <i
+                    className="uil uil-bell remind_circle_icon"
+                    onClick={handleClick}
+                  ></i>
                 </div>
               ) : null}
             </div>
