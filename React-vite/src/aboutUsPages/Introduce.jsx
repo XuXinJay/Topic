@@ -11,7 +11,7 @@ function Introduce() {
         </div>
         <hr />
         <div className="introduce_des">
-          <p>
+          <div>
             <h2><b>一場從餐桌開始的社交革命！感謝各大媒體的支持和報導</b> </h2> 
             Eatgether交友app從2016至今，成為台灣最大的聚餐交友平台，2020年達100萬用戶，累積500,000場聚會，每個月新增20,000場活動。除了Apple和Google雙平台最佳社交app的交友軟體推薦外，感謝各大媒體與好朋友的報導，一起來更認識Eatgether吧！
             <br /><br />
@@ -29,7 +29,7 @@ function Introduce() {
             3大類便利好用App，讓大人吃得好、交友、運動和生活都更方便<hr /><br />
             <h3>LINE TODAY</h3>
             斯卡羅引爆原民熱 奧丁丁攜手社交平台Eatgether 開揪原民文化實境解謎《謎霧環山2》<hr /><br />
-          </p>
+          </div>
         </div>
       </div>
     </div>
