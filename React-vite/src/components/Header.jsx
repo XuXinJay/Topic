@@ -151,6 +151,11 @@ function Header() {
               </li>
               <li className="profile-li">
                 <a href="/member">查看個人頁面</a>
+                {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+                <div className="remind_circle_open">
+                  <i className="uil uil-bell remind_circle_icon_open"></i>
+                </div>
+              ) : null}
               </li>
               <li className="profile-li">
                 <a onClick={logout}>登出</a>
