@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\JoinActivityController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\favoriteAvtivitiesController;
 use App\Models\OrganizeActivity;
 
 /*
@@ -64,4 +65,7 @@ Route::get('/messages',[MessageController::class,'index']);
 
 Route::get('/fetchOrganizeAndJoinData',[ActivityController::class,'fetchOrganizeAndJoinData']);
 
+Route::get('/like',[favoriteAvtivitiesController::class,'index']);
+
+Route::post('/like',[favoriteAvtivitiesController::class,'addToFavorites']);
 
