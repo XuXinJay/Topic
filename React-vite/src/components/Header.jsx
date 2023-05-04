@@ -41,7 +41,7 @@ function Header() {
   }
 
   function handleClick() {
-    const remindCircle = document.querySelector('.remind_circle');
+    const remindCircle = document.querySelector('remind_circle');
     if (remindCircle) {
       if (remindCircle.classList.contains('remind_hidden')) {
         remindCircle.classList.remove('remind_hidden');
