@@ -201,7 +201,7 @@ function Activity2() {
               {user.name}
             </p>
           </div>
-          <div className="uploadImage">
+          <div className="uploadImage11">
             <img src={defaultImg} alt="" />
           </div>
           <div className="activityText_2">
