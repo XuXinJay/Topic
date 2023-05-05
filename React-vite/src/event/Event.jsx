@@ -91,7 +91,7 @@ function Event() {
     } catch (error) {
       console.error("Error applySubmit:", error);
     }
-
+    alert("報名成功 請等待審核");
     window.location.reload();
   };
 
