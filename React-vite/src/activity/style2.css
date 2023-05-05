@@ -140,20 +140,15 @@
   margin-right: 20px;
 }
 
-.uploadImage {
+.uploadImage11 {
   text-align: center;
-  width: 80%;
-  height: 40vh;
-  border-radius: 20px;
-  margin: auto;
   overflow: hidden;
 }
 
-.uploadImage > img {
-  width: 80%;
-  height: 40vh;
-  overflow: hidden;
+.uploadImage11> img {
   border-radius: 20px;
+  margin: 10px auto;
+  width: 570px;
 }
 
 .activityText_2 {

@@ -43,13 +43,6 @@ class Message extends Model
         
         $msg->save();
     }
-    //刪除
-    public static function deleteMessage($id)
-    {
-        $content = Message::find($id);
-        if ($content) {
-            $content->delete();
-        }
-    }
+    
 
 }

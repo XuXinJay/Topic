@@ -94,14 +94,14 @@ function Activity3() {
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
               <div className="">
-                聚會地點 :<a href="#"  target="_blank" className="googleMap">{activityPlace}</a>
+                聚會地點 :<a href="#" target="_blank" className="googleMap">{activityPlace}</a>
               </div>
             </div>
             <div className="count">
               聚會總人數 : <span>{activityCount}人</span>
             </div>
           </div>
-          <div className="uploadImage">
+          <div className="uploadImage22">
             <img src={defaultImg} alt="" />
           </div>
           <div className="activityText_3">
@@ -127,7 +127,7 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>{activityStartDate.slice(5,10)}</div>
+              {/* <div>{activityStartDate.slice(5,10)}</div> */}
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
