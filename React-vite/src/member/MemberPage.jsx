@@ -265,7 +265,7 @@ function MemberPage() {
         <label className="member-label" id="labelAlert" htmlFor="tab2">
           發起活動
 
-          <span className="alertIcon" >❗</span>
+          <span className="alertIcon" ><i class="uil uil-exclamation-circle"></i></span>
 
         </label>
 
