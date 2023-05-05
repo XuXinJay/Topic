@@ -113,6 +113,22 @@ function Event() {
     
   };
 
+ 
+
+  const deleteMessage = async (id) => {
+    const confirmed = window.confirm('確定要刪除此訊息嗎？');
+    if(confirmed){
+      try {
+        const res = await axios.delete('/api/messages/'+ id);
+        console.log("delete 成功",res.data);
+        window.location.reload();
+      } catch(error) {
+        console.log("delete error",error);
+      }
+    }
+    
+  }
+
   if (loading) {
     return (
       <div className="center">
@@ -269,7 +285,9 @@ function Event() {
                           {message.comment_content}
                         </small>
 
-                        <div className="event_page-time"> {message.created_at}</div>
+                        <div className="event_page-time"> {message.created_at}
+                        {message.name === user.name && <button className="event_page-bd" onClick={() => deleteMessage(message.comment_id)}>❌</button>}
+                        </div>
                       </div>
                     </div>
                   );
@@ -363,9 +381,12 @@ function Event() {
                         <small className="font-weight-bold1">
                           {" "}
                           {message.comment_content}
+                          
                         </small>
 
-                        <div className="event_page-time"> {message.created_at}</div>
+                        <div className="event_page-time"> {message.created_at}
+                        {message.name === user.name && <button className="event_page-bd" onClick={() => deleteMessage(message.comment_id)}>❌</button>}
+                        </div>
                       </div>
                     </div>
                   );

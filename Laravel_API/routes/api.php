@@ -61,6 +61,8 @@ Route::get('/notify2', [OrganizeActivityController::class,'notify2']);
 
 Route::post('/messages',[MessageController::class,'store']);
 
+Route::delete('/messages/{id}',[MessageController::class,'deleteMessage']);
+
 Route::get('/messages',[MessageController::class,'index']);
 
 Route::get('/fetchOrganizeAndJoinData',[ActivityController::class,'fetchOrganizeAndJoinData']);
