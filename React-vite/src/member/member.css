@@ -457,12 +457,16 @@ color:rgb(255, 90, 41);
     font-size: 1.2rem;
   }
 } */
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 480px) {
   .member-tab .member-label{
-    margin: 0px auto 5px;
+    margin: 0px 8px 5px;
+    padding: 10px 6px;
   }
   .introduction-input {
     text-overflow:initial ;
+  }
+  .member-body{
+    width: 96%;
   }
   
 }
