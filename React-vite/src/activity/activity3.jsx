@@ -6,6 +6,8 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import Geocode from "react-geocode";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Activity3() {
   const { user, loading } = useAuthContext();
@@ -17,7 +19,7 @@ function Activity3() {
       </div>
     );
   }
-  //地圖api
+
 
 
 
@@ -33,53 +35,29 @@ function Activity3() {
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
-
-  // const target = `https://www.google.com.tw/maps/search/${activityPlace}`
-  // function getPosition() {
-  //   navigator.geolocation.getCurrentPosition(function(position) {
-  //     let longitude = position.coords.longitude;
-  //     let latitude = position.coords.latitude;
-  //     sessionStorage.setItem('使用者位置',[latitude,longitude])
-  //     // console.log(longitude)
-  //     // console.log(latitude)
-  //   })
-  // }
+  //地圖api
   Geocode.setApiKey('AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs')
   Geocode.setLanguage('zh-TW')
   Geocode.setRegion("tw");
-
-  function geoLocation() {
-    const [address, setAddress] = useState('');
-    const [location, setLocation] = useState('');
-
-    useEffect(() => {
+  function handleLinkClick() {
+    const activityPlace = sessionStorage.getItem("活動地點");
+    if (activityPlace) {
       Geocode.fromAddress(activityPlace).then(
         (response) => {
           const { lat, lng } = response.results[0].geometry.location;
-          setLocation({ lat, lng });
+          const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+          const size = 'width=600,height=400'
+          const left = (screen.width / 2) - (600 / 2);
+          const top = (screen.height / 2) - (400 / 2);
+          window.open(mapUrl, "_blank",`${size},left=${left},top=${top}`);
         },
         (error) => {
-          console.log(error)
+          console.error(error);
         }
       );
-    }, [activityPlace]);
-  
-    const handleAddressSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await Geocode.fromAddress(address);
-        const { lat, lng } = response.results[0].geometry.location;
-        setLocation({ lat, lng });
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    }
   }
-  const target = "https://www.google.com/maps/search/?api=1&query="
-  const size = "width:600,height:400"
-  function handleLinkClick() {
-    window.open(target, "popup", size)
-  }
+
   //送出表單的資料
   async function sendData() {
     let activityTypeJSON = JSON.parse(activityType)
@@ -141,7 +119,8 @@ function Activity3() {
               <div className="">
                 聚會地點 :
                 <a 
-                  href={target}
+                  href="#"
+                  // href={target}
                   className="googleMap"
                   onClick={handleLinkClick}
                 >{activityPlace}</a>
