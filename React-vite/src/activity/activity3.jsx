@@ -4,6 +4,7 @@ import "./style3.css";
 import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 function Activity3() {
   const { user, loading } = useAuthContext();
@@ -16,12 +17,16 @@ function Activity3() {
     );
   }
   //地圖api
-  // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs&callback=initMap"></script>
-  
-  // function openGoogleMap(address) {
+  function getPosition() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      let longitude = position.coords.longitude;
+      let latitude = position.coords.latitude;
+      console.log(longitude)
+      console.log(latitude)
+    })
+  }
 
-  // }
-
+  getPosition()
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
   const defaultImg = sessionStorage.getItem("預設圖片");
@@ -70,7 +75,7 @@ function Activity3() {
   const today = new Date();
   const deadline = new Date(activityDeadLine);
   const diffTime = deadline.getTime() - today.getTime();
-  const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+  // const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
   // sessionStorage.setItem('剩餘天數', diffDays)
 
 
@@ -131,7 +136,7 @@ function Activity3() {
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>{diffDays}天</div>
+              {/* <div style={{ color: "red" }}>{diffDays}天</div> */}
             </div>
           </div>
         </div>
