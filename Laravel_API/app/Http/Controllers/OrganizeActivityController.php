@@ -40,7 +40,7 @@ class OrganizeActivityController extends Controller
         $activities = DB::table('notification_contents')
             ->where("notification_type" ,'=', "系統")
             ->get()
-            ->sortByDesc('created_at');
+            ->sortByDesc('notify_id');
 
         return response()->json($activities, 200, [], JSON_UNESCAPED_UNICODE);
     }

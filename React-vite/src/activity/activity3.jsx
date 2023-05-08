@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import Geocode from "react-geocode";
 
 function Activity3() {
   const { user, loading } = useAuthContext();
@@ -17,16 +18,9 @@ function Activity3() {
     );
   }
   //地圖api
-  function getPosition() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      let longitude = position.coords.longitude;
-      let latitude = position.coords.latitude;
-      console.log(longitude)
-      console.log(latitude)
-    })
-  }
 
-  getPosition()
+
+
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
   const defaultImg = sessionStorage.getItem("預設圖片");
@@ -40,6 +34,52 @@ function Activity3() {
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
 
+  // const target = `https://www.google.com.tw/maps/search/${activityPlace}`
+  // function getPosition() {
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     let longitude = position.coords.longitude;
+  //     let latitude = position.coords.latitude;
+  //     sessionStorage.setItem('使用者位置',[latitude,longitude])
+  //     // console.log(longitude)
+  //     // console.log(latitude)
+  //   })
+  // }
+  Geocode.setApiKey('AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs')
+  Geocode.setLanguage('zh-TW')
+  Geocode.setRegion("tw");
+
+  function geoLocation() {
+    const [address, setAddress] = useState('');
+    const [location, setLocation] = useState('');
+
+    useEffect(() => {
+      Geocode.fromAddress(activityPlace).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          setLocation({ lat, lng });
+        },
+        (error) => {
+          console.log(error)
+        }
+      );
+    }, [activityPlace]);
+  
+    const handleAddressSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await Geocode.fromAddress(address);
+        const { lat, lng } = response.results[0].geometry.location;
+        setLocation({ lat, lng });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  }
+  const target = "https://www.google.com/maps/search/?api=1&query="
+  const size = "width:600,height:400"
+  function handleLinkClick() {
+    window.open(target, "popup", size)
+  }
   //送出表單的資料
   async function sendData() {
     let activityTypeJSON = JSON.parse(activityType)
@@ -99,7 +139,12 @@ function Activity3() {
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
               <div className="">
-                聚會地點 :<a href="#" target="_blank" className="googleMap">{activityPlace}</a>
+                聚會地點 :
+                <a 
+                  href={target}
+                  className="googleMap"
+                  onClick={handleLinkClick}
+                >{activityPlace}</a>
               </div>
             </div>
             <div className="count">
