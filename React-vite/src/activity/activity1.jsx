@@ -150,7 +150,7 @@ function Activity1() {
         <div className="imageUpload">
           <div className="activity_title">上傳圖片 : </div>
           <label htmlFor="fileInput" className="fileLabel">
-            <span className="fileSpan">{ImageState? <img src={ImageState}/> : '+' }</span>
+            <span className="fileSpan">{ImageState? <img style={{height: "40vh",width: "-webkit-fill-available"}} src={ImageState}/> : '+' }</span>
             {/* <span className="fileSpan">+</span> */}
             <input
               type="file"
