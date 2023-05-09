@@ -418,7 +418,7 @@ function MemberPage() {
                       type="button"
                       // defaultValue="審核中"
                       defaultValue={activity.join_state}
-                      className={activity.join_state === "未通過" ? "campaign-unpass"
+                      className={activity.join_state === "已拒絕" ? "campaign-unpass"
                         : activity.join_state === "已通過" ? "campaign-pass"
                           : "campaign-review"}
                     // className="campaign-review"
