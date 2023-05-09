@@ -1,12 +1,14 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./DarkMode.css";
 
 const DarkMode = () => {
   const setDarkMode = useCallback(() => {
+    localStorage.setItem("theme", "dark");
     document.querySelector("body").setAttribute("data-theme", "dark");
   }, []);
 
   const setLightMode = useCallback(() => {
+    localStorage.setItem("theme", "light");
     document.querySelector("body").setAttribute("data-theme", "light");
   }, []);
 
@@ -14,6 +16,13 @@ const DarkMode = () => {
     if (e.target.checked) setDarkMode();
     else setLightMode();
   };
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") setDarkMode();
+    else if (theme === "light") setLightMode();
+  }, [setDarkMode, setLightMode]);
+
   return (
     <div className="dark_mode">
       <input
