@@ -29,7 +29,7 @@ function Header() {
     getActivity();
   }, []);
 
-  console.log(reviewState);
+  // console.log(reviewState);
 
   /* ------------------ */
   function toggleMobileMenu() {
