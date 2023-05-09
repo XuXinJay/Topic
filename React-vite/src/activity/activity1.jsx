@@ -5,6 +5,12 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import { useState } from "react";
 import { useEffect } from "react";
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
+
+SwiperCore.use([Navigation, Pagination]);
+
 
 function Activity1() {
   const { user, loading } = useAuthContext();
@@ -144,7 +150,7 @@ function Activity1() {
         <div className="imageUpload">
           <div className="activity_title">上傳圖片 : </div>
           <label htmlFor="fileInput" className="fileLabel">
-            <span className="fileSpan">{ImageState? <img src={ImageState}/> : '+' }</span>
+            <span className="fileSpan">{ImageState? <img style={{height: "40vh",width: "-webkit-fill-available"}} src={ImageState}/> : '+' }</span>
             {/* <span className="fileSpan">+</span> */}
             <input
               type="file"
@@ -158,21 +164,201 @@ function Activity1() {
           <div className="imageDefault">
             <span className="arrowButton">◀</span>
             <div className="imageBox">
-              <img
-                src="./src/mainpage/image/test/img7.jpg"
-                alt="1"
-                onClick={handleImgClick}
-              />
-              <img
-                src="./src/mainpage/image/test/img4.jpg"
-                alt="2"
-                onClick={handleImgClick}
-              />
-              <img
-                src="./src/mainpage/image/test/img5.jpg"
-                alt="3"
-                onClick={handleImgClick}
-              />
+            <Swiper
+                spaceBetween={20}
+                slidesPerView={3}
+                loop={true}
+                navigation
+                pagination={{ clickable: true }}
+                style={{  cursor:"pointer",
+                          borderRadius:"20px"
+                      }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+              >
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/movie.jpg"
+                    alt="movie"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/boardgame.jpg"
+                    alt="2"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/food.jpg"
+                    alt="food"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/reading.jpg"
+                    alt="reading"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/sports.jpg"
+                    alt="sports"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/shopping.jpg"
+                    alt="shopping"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/painting.jpg"
+                    alt="painting"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/bodycraft.jpg"
+                    alt="bodycraft"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/cooking.jpg"
+                    alt="cooking"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/travel.jpg"
+                    alt="travel"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/bar.jpg"
+                    alt="bar"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/music.jpg"
+                    alt="music"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/picnic.jpg"
+                    alt="picnic"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+                <SwiperSlide
+                  className="imageBox"
+                >
+                  <img
+                    src="./src/activity/template/together.jpg"
+                    alt="together"
+                    onClick={handleImgClick}
+                    style={{ 
+                      cursor:"pointer",
+                      borderRadius:"20px"
+                    }}
+                  />
+                </SwiperSlide>
+              </Swiper>
             </div>
             <span className="arrowButton">▶</span>
           </div>

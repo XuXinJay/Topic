@@ -11,7 +11,7 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
   role: "system",
@@ -46,9 +46,9 @@ function ChatGpt() {
 
 
     // Check for specific questions and provide responses
-    if (message.includes("註冊")) {
+    if (message.includes("開始使用")) {
       const responseMessage = {
-        message: "您好，可以點選頁面右上角按鈕的[登入/註冊]進行創建哦!",
+        message: "您好，可以先點選頁面右上角按鈕的[登入/註冊]進行創建，再點選指南了解網站的操作哦！",
         sentTime: "just now",
         sender: "ChatGPT",
       };

@@ -5,6 +5,7 @@ import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
 import { useState } from "react";
 
+
 function Activity2() {
   const { user, loading } = useAuthContext();
 
@@ -122,6 +123,7 @@ function Activity2() {
                 defaultValue={activityCount}
                 onChange={handleActivityCount}
                 min={0}
+                max={20}
                 required
               />
               <span>人</span>
@@ -159,7 +161,7 @@ function Activity2() {
                 defaultValue={activityDeadLine}
                 onChange={handleActivityDeadLine}
                 min={activityStartDate}
-                max={activityEndDate ? new Date(new Date(activityEndDate).getTime() - 86400000).toISOString().slice(0, 10) : ""}
+                // max={diffDays}
                 required
               />
             </div>
@@ -201,7 +203,7 @@ function Activity2() {
               {user.name}
             </p>
           </div>
-          <div className="uploadImage">
+          <div className="uploadImage11">
             <img src={defaultImg} alt="" />
           </div>
           <div className="activityText_2">

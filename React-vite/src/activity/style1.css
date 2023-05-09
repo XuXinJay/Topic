@@ -201,21 +201,16 @@
 
 .imageBox {
   text-align: center;
-  width: 100%;
+  max-width: 100%;
   margin: auto 0;
   border-radius: 20px;
 }
 
 .imageBox > img {
-  width: 30%;
+  width: 100%;
+  height: auto;
   margin: 0 10px;
   border-radius: 20px;
-  cursor: pointer;
-}
-
-.arrowButton {
-  font-size: 1.5rem;
-  margin: auto;
   cursor: pointer;
 }
 

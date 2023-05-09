@@ -21,7 +21,7 @@ function Header() {
     async function getActivity() {
       try {
         const responseState = await axios.get(`api/fetchOrganizeAndJoinData`);
-        setReviewState(responseState.data)
+        setReviewState(responseState.data);
       } catch (error) {
         console.error(error);
       }
@@ -29,7 +29,7 @@ function Header() {
     getActivity();
   }, []);
 
-  console.log(reviewState)
+  // console.log(reviewState);
 
   /* ------------------ */
   function toggleMobileMenu() {
@@ -41,16 +41,26 @@ function Header() {
   }
 
   function handleClick() {
-    const remindCircle = document.querySelector('remind_circle');
+    const remindCircle = document.querySelector(".remind_circle");
     if (remindCircle) {
-      if (remindCircle.classList.contains('remind_hidden')) {
-        remindCircle.classList.remove('remind_hidden');
+      if (remindCircle.classList.contains("remind_hidden")) {
+        remindCircle.classList.remove("remind_hidden");
       } else {
-        remindCircle.classList.add('remind_hidden');
+        remindCircle.classList.add("remind_hidden");
       }
     }
   }
 
+  function handleClickMenu() {
+    const remindCircle = document.querySelector(".remind_circle_menu");
+    if (remindCircle) {
+      if (remindCircle.classList.contains("remind_hidden_menu")) {
+        remindCircle.classList.remove("remind_hidden_menu");
+      } else {
+        remindCircle.classList.add("remind_hidden_menu");
+      }
+    }
+  }
 
   if (loading) {
     return (
@@ -88,7 +98,22 @@ function Header() {
             </li>
           </ul>
           <div className="hamburger-icon" onClick={toggleMobileMenu}>
-            <i id="menubtn" className="uil uil-bars menubtn" />
+            {reviewState.some(
+              (state) =>
+                state.member_id === user.id && state.join_state === "審核中"
+            ) ? (
+              <div className="remind_circle_menu">
+                <i
+                  className="uil uil-bell remind_circle_icon_menu"
+                  onClick={handleClickMenu}
+                ></i>
+              </div>
+            ) : null}
+            <i
+              id="menubtn"
+              className="uil uil-bars menubtn"
+              onClick={handleClickMenu}
+            />
             <ul className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`}>
               <li className="mobile-li">
                 <a className="mobile_activity" href="/activity">
@@ -100,7 +125,10 @@ function Header() {
                 <a className="underline" href="/member">
                   會員頁面
                 </a>
-                {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+                {reviewState.some(
+                  (state) =>
+                    state.member_id === user.id && state.join_state === "審核中"
+                ) ? (
                   <div className="remind_circle_close">
                     <i className="uil uil-bell remind_circle_icon_close"></i>
                   </div>
@@ -145,14 +173,23 @@ function Header() {
           </a>
 
           <div className="profilePage_box" onClick={profilePage}>
-
             {/* 以下變更的部分*/}
             <div className="login_head_img_box">
-              <img className="login_head_img" src={user?.member_avatar} onClick={handleClick} />
+              <img
+                className="login_head_img"
+                src={user?.member_avatar}
+                onClick={handleClick}
+              />
 
-              {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+              {reviewState.some(
+                (state) =>
+                  state.member_id === user.id && state.join_state === "審核中"
+              ) ? (
                 <div className="remind_circle">
-                  <i className="uil uil-bell remind_circle_icon"></i>
+                  <i
+                    className="uil uil-bell remind_circle_icon"
+                    onClick={handleClick}
+                  ></i>
                 </div>
               ) : null}
             </div>
@@ -167,7 +204,10 @@ function Header() {
               </li>
               <li className="profile-li">
                 <a href="/member">查看個人頁面</a>
-                {reviewState.some(state => state.member_id === user.id && state.join_state === "審核中") ? (
+                {reviewState.some(
+                  (state) =>
+                    state.member_id === user.id && state.join_state === "審核中"
+                ) ? (
                   <div className="remind_circle_open">
                     <i className="uil uil-bell remind_circle_icon_open"></i>
                   </div>

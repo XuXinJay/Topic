@@ -4,6 +4,10 @@ import "./style3.css";
 import { Navigate } from "react-router-dom";
 import useAuthContext from "../context/AuthContext";
 import loaDing from "/src/loading.gif";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import Geocode from "react-geocode";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Activity3() {
   const { user, loading } = useAuthContext();
@@ -15,12 +19,9 @@ function Activity3() {
       </div>
     );
   }
-  //地圖api
-  // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs&callback=initMap"></script>
-  
-  // function openGoogleMap(address) {
 
-  // }
+
+
 
   //取得所有資料
   const activityType = sessionStorage.getItem("活動類型");
@@ -34,6 +35,28 @@ function Activity3() {
   const activityCount = sessionStorage.getItem("活動總人數");
   const activityPayment = sessionStorage.getItem("付款方式");
   const activityBudget = sessionStorage.getItem("活動預算");
+  //地圖api
+  Geocode.setApiKey('AIzaSyBQUjSFJEo1tbZmuE04BUNG6xXG8x-NlZs')
+  Geocode.setLanguage('zh-TW')
+  Geocode.setRegion("tw");
+  function handleLinkClick() {
+    const activityPlace = sessionStorage.getItem("活動地點");
+    if (activityPlace) {
+      Geocode.fromAddress(activityPlace).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          const mapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+          const size = 'width=600,height=400'
+          const left = (screen.width / 2) - (600 / 2);
+          const top = (screen.height / 2) - (400 / 2);
+          window.open(mapUrl, "_blank",`${size},left=${left},top=${top}`);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+  }
 
   //送出表單的資料
   async function sendData() {
@@ -70,7 +93,7 @@ function Activity3() {
   const today = new Date();
   const deadline = new Date(activityDeadLine);
   const diffTime = deadline.getTime() - today.getTime();
-  const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+  // const diffDays = Math.abs(Math.floor(diffTime / (1000 * 60 * 60 * 24)));
   // sessionStorage.setItem('剩餘天數', diffDays)
 
 
@@ -94,14 +117,20 @@ function Activity3() {
             <div className="place">
               <i className="bi bi-geo-alt-fill" />
               <div className="">
-                聚會地點 :<a href="#"  target="_blank" className="googleMap">{activityPlace}</a>
+                聚會地點 :
+                <a 
+                  href="#"
+                  // href={target}
+                  className="googleMap"
+                  onClick={handleLinkClick}
+                >{activityPlace}</a>
               </div>
             </div>
             <div className="count">
               聚會總人數 : <span>{activityCount}人</span>
             </div>
           </div>
-          <div className="uploadImage">
+          <div className="uploadImage22">
             <img src={defaultImg} alt="" />
           </div>
           <div className="activityText_3">
@@ -127,11 +156,11 @@ function Activity3() {
           <div class="box_3">
             <div class="iconBox">
               <i class="uil uil-calendar-alt"></i>
-              <div>{activityStartDate.slice(5,10)}</div>
+              {/* <div>{activityStartDate.slice(5,10)}</div> */}
             </div>
             <div class="iconBox">
               <i class="uil uil-hourglass"></i>
-              <div style={{ color: "red" }}>{diffDays}天</div>
+              {/* <div style={{ color: "red" }}>{diffDays}天</div> */}
             </div>
           </div>
         </div>

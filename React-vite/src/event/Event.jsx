@@ -91,7 +91,7 @@ function Event() {
     } catch (error) {
       console.error("Error applySubmit:", error);
     }
-
+    alert("報名成功 請等待審核");
     window.location.reload();
   };
 
@@ -110,8 +110,24 @@ function Event() {
         alert('該活動已經收藏過了');
       }
     }
-    
+
   };
+
+
+
+  const deleteMessage = async (id) => {
+    const confirmed = window.confirm('確定要刪除此訊息嗎？');
+    if (confirmed) {
+      try {
+        const res = await axios.delete('/api/messages/' + id);
+        console.log("delete 成功", res.data);
+        window.location.reload();
+      } catch (error) {
+        console.log("delete error", error);
+      }
+    }
+
+  }
 
   if (loading) {
     return (
@@ -153,8 +169,9 @@ function Event() {
             <span className="">
               聚會地點 :
               <a
-                href=""
+                href={`https://www.google.com.tw/maps/search/${encodeURIComponent(eventData[0].activity_place)}`}
                 style={{ textDecoration: "none", color: "var(--body_color)" }}
+                target="_blank"
               >
                 {eventData[0].activity_place}
               </a>
@@ -269,7 +286,9 @@ function Event() {
                           {message.comment_content}
                         </small>
 
-                        <div className="event_page-time"> {message.created_at}</div>
+                        <div className="event_page-time"> {message.created_at}
+                          {message.name === user.name && <button className="event_page-bd" onClick={() => deleteMessage(message.comment_id)}>❌</button>}
+                        </div>
                       </div>
                     </div>
                   );
@@ -363,9 +382,12 @@ function Event() {
                         <small className="font-weight-bold1">
                           {" "}
                           {message.comment_content}
+
                         </small>
 
-                        <div className="event_page-time"> {message.created_at}</div>
+                        <div className="event_page-time"> {message.created_at}
+                          {message.name === user.name && <button className="event_page-bd" onClick={() => deleteMessage(message.comment_id)}>❌</button>}
+                        </div>
                       </div>
                     </div>
                   );
